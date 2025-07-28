@@ -10,108 +10,118 @@
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .header {
             background: linear-gradient(90deg, #1a2a6c, #b21f1f, #1a2a6c);
             color: white;
             border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             text-align: center;
         }
         .language-switch {
-            text-align: center;
-            margin-bottom: 20px;
+            margin-top: 15px;
         }
         .card {
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
             border: none;
             transition: transform 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         .card-header {
             background: linear-gradient(90deg, #2c3e50, #4a6491);
             color: white;
             border-radius: 15px 15px 0 0 !important;
             font-weight: 600;
-            padding: 15px 20px;
+            padding: 15px;
         }
         .btn-primary {
             background: linear-gradient(90deg, #1a2a6c, #3a7bd5);
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             font-weight: 600;
+            font-size: 0.9rem;
         }
         .btn-success {
             background: linear-gradient(90deg, #27ae60, #2ecc71);
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             font-weight: 600;
+            font-size: 0.9rem;
         }
         .btn-info {
             background: linear-gradient(90deg, #3498db, #2980b9);
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .btn-danger {
+            padding: 5px 10px;
+            font-size: 0.8rem;
         }
         .form-control, .form-select {
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 10px;
             border: 2px solid #e1e5eb;
+            font-size: 0.9rem;
         }
         .form-control:focus, .form-select:focus {
             border-color: #3a7bd5;
-            box-shadow: 0 0 0 0.25rem rgba(58, 123, 213, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(58, 123, 213, 0.25);
         }
         .work-item {
             background: #f8f9fa;
             border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid #3a7bd5;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #3a7bd5;
         }
         .footer {
             background: linear-gradient(90deg, #2c3e50, #4a6491);
             color: white;
             border-radius: 15px;
-            padding: 20px;
-            margin-top: 30px;
+            padding: 15px;
+            margin-top: 20px;
             text-align: center;
+            font-size: 0.9rem;
         }
         .location-tag {
             background: #3a7bd5;
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            padding: 4px 8px;
+            border-radius: 15px;
+            margin-right: 3px;
+            margin-bottom: 3px;
             display: inline-block;
+            font-size: 0.8rem;
         }
         .whatsapp-preview {
             background: #25D366;
             color: white;
             border-radius: 15px;
-            padding: 25px;
-            margin-top: 30px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: none;
         }
         .whatsapp-preview h3 {
             border-bottom: 2px dashed white;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
         .detail-options {
             background: #e9ecef;
             border-radius: 8px;
-            padding: 15px;
+            padding: 10px;
             margin-top: 10px;
         }
         .remark-item {
@@ -119,50 +129,110 @@
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 15px;
-            border-left: 4px solid #ffc107;
+            border-left: 3px solid #ffc107;
         }
         pre {
             white-space: pre-wrap;
             word-wrap: break-word;
             background: white;
             color: black;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         .work-type-checkbox {
-            margin-right: 15px;
-            margin-bottom: 10px;
+            margin-right: 10px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
         }
         .copy-notification {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             background: #27ae60;
             color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
             display: none;
             z-index: 1000;
             font-weight: 600;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            .header {
+                padding: 15px;
+            }
+            .card-header {
+                padding: 12px;
+            }
+            .work-item {
+                padding: 12px;
+            }
+            .remark-item {
+                padding: 12px;
+            }
+            .form-control, .form-select {
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .location-tag {
+                font-size: 0.7rem;
+                padding: 3px 6px;
+            }
+        }
+        @media (max-width: 576px) {
+            .header {
+                padding: 12px;
+            }
+            .card {
+                margin-bottom: 15px;
+            }
+            .work-item {
+                padding: 10px;
+            }
+            .remark-item {
+                padding: 10px;
+            }
+            .form-control, .form-select {
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+            .btn {
+                padding: 5px 8px;
+                font-size: 0.75rem;
+            }
+            .location-tag {
+                font-size: 0.65rem;
+                padding: 2px 5px;
+            }
+            pre {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="header">
             <h1><i class="fas fa-hospital me-3"></i><span id="hospitalTitle">MOH Khasab Hospital</span></h1>
             <p class="lead" id="systemTitle">Daily Work Report System</p>
-        </div>
-        
-        <div class="language-switch">
-            <select class="form-select" id="languageSelect" style="width: 150px; display: inline-block;">
-                <option value="en">English</option>
-                <option value="ur">اردو</option>
-            </select>
+            <div class="language-switch">
+                <select class="form-select" id="languageSelect" style="width: 120px; margin: 0 auto;">
+                    <option value="en">English</option>
+                    <option value="ur">اردو</option>
+                </select>
+            </div>
         </div>
 
         <div class="card">
@@ -171,11 +241,11 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-12 mb-3">
                         <label class="form-label fw-bold" id="dateLabel">Date</label>
                         <input type="date" class="form-control" id="reportDate">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-12">
                         <label class="form-label fw-bold" id="teamNameLabel">Team Name</label>
                         <select class="form-select" id="teamName">
                             <option value="" id="selectTeamOption">--Select Team--</option>
@@ -193,29 +263,29 @@
                 <h3 class="mb-0"><i class="fas fa-building me-2"></i><span id="locationDetailsTitle">Location Details</span></h3>
             </div>
             <div class="card-body">
-                <div class="row mb-4">
+                <div class="row mb-3">
                     <div class="col-12">
                         <label class="form-label fw-bold" id="selectFloorsLabel">Select Floors</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-6 col-md-3">
                         <div class="form-check">
                             <input class="form-check-input floor-checkbox" type="checkbox" value="Level 00" id="floorL00">
                             <label class="form-check-label" for="floorL00" id="level00Label">Level 00</label>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-6 col-md-3">
                         <div class="form-check">
                             <input class="form-check-input floor-checkbox" type="checkbox" value="Level 01" id="floorL01">
                             <label class="form-check-label" for="floorL01" id="level01Label">Level 01</label>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-6 col-md-3">
                         <div class="form-check">
                             <input class="form-check-input floor-checkbox" type="checkbox" value="Level 02" id="floorL02">
                             <label class="form-check-label" for="floorL02" id="level02Label">Level 02</label>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-6 col-md-3">
                         <div class="form-check">
                             <input class="form-check-input floor-checkbox" type="checkbox" value="Level 03" id="floorL03">
                             <label class="form-check-label" for="floorL03" id="level03Label">Level 03</label>
@@ -223,8 +293,8 @@
                     </div>
                 </div>
 
-                <div class="row mb-4">
-                    <div class="col-md-6">
+                <div class="row mb-3">
+                    <div class="col-12">
                         <label class="form-label fw-bold" id="selectZonesLabel">Select Zones</label>
                         <select class="form-select" id="zoneSelect" multiple size="4">
                             <option value="Zone 01" id="zone01Label">Zone 01</option>
@@ -267,7 +337,7 @@
                 <div id="remarkContainer">
                     <div class="remark-item" id="remarkItem0">
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-12 mb-3">
                                 <label class="form-label fw-bold" id="remarkTypeLabel">Remark Type</label>
                                 <select class="form-select remarkType" id="remarkType0" onchange="toggleOtherRemark(0)">
                                     <option value="" id="selectRemarkOption">Select Remark</option>
@@ -277,7 +347,7 @@
                                     <option value="Other" id="otherLabel">Other</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-12 mb-3">
                                 <label class="form-label fw-bold" id="floorLabel">Floor</label>
                                 <select class="form-select remarkFloorSelect" id="remarkFloorSelect0">
                                     <option value="" id="selectFloorOption">Select Floor</option>
@@ -288,7 +358,7 @@
                                     <option value="Level 04" id="remarkLevel04Label">Level 04</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-12 mb-3">
                                 <label class="form-label fw-bold" id="zoneLabel">Zone</label>
                                 <select class="form-select remarkZoneSelect" id="remarkZoneSelect0">
                                     <option value="" id="selectZoneOption">Select Zone</option>
@@ -571,85 +641,37 @@
             });
             
             // Translate cable pulling options
-            document.querySelectorAll('.cableOption').forEach(checkbox => {
-                const value = checkbox.value;
-                const label = checkbox.nextElementSibling;
-                if (label) {
-                    switch(value) {
-                        case 'Single door':
-                            label.textContent = workTypeTranslations[language].singleDoor;
-                            break;
-                        case 'Double door':
-                            label.textContent = workTypeTranslations[language].doubleDoor;
-                            break;
-                        case 'Panic button':
-                            label.textContent = workTypeTranslations[language].panicButton;
-                            break;
-                        case 'Corridor door':
-                            label.textContent = workTypeTranslations[language].corridorDoor;
-                            break;
-                    }
+            document.querySelectorAll('.cableOption + label').forEach(label => {
+                const value = label.previousElementSibling.value;
+                switch(value) {
+                    case 'Single door':
+                        label.textContent = workTypeTranslations[language].singleDoor;
+                        break;
+                    case 'Double door':
+                        label.textContent = workTypeTranslations[language].doubleDoor;
+                        break;
+                    case 'Panic button':
+                        label.textContent = workTypeTranslations[language].panicButton;
+                        break;
+                    case 'Corridor door':
+                        label.textContent = workTypeTranslations[language].corridorDoor;
+                        break;
                 }
             });
             
             // Translate speaker options
-            document.querySelectorAll('.speakerOption').forEach(checkbox => {
-                const value = checkbox.value;
-                const label = checkbox.nextElementSibling;
-                if (label) {
-                    switch(value) {
-                        case 'Ceiling':
-                            label.textContent = workTypeTranslations[language].ceiling;
-                            break;
-                        case 'Box':
-                            label.textContent = workTypeTranslations[language].box;
-                            break;
-                        case 'Horn':
-                            label.textContent = workTypeTranslations[language].horn;
-                            break;
-                    }
-                }
-            });
-            
-            // Translate quantity field placeholders
-            document.querySelectorAll('.qtyField').forEach(field => {
-                field.placeholder = language === 'ur' ? 'مقدار' : 'Qty';
-            });
-            
-            // Translate other work input placeholders
-            document.querySelectorAll('.otherWorkInput').forEach(input => {
-                input.placeholder = language === 'ur' ? 'کام کی قسم درج کریں' : 'Enter work type';
-            });
-            
-            // Translate detail section headers
-            document.querySelectorAll('#workDetailsContainer div h6').forEach(header => {
-                const text = header.textContent;
-                Object.keys(workTypeTranslations.en).forEach(key => {
-                    if (workTypeTranslations.en[key] === text) {
-                        header.textContent = workTypeTranslations[language][key];
-                    }
-                });
-            });
-            
-            // Translate work item headers
-            document.querySelectorAll('.work-item h5').forEach(header => {
-                if (language === 'ur') {
-                    if (header.textContent.startsWith('Work ')) {
-                        header.textContent = header.textContent.replace('Work ', 'کام ');
-                    }
-                } else {
-                    if (header.textContent.startsWith('کام ')) {
-                        header.textContent = header.textContent.replace('کام ', 'Work ');
-                    }
-                }
-            });
-            
-            // Translate work type selection labels
-            document.querySelectorAll('[id^="workItem"] .col-12 .form-label').forEach(label => {
-                if (language === 'ur') {
-                    label.textContent = 'کام کی اقسام منتخب کریں (ایک سے زیادہ انتخاب کی اجازت ہے)';
-                } else {
-                    label.textContent = 'Select Work Types (Multiple Selection Allowed)';
+            document.querySelectorAll('.speakerOption + label').forEach(label => {
+                const value = label.previousElementSibling.value;
+                switch(value) {
+                    case 'Ceiling':
+                        label.textContent = workTypeTranslations[language].ceiling;
+                        break;
+                    case 'Box':
+                        label.textContent = workTypeTranslations[language].box;
+                        break;
+                    case 'Horn':
+                        label.textContent = workTypeTranslations[language].horn;
+                        break;
                 }
             });
         }
@@ -720,7 +742,7 @@
             remarkItem.id = `remarkItem${remarkCount}`;
             remarkItem.innerHTML = `
                 <div class="row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-12 mb-3">
                         <label class="form-label fw-bold">${language === 'ur' ? 'تبصرے کی قسم' : 'Remark Type'}</label>
                         <select class="form-select remarkType" id="remarkType${remarkCount}" onchange="toggleOtherRemark(${remarkCount})">
                             <option value="">${language === 'ur' ? 'تبصرہ منتخب کریں' : 'Select Remark'}</option>
@@ -730,7 +752,7 @@
                             <option value="Other">${language === 'ur' ? 'دیگر' : 'Other'}</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-12 mb-3">
                         <label class="form-label fw-bold">${language === 'ur' ? 'منزل' : 'Floor'}</label>
                         <select class="form-select remarkFloorSelect" id="remarkFloorSelect${remarkCount}">
                             <option value="">${language === 'ur' ? 'منزل منتخب کریں' : 'Select Floor'}</option>
@@ -741,7 +763,7 @@
                             <option value="Level 04">${language === 'ur' ? 'سطح 04' : 'Level 04'}</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-12 mb-3">
                         <label class="form-label fw-bold">${language === 'ur' ? 'علاقہ' : 'Zone'}</label>
                         <select class="form-select remarkZoneSelect" id="remarkZoneSelect${remarkCount}">
                             <option value="">${language === 'ur' ? 'علاقہ منتخب کریں' : 'Select Zone'}</option>
@@ -985,7 +1007,7 @@
                 } else {
                     detailSection.innerHTML += `
                         <div class="mt-2">
-                            <input type="number" class="form-control" id="detailQty${detailId}" placeholder="${language === 'ur' ? 'مقدار' : 'Quantity'}">
+                            <input type="number" class="form-control qtyField" id="detailQty${detailId}" placeholder="${language === 'ur' ? 'مقدار' : 'Quantity'}">
                         </div>
                     `;
                 }
@@ -1134,9 +1156,6 @@
                             }
                         } else {
                             workDetail += 'completed';
-                            if (otherWorkQty) {
-                                workDetail += `- (${otherWorkQty} nos)`;
-                            }
                         }
                     } else {
                         const detailQty = document.getElementById(`detailQty${detailId}`)?.value || '';
