@@ -166,6 +166,19 @@
             margin-bottom: 15px;
             border-left: 3px solid #3a7bd5;
         }
+        /* New styles for floor-zone selection */
+        .floor-zone-row {
+            background: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #3a7bd5;
+        }
+        .floor-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
         @media (max-width: 768px) {
             body {
                 padding: 5px;
@@ -218,6 +231,10 @@
             .floor-quantity-row {
                 padding: 12px;
             }
+            /* Responsive styles for floor-zone */
+            .floor-zone-row {
+                padding: 12px;
+            }
         }
         @media (max-width: 576px) {
             .header {
@@ -259,6 +276,10 @@
             .floor-quantity-row {
                 padding: 10px;
             }
+            /* Responsive styles for floor-zone */
+            .floor-zone-row {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -275,7 +296,6 @@
                 </select>
             </div>
         </div>
-
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-calendar-alt me-2"></i><span id="reportDetailsTitle">Report Details</span></h3>
@@ -293,6 +313,8 @@
                             <option value="Abdur Raheem" id="abdurRaheemOption">Abdur Raheem</option>
                             <option value="Akbar Ali" id="akbarAliOption">Akbar Ali</option>
                             <option value="Riyazul" id="riyazulOption">Riyazul</option>
+                            <!-- Added ANAS option -->
+                            <option value="ANAS" id="anasOption">ANAS</option>
                             <option value="other" id="otherTeamOption">Other Name</option>
                         </select>
                         <div id="otherTeamMemberContainer" style="display: none;" class="mt-2">
@@ -302,7 +324,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-building me-2"></i><span id="locationDetailsTitle">Location Details</span></h3>
@@ -337,23 +358,15 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row mb-4">
-                    <div class="col-md-6">
-                        <label class="form-label fw-bold" id="selectZonesLabel">Select Zones</label>
-                        <select class="form-select" id="zoneSelect" multiple size="4">
-                            <option value="Zone 01" id="zone01Label">Zone 01</option>
-                            <option value="Zone 02" id="zone02Label">Zone 02</option>
-                            <option value="Zone 03" id="zone03Label">Zone 03</option>
-                            <option value="Zone 04" id="zone04Label">Zone 04</option>
-                            <option value="Zone 05" id="zone05Label">Zone 05</option>
-                            <option value="Zone 06" id="zone06Label">Zone 06</option>
-                            <option value="Zone 07" id="zone07Label">Zone 07</option>
-                            <option value="Zone 08" id="zone08Label">Zone 08</option>
-                        </select>
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold" id="selectZonesLabel">Select Zones for Each Floor</label>
+                         <!-- Container for floor-zone rows -->
+                        <div id="floorZoneContainer">
+                             <!-- Floor-zone rows will be added here dynamically -->
+                        </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12">
                         <label class="form-label fw-bold" id="selectedLocationsLabel">Selected Locations</label>
@@ -364,7 +377,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-tasks me-2"></i><span id="workCompletedTitle">Work Completed Today</span></h3>
@@ -373,7 +385,6 @@
                 <!-- Work items will be dynamically added here -->
             </div>
         </div>
-
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-chart-bar me-2"></i><span id="quantityTitle">Completed Qty / Total Qty</span></h3>
@@ -423,7 +434,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="quantity-section">
                     <h4 id="acpPanelTitle">Total ACP panel installation</h4>
                     <div id="acpPanelQuantities">
@@ -483,7 +493,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i><span id="remarksTitle">Remarks & Issues</span></h3>
@@ -534,7 +543,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="text-center mt-3">
                     <button class="btn btn-info" id="addRemarkBtn">
                         <i class="fas fa-plus me-2"></i><span id="addRemarkButton">Add Remark</span>
@@ -542,13 +550,11 @@
                 </div>
             </div>
         </div>
-
         <div class="text-center mb-4">
             <button class="btn btn-success btn-lg" id="generateBtn">
                 <i class="fas fa-file-alt me-2"></i><span id="generateReportButton">Generate Report</span>
             </button>
         </div>
-
         <div class="whatsapp-preview" id="previewSection">
             <h3><i class="fab fa-whatsapp me-2"></i><span id="reportPreviewTitle">Report Preview</span></h3>
             <pre id="messagePreview"></pre>
@@ -558,25 +564,20 @@
                 </button>
             </div>
         </div>
-
         <div class="footer">
             <p class="mb-0">&copy; 2025 <span id="hospitalFooter">MOH Khasab Hospital Report System</span></p>
             <p class="mb-0" id="developerFooter">Developed by MSTE</p>
         </div>
     </div>
-
     <div class="copy-notification" id="copyNotification">
         <i class="fas fa-check-circle me-2"></i><span id="messageCopiedText">Message copied successfully!</span>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Set current date by default
         document.getElementById('reportDate').valueAsDate = new Date();
-
         let workItems = [];
         let remarkCount = 1;
-
         // Urdu translations
         const translations = {
             en: {
@@ -589,6 +590,8 @@
                 abdurRaheemOption: "Abdur Raheem",
                 akbarAliOption: "Akbar Ali",
                 riyazulOption: "Riyazul",
+                 // Added translation for ANAS
+                anasOption: "ANAS",
                 otherTeamOption: "Other Name",
                 locationDetailsTitle: "Location Details",
                 selectFloorsLabel: "Select Floors",
@@ -661,6 +664,8 @@
                 abdurRaheemOption: "عبدالرحیم",
                 akbarAliOption: "اکبر علی",
                 riyazulOption: "ریاض العلی",
+                 // Added Urdu translation for ANAS
+                anasOption: "انس",
                 otherTeamOption: "دوسرا نام",
                 locationDetailsTitle: "مقام کی تفصیلات",
                 selectFloorsLabel: "منزلیں منتخب کریں",
@@ -733,6 +738,8 @@
                 abdurRaheemOption: "আবদুর রহিম",
                 akbarAliOption: "আকবর আলী",
                 riyazulOption: "রিয়াজুল",
+                 // Added Bengali translation for ANAS
+                anasOption: "আনাস",
                 otherTeamOption: "অন্য নাম",
                 locationDetailsTitle: "অবস্থান বিবরণ",
                 selectFloorsLabel: "তলা নির্বাচন করুন",
@@ -796,7 +803,6 @@
                 developerFooter: "MSTE দ্বারা ডেভেলপ করা হয়েছে"
             }
         };
-
         // Work type translations
         const workTypeTranslations = {
             en: {
@@ -851,7 +857,6 @@
                 otherWork: "অন্যান্য কাজ"
             }
         };
-
         // Translate function
         function translatePage(language) {
             // Translate all elements with IDs
@@ -868,7 +873,6 @@
                     }
                 }
             });
-            
             // Translate work type checkboxes in all work items
             document.querySelectorAll('.workTypeCheckbox').forEach(checkbox => {
                 const value = checkbox.value;
@@ -905,7 +909,6 @@
                     }
                 }
             });
-            
             // Translate cable pulling options
             document.querySelectorAll('.cableOption + label').forEach(label => {
                 const value = label.previousElementSibling.value;
@@ -924,7 +927,6 @@
                         break;
                 }
             });
-            
             // Translate speaker options
             document.querySelectorAll('.speakerOption + label').forEach(label => {
                 const value = label.previousElementSibling.value;
@@ -940,17 +942,14 @@
                         break;
                 }
             });
-            
             // Translate quantity field placeholders
             document.querySelectorAll('.qtyField').forEach(field => {
                 field.placeholder = language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty');
             });
-            
             // Translate other work input placeholders
             document.querySelectorAll('.otherWorkInput').forEach(input => {
                 input.placeholder = language === 'ur' ? 'کام کی قسم درج کریں' : (language === 'bn' ? 'কাজের ধরন লিখুন' : 'Enter work type');
             });
-            
             // Translate detail section headers
             document.querySelectorAll('#workDetailsContainer div h6').forEach(header => {
                 const text = header.textContent;
@@ -960,7 +959,6 @@
                     }
                 });
             });
-            
             // Translate work item headers
             document.querySelectorAll('.work-item h5').forEach(header => {
                 if (language === 'ur') {
@@ -979,7 +977,6 @@
                     }
                 }
             });
-            
             // Translate work type selection labels
             document.querySelectorAll('[id^="workItem"] .col-12 .form-label').forEach(label => {
                 if (language === 'ur') {
@@ -991,19 +988,16 @@
                 }
             });
         }
-
         // Language switch event
         document.getElementById('languageSelect').addEventListener('change', function() {
             const selectedLanguage = this.value;
             translatePage(selectedLanguage);
         });
-
         // Toggle other team member input
         document.getElementById('teamName').addEventListener('change', function() {
             const selectedOptions = Array.from(this.selectedOptions);
             const otherSelected = selectedOptions.some(option => option.value === 'other');
             const container = document.getElementById('otherTeamMemberContainer');
-            
             if (otherSelected) {
                 container.style.display = 'block';
             } else {
@@ -1011,47 +1005,95 @@
                 document.getElementById('otherTeamMember').value = '';
             }
         });
-
-        // Update selected locations display
+        // Update selected locations display and generate floor-zone rows
         function updateSelectedLocations() {
             const selectedLocations = document.getElementById('selectedLocations');
+            const floorZoneContainer = document.getElementById('floorZoneContainer');
             const language = document.getElementById('languageSelect').value;
-            
+
             // Get selected floors
             const selectedFloors = Array.from(document.querySelectorAll('.floor-checkbox:checked')).map(cb => cb.value);
-            
-            // Get selected zones
-            const selectedZones = Array.from(document.getElementById('zoneSelect').selectedOptions).map(option => option.value);
-            
-            // Clear current display
+
+            // Clear current display and floor-zone rows
             selectedLocations.innerHTML = '';
-            
-            // Display selected locations
-            if (selectedFloors.length === 0 && selectedZones.length === 0) {
-                selectedLocations.innerHTML = '<span class="text-muted">' + 
-                    (language === 'ur' ? 'ابھی تک کوئی مقام منتخب نہیں کیا گیا' : 
-                     language === 'bn' ? 'এখনও কোন অবস্থান নির্বাচন করা হয়নি' : 
+            floorZoneContainer.innerHTML = '';
+
+            // Display selected floors and create floor-zone rows
+            if (selectedFloors.length === 0) {
+                selectedLocations.innerHTML = '<span class="text-muted">' +
+                    (language === 'ur' ? 'ابھی تک کوئی مقام منتخب نہیں کیا گیا' :
+                     language === 'bn' ? 'এখনও কোন অবস্থান নির্বাচন করা হয়নি' :
                      'No locations selected yet') + '</span>';
+                // Clear work items if no floors selected
+                generateWorkItemsPerFloorZone([]);
                 return;
             }
-            
-            // Create location tags
+
+            // Create location tags for floors
             selectedFloors.forEach(floor => {
                 const floorTag = document.createElement('span');
                 floorTag.className = 'location-tag';
                 floorTag.textContent = floor;
                 selectedLocations.appendChild(floorTag);
+
+                // Create floor-zone row for each selected floor
+                const floorZoneRow = document.createElement('div');
+                floorZoneRow.className = 'floor-zone-row';
+                floorZoneRow.dataset.floor = floor; // Store floor value for identification
+
+                const floorHeader = document.createElement('div');
+                floorHeader.className = 'floor-header';
+                floorHeader.textContent = `${floor} - ${language === 'ur' ? 'علاقے منتخب کریں' : (language === 'bn' ? 'অঞ্চল নির্বাচন করুন' : 'Select Zones')}`;
+
+                const zoneSelect = document.createElement('select');
+                zoneSelect.className = 'form-select floor-zone-select';
+                zoneSelect.multiple = true;
+                zoneSelect.size = 4;
+                zoneSelect.dataset.floor = floor; // Associate select with floor
+
+                // Populate zone options
+                for (let i = 1; i <= 8; i++) {
+                    const option = document.createElement('option');
+                    option.value = `Zone ${String(i).padStart(2, '0')}`;
+                    const zoneLabelKey = `zone${String(i).padStart(2, '0')}Label`;
+                    option.textContent = translations[language][zoneLabelKey] || option.value;
+                    zoneSelect.appendChild(option);
+                }
+
+                // Add event listener to update work items when zones change
+                zoneSelect.addEventListener('change', updateWorkItemsOnZoneChange);
+
+                floorZoneRow.appendChild(floorHeader);
+                floorZoneRow.appendChild(zoneSelect);
+                floorZoneContainer.appendChild(floorZoneRow);
             });
-            
-            selectedZones.forEach(zone => {
-                const zoneTag = document.createElement('span');
-                zoneTag.className = 'location-tag';
-                zoneTag.textContent = zone;
-                selectedLocations.appendChild(zoneTag);
+
+            // Trigger initial work item generation based on currently selected floors and zones
+            updateWorkItemsOnZoneChange();
+        }
+
+        // Function to update work items when zone selections change
+        function updateWorkItemsOnZoneChange() {
+            const selectedFloors = Array.from(document.querySelectorAll('.floor-checkbox:checked')).map(cb => cb.value);
+            const floorZoneContainer = document.getElementById('floorZoneContainer');
+
+            const selectedFloorZones = [];
+
+            // Iterate through floor-zone rows to get selected zones for each floor
+            floorZoneContainer.querySelectorAll('.floor-zone-row').forEach(row => {
+                const floor = row.dataset.floor;
+                const zoneSelect = row.querySelector('.floor-zone-select');
+                const selectedZones = Array.from(zoneSelect.selectedOptions).map(opt => opt.value);
+                if (selectedZones.length > 0) {
+                    selectedFloorZones.push({ floor: floor, zones: selectedZones });
+                } else if (selectedFloors.includes(floor)) {
+                     // Include floor even if no zones are selected for it yet
+                     selectedFloorZones.push({ floor: floor, zones: [] });
+                }
             });
-            
-            // Generate work items based on locations
-            generateWorkItems(selectedFloors, selectedZones);
+
+            // Generate work items based on the new structure
+            generateWorkItemsPerFloorZone(selectedFloorZones);
         }
 
         // Toggle other remark text field
@@ -1064,12 +1106,10 @@
                 otherContainer.style.display = 'none';
             }
         }
-
         // Add remark item
         document.getElementById('addRemarkBtn').addEventListener('click', function() {
             const remarkContainer = document.getElementById('remarkContainer');
             const language = document.getElementById('languageSelect').value;
-            
             const remarkItem = document.createElement('div');
             remarkItem.className = 'remark-item';
             remarkItem.id = `remarkItem${remarkCount}`;
@@ -1121,11 +1161,9 @@
                     </button>
                 </div>
             `;
-            
             remarkContainer.appendChild(remarkItem);
             remarkCount++;
         });
-
         // Remove remark item
         function removeRemarkItem(id) {
             if (remarkCount > 1) {
@@ -1135,37 +1173,34 @@
                 }
             }
         }
+        // Generate work items based on selected floor-zone combinations
+        function generateWorkItemsPerFloorZone(floorZones) {
+             const workContainer = document.getElementById('workContainer');
+             workContainer.innerHTML = '';
+             workItems = [];
 
-        // Generate work items based on selected locations
-        function generateWorkItems(floors, zones) {
-            const workContainer = document.getElementById('workContainer');
-            workContainer.innerHTML = '';
-            workItems = [];
-            
-            // Create work items for each floor-zone combination
-            if (floors.length > 0 && zones.length > 0) {
-                floors.forEach(floor => {
-                    zones.forEach(zone => {
-                        createWorkItem(`${floor} - ${zone}`);
-                    });
-                });
-            } else if (floors.length > 0) {
-                floors.forEach(floor => {
-                    createWorkItem(floor);
-                });
-            } else if (zones.length > 0) {
-                zones.forEach(zone => {
-                    createWorkItem(zone);
-                });
-            }
-        }
+             // Create work items for each floor-zone combination
+             if (floorZones.length > 0) {
+                 floorZones.forEach(({ floor, zones }) => {
+                     if (zones.length > 0) {
+                         // Create work item for each selected zone on the floor
+                         zones.forEach(zone => {
+                             createWorkItem(`${floor} - ${zone}`);
+                         });
+                     } else {
+                         // If no zones selected for this floor, create item for the floor only
+                         createWorkItem(floor);
+                     }
+                 });
+             }
+             // If floorZones is empty (no floors selected), workContainer is cleared and workItems is empty, so no work items will be shown.
+         }
 
         // Create a work item
         function createWorkItem(location) {
             const workContainer = document.getElementById('workContainer');
             const workId = workItems.length;
             const language = document.getElementById('languageSelect').value;
-            
             const workItem = document.createElement('div');
             workItem.className = 'work-item mb-3';
             workItem.id = `workItem${workId}`;
@@ -1220,10 +1255,8 @@
                     <!-- Work details will be added here -->
                 </div>
             `;
-            
             workContainer.appendChild(workItem);
             workItems.push({ id: workId, location: location });
-            
             // Add event listeners for work type checkboxes
             const checkboxes = workItem.querySelectorAll('.workTypeCheckbox');
             checkboxes.forEach(checkbox => {
@@ -1232,25 +1265,21 @@
                 });
             });
         }
-
         // Update work details based on selected work types
         function updateWorkDetails(id) {
             const workDetailsContainer = document.getElementById(`workDetailsContainer${id}`);
             workDetailsContainer.innerHTML = '';
             const language = document.getElementById('languageSelect').value;
-            
             // Get selected work types
             const selectedWorkTypes = [];
             document.querySelectorAll(`#workItem${id} .workTypeCheckbox:checked`).forEach(checkbox => {
                 selectedWorkTypes.push(checkbox.value);
             });
-            
             // Create detail sections for each selected work type
             selectedWorkTypes.forEach((workType, index) => {
                 const detailId = `${id}_${index}`;
                 const detailSection = document.createElement('div');
                 detailSection.className = 'mb-3 p-3 border rounded';
-                
                 // Get translated work type name
                 let workTypeName = workType;
                 switch(workType) {
@@ -1282,9 +1311,7 @@
                         workTypeName = workTypeTranslations[language].otherWork;
                         break;
                 }
-                
                 detailSection.innerHTML = `<h6>${workTypeName}</h6>`;
-                
                 if (workType === 'Cable pulling') {
                     detailSection.innerHTML += `
                         <div class="detail-options mt-2">
@@ -1344,11 +1371,9 @@
                         </div>
                     `;
                 }
-                
                 workDetailsContainer.appendChild(detailSection);
             });
         }
-
         // Toggle quantity field visibility
         function toggleQtyField(id) {
             // For cable pulling options
@@ -1359,7 +1384,6 @@
                     qtyField.style.display = checkbox.checked ? 'block' : 'none';
                 }
             });
-            
             // For speaker options
             ['ceiling', 'box', 'horn'].forEach(option => {
                 const checkbox = document.getElementById(`${option}${id}`);
@@ -1369,35 +1393,29 @@
                 }
             });
         }
-
-        // Event listeners for location changes
+        // Event listeners for location changes (floors)
         document.querySelectorAll('.floor-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', updateSelectedLocations);
         });
-
-        document.getElementById('zoneSelect').addEventListener('change', updateSelectedLocations);
-
         // Generate report preview
         document.getElementById('generateBtn').addEventListener('click', function() {
             generateReport();
             document.getElementById('previewSection').style.display = 'block';
             document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
         });
-
         // Show copy notification
         function showCopyNotification() {
             const notification = document.getElementById('copyNotification');
             const language = document.getElementById('languageSelect').value;
             const textElement = notification.querySelector('span');
-            textElement.textContent = language === 'ur' ? 'پیغام کامیابی سے کاپی ہو گیا!' : 
-                                      (language === 'bn' ? 'পীগাম সফলভাবে কপি হয়েছে!' : 
+            textElement.textContent = language === 'ur' ? 'پیغام کامیابی سے کاپی ہو گیا!' :
+                                      (language === 'bn' ? 'পীগাম সফলভাবে কপি হয়েছে!' :
                                       'Message copied successfully!');
             notification.style.display = 'block';
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
         }
-
         // Copy message to clipboard
         document.getElementById('copyBtn').addEventListener('click', function() {
             const message = document.getElementById('messagePreview').textContent;
@@ -1407,54 +1425,45 @@
                 console.error('Could not copy text: ', err);
             });
         });
-
         // Generate report message (always in English)
         function generateReport() {
             const date = document.getElementById('reportDate').value;
-            
             // Get selected team members
             const selectedTeams = Array.from(document.getElementById('teamName').selectedOptions).map(option => option.value);
             const otherTeamMember = document.getElementById('otherTeamMember').value;
-            
             // Process team names
             let teamNames = selectedTeams.filter(name => name !== 'other');
             if (selectedTeams.includes('other') && otherTeamMember.trim()) {
                 teamNames.push(otherTeamMember.trim());
             }
-            
             const teamName = teamNames.length > 0 ? teamNames.join(', ') : 'Team Name';
-            
             // Format date
             const dateObj = new Date(date);
-            const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+            const formattedDate = dateObj.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             });
-            
             // Build message (always in English)
-            let message = `*Project report-MOH Khasab Hospital*\n`;
-            message += `*Date: ${formattedDate}*\n\n`;
-            message += `*Work Completed Today*\n\n`;
-            
+            let message = `*Project report-MOH Khasab Hospital*
+`;
+            message += `*Date: ${formattedDate}*
+`;
+            message += `*Work Completed Today*
+`;
             // Group work items by location
             const locationWork = {};
-            
             workItems.forEach(item => {
                 const location = item.location;
                 if (!locationWork[location]) {
                     locationWork[location] = [];
                 }
-                
                 // Get selected work types for this location
                 const workTypeCheckboxes = document.querySelectorAll(`#workItem${item.id} .workTypeCheckbox:checked`);
-                
                 workTypeCheckboxes.forEach((checkbox, index) => {
                     const workType = checkbox.value;
                     const detailId = `${item.id}_${index}`;
-                    
                     let workDetail = `•\t${workType}: `;
-                    
                     // Get details based on work type
                     if (workType === 'Cable pulling') {
                         const details = [];
@@ -1511,107 +1520,104 @@
                             workDetail += 'completed';
                         }
                     }
-                    
                     workDetail += '.';
                     locationWork[location].push(workDetail);
                 });
             });
-            
             // Add work details to message
             Object.keys(locationWork).forEach(location => {
-                message += `\t*${location}*\n`;
+                message += `\t*${location}*
+`;
                 locationWork[location].forEach(work => {
-                    message += `\t${work}\n`;
+                    message += `\t${work}
+`;
                 });
-                message += '\n';
+                message += '
+';
             });
-            
             // Add quantity section
-            message += `*Completed Qty / Total Qty*\n\n`;
-            
+            message += `*Completed Qty / Total Qty*
+`;
             // Access control cable pulling quantities
-            message += `*Access control cable pulling*\n\n`;
+            message += `*Access control cable pulling*
+`;
             const groundFloorComplete = document.getElementById('groundFloorComplete').value || '';
             if (groundFloorComplete) {
-                message += `1.Ground floor = ${groundFloorComplete}/ 160\n`;
+                message += `1.Ground floor = ${groundFloorComplete}/ 160
+`;
             }
-            
             const firstFloorComplete = document.getElementById('firstFloorComplete').value || '';
             if (firstFloorComplete) {
-                message += `2.First floor= ${firstFloorComplete}/  136\n`;
+                message += `2.First floor= ${firstFloorComplete}/  136
+`;
             }
-            
             const secondFloorComplete = document.getElementById('secondFloorComplete').value || '';
             if (secondFloorComplete) {
-                message += `3.Second floor =  ${secondFloorComplete}/ 102\n`;
+                message += `3.Second floor =  ${secondFloorComplete}/ 102
+`;
             }
-            
-            message += '\n';
-            
+            message += '
+';
             // ACP panel installation quantities
-            message += `*Total ACP panel installation*\n\n`;
+            message += `*Total ACP panel installation*
+`;
             const acpGroundFloorComplete = document.getElementById('acpGroundFloorComplete').value || '';
             if (acpGroundFloorComplete) {
-                message += `1.Ground floor= ${acpGroundFloorComplete}/ 57\n`;
+                message += `1.Ground floor= ${acpGroundFloorComplete}/ 57
+`;
             }
-            
             const acpFirstFloorComplete = document.getElementById('acpFirstFloorComplete').value || '';
             if (acpFirstFloorComplete) {
-                message += `2.First floor = ${acpFirstFloorComplete}/ 43\n`;
+                message += `2.First floor = ${acpFirstFloorComplete}/ 43
+`;
             }
-            
             const acpSecondFloorComplete = document.getElementById('acpSecondFloorComplete').value || '';
             if (acpSecondFloorComplete) {
-                message += `3.Second floor= ${acpSecondFloorComplete}/ 37\n`;
+                message += `3.Second floor= ${acpSecondFloorComplete}/ 37
+`;
             }
-            
             const liftComplete = document.getElementById('liftComplete').value || '';
             if (liftComplete) {
-                message += `4.Lift = complete ${liftComplete}/ 10\n`;
+                message += `4.Lift = complete ${liftComplete}/ 10
+`;
             }
-            
-            message += '\n';
-            
+            message += '
+';
             // Add remarks
             let hasRemarks = false;
-            let remarksSection = '*Remarks:*\n';
-            
+            let remarksSection = '*Remarks:*
+';
             for (let i = 0; i < remarkCount; i++) {
                 const remarkType = document.getElementById(`remarkType${i}`)?.value || '';
                 const remarkFloor = document.getElementById(`remarkFloorSelect${i}`)?.value || '';
                 const remarkZone = document.getElementById(`remarkZoneSelect${i}`)?.value || '';
                 const otherRemarkText = document.getElementById(`otherRemarkText${i}`)?.value || '';
-                
                 if (remarkType) {
                     hasRemarks = true;
                     let remarkText = `•\t${remarkType === 'Other' ? otherRemarkText : remarkType}`;
                     if (remarkFloor) remarkText += ` at ${remarkFloor}`;
                     if (remarkZone) remarkText += `, ${remarkZone}`;
-                    remarksSection += `\t${remarkText}.\n`;
+                    remarksSection += `\t${remarkText}.
+`;
                 }
             }
-            
             if (hasRemarks) {
-                message += remarksSection + '\n';
+                message += remarksSection + '
+';
             }
-            
-            message += `\nTeam name- *${teamName}*`;
-            
+            message += `
+Team name- *${teamName}*`;
             // Display message preview
             document.getElementById('messagePreview').textContent = message;
         }
-
         // Initialize
         updateSelectedLocations();
-        
         // Initialize first remark item
         document.getElementById('remarkType0').addEventListener('change', function() {
             toggleOtherRemark(0);
         });
-        
         // Initial translation based on default language
         translatePage('en');
-        
         // Add touch-friendly interactions
         document.querySelectorAll('button, input, select, textarea').forEach(element => {
             element.classList.add('touch-friendly');
@@ -1619,4 +1625,3 @@
     </script>
 </body>
 </html>
-```
