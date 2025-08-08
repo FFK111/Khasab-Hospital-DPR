@@ -166,19 +166,6 @@
             margin-bottom: 15px;
             border-left: 3px solid #3a7bd5;
         }
-        /* New styles for floor-zone selection */
-        .floor-zone-row {
-            background: #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid #3a7bd5;
-        }
-        .floor-header {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
         @media (max-width: 768px) {
             body {
                 padding: 5px;
@@ -231,10 +218,6 @@
             .floor-quantity-row {
                 padding: 12px;
             }
-            /* Responsive styles for floor-zone */
-            .floor-zone-row {
-                padding: 12px;
-            }
         }
         @media (max-width: 576px) {
             .header {
@@ -276,10 +259,6 @@
             .floor-quantity-row {
                 padding: 10px;
             }
-            /* Responsive styles for floor-zone */
-            .floor-zone-row {
-                padding: 10px;
-            }
         }
     </style>
 </head>
@@ -291,11 +270,12 @@
             <div class="language-switch">
                 <select class="form-select" id="languageSelect" style="width: 150px;">
                     <option value="en">English</option>
-                    <option value="ur">اردو</option>
-                    <option value="bn">বাংলা</option>
+                    <option value="ur">Ø§Ø±Ø¯Ù</option>
+                    <option value="bn">à¦¬à¦¾à¦à¦²à¦¾</option>
                 </select>
             </div>
         </div>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-calendar-alt me-2"></i><span id="reportDetailsTitle">Report Details</span></h3>
@@ -313,8 +293,6 @@
                             <option value="Abdur Raheem" id="abdurRaheemOption">Abdur Raheem</option>
                             <option value="Akbar Ali" id="akbarAliOption">Akbar Ali</option>
                             <option value="Riyazul" id="riyazulOption">Riyazul</option>
-                             <!-- Added ANAS option -->
-                            <option value="ANAS" id="anasOption">ANAS</option>
                             <option value="other" id="otherTeamOption">Other Name</option>
                         </select>
                         <div id="otherTeamMemberContainer" style="display: none;" class="mt-2">
@@ -324,6 +302,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-building me-2"></i><span id="locationDetailsTitle">Location Details</span></h3>
@@ -358,15 +337,23 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row mb-4">
-                    <div class="col-md-12">
-                        <label class="form-label fw-bold" id="selectZonesLabel">Select Zones for Each Floor</label>
-                         <!-- Container for floor-zone rows -->
-                        <div id="floorZoneContainer">
-                             <!-- Floor-zone rows will be added here dynamically -->
-                        </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold" id="selectZonesLabel">Select Zones</label>
+                        <select class="form-select" id="zoneSelect" multiple size="4">
+                            <option value="Zone 01" id="zone01Label">Zone 01</option>
+                            <option value="Zone 02" id="zone02Label">Zone 02</option>
+                            <option value="Zone 03" id="zone03Label">Zone 03</option>
+                            <option value="Zone 04" id="zone04Label">Zone 04</option>
+                            <option value="Zone 05" id="zone05Label">Zone 05</option>
+                            <option value="Zone 06" id="zone06Label">Zone 06</option>
+                            <option value="Zone 07" id="zone07Label">Zone 07</option>
+                            <option value="Zone 08" id="zone08Label">Zone 08</option>
+                        </select>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-12">
                         <label class="form-label fw-bold" id="selectedLocationsLabel">Selected Locations</label>
@@ -377,6 +364,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-tasks me-2"></i><span id="workCompletedTitle">Work Completed Today</span></h3>
@@ -385,6 +373,7 @@
                 <!-- Work items will be dynamically added here -->
             </div>
         </div>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-chart-bar me-2"></i><span id="quantityTitle">Completed Qty / Total Qty</span></h3>
@@ -434,6 +423,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="quantity-section">
                     <h4 id="acpPanelTitle">Total ACP panel installation</h4>
                     <div id="acpPanelQuantities">
@@ -493,6 +483,7 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i><span id="remarksTitle">Remarks & Issues</span></h3>
@@ -543,6 +534,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="text-center mt-3">
                     <button class="btn btn-info" id="addRemarkBtn">
                         <i class="fas fa-plus me-2"></i><span id="addRemarkButton">Add Remark</span>
@@ -550,11 +542,13 @@
                 </div>
             </div>
         </div>
+
         <div class="text-center mb-4">
             <button class="btn btn-success btn-lg" id="generateBtn">
                 <i class="fas fa-file-alt me-2"></i><span id="generateReportButton">Generate Report</span>
             </button>
         </div>
+
         <div class="whatsapp-preview" id="previewSection">
             <h3><i class="fab fa-whatsapp me-2"></i><span id="reportPreviewTitle">Report Preview</span></h3>
             <pre id="messagePreview"></pre>
@@ -564,20 +558,25 @@
                 </button>
             </div>
         </div>
+
         <div class="footer">
             <p class="mb-0">&copy; 2025 <span id="hospitalFooter">MOH Khasab Hospital Report System</span></p>
             <p class="mb-0" id="developerFooter">Developed by MSTE</p>
         </div>
     </div>
+
     <div class="copy-notification" id="copyNotification">
         <i class="fas fa-check-circle me-2"></i><span id="messageCopiedText">Message copied successfully!</span>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Set current date by default
         document.getElementById('reportDate').valueAsDate = new Date();
+
         let workItems = [];
         let remarkCount = 1;
+
         // Urdu translations
         const translations = {
             en: {
@@ -590,8 +589,6 @@
                 abdurRaheemOption: "Abdur Raheem",
                 akbarAliOption: "Akbar Ali",
                 riyazulOption: "Riyazul",
-                 // Added translation for ANAS
-                anasOption: "ANAS",
                 otherTeamOption: "Other Name",
                 locationDetailsTitle: "Location Details",
                 selectFloorsLabel: "Select Floors",
@@ -655,154 +652,151 @@
                 developerFooter: "Developed by MSTE"
             },
             ur: {
-                hospitalTitle: "ایم او ایچ خصب ہسپتال",
-                systemTitle: "دن کی رپورٹ کا نظام",
-                reportDetailsTitle: "رپورٹ کی تفصیلات",
-                dateLabel: "تاریخ",
-                teamNameLabel: "ٹیم کا نام",
-                zeeshanOption: "زیشان",
-                abdurRaheemOption: "عبدالرحیم",
-                akbarAliOption: "اکبر علی",
-                riyazulOption: "ریاض العلی",
-                 // Added Urdu translation for ANAS
-                anasOption: "انس",
-                otherTeamOption: "دوسرا نام",
-                locationDetailsTitle: "مقام کی تفصیلات",
-                selectFloorsLabel: "منزلیں منتخب کریں",
-                level00Label: "سطح 00",
-                level01Label: "سطح 01",
-                level02Label: "سطح 02",
-                level03Label: "سطح 03",
-                selectZonesLabel: "علاقے منتخب کریں",
-                zone01Label: "علاقہ 01",
-                zone02Label: "علاقہ 02",
-                zone03Label: "علاقہ 03",
-                zone04Label: "علاقہ 04",
-                zone05Label: "علاقہ 05",
-                zone06Label: "علاقہ 06",
-                zone07Label: "علاقہ 07",
-                zone08Label: "علاقہ 08",
-                selectedLocationsLabel: "منتخب شدہ مقامات",
-                noLocationsSelected: "ابھی تک کوئی مقام منتخب نہیں کیا گیا",
-                workCompletedTitle: "آج مکمل کیا گیا کام",
-                quantityTitle: "مکمل کی گئی مقدار / کل مقدار",
-                accessControlTitle: "ایکسس کنٹرول کیبل کشی",
-                groundFloorLabel: "1. گراؤنڈ فلور",
-                firstFloorLabel: "2. پہلا منزل",
-                secondFloorLabel: "3. دوسرا منزل",
-                acpPanelTitle: "کل اے سی پی پینل کی تنصیب",
-                acpGroundFloorLabel: "1. گراؤنڈ فلور",
-                acpFirstFloorLabel: "2. پہلا منزل",
-                acpSecondFloorLabel: "3. دوسرا منزل",
-                liftLabel: "4. لِفت",
-                remarksTitle: "تبصرے اور مسائل",
-                remarkTypeLabel: "تبصرے کی قسم",
-                selectRemarkOption: "تبصرہ منتخب کریں",
-                conduitIssueLabel: "کانڈوئٹ کا مسئلہ",
-                clearanceIssueLabel: "خالی جگہ کا مسئلہ",
-                ladderNotAvailableLabel: "سیڑھی دستیاب نہیں",
-                otherLabel: "دیگر",
-                floorLabel: "منزل",
-                selectFloorOption: "منزل منتخب کریں",
-                remarkLevel00Label: "سطح 00",
-                remarkLevel01Label: "سطح 01",
-                remarkLevel02Label: "سطح 02",
-                remarkLevel03Label: "سطح 03",
-                remarkLevel04Label: "سطح 04",
-                zoneLabel: "علاقہ",
-                selectZoneOption: "علاقہ منتخب کریں",
-                remarkZone01Label: "علاقہ 01",
-                remarkZone02Label: "علاقہ 02",
-                remarkZone03Label: "علاقہ 03",
-                remarkZone04Label: "علاقہ 04",
-                remarkZone05Label: "علاقہ 05",
-                remarkZone06Label: "علاقہ 06",
-                remarkZone07Label: "علاقہ 07",
-                remarkZone08Label: "علاقہ 08",
-                otherRemarkDetailsLabel: "دیگر تبصرے کی تفصیلات",
-                addRemarkButton: "تبصرہ شامل کریں",
-                generateReportButton: "رپورٹ تیار کریں",
-                reportPreviewTitle: "رپورٹ کا پیش نظارہ",
-                copyMessageButton: "پیغام کاپی کریں",
-                messageCopiedText: "پیغام کامیابی سے کاپی ہو گیا!",
-                hospitalFooter: "ایم او ایچ خصب ہسپتال رپورٹ کا نظام",
-                developerFooter: "MSTE کے زریعے تیار کردہ"
+                hospitalTitle: "Ø§ÛÙ Ø§Ù Ø§ÛÚ Ø®ØµØ¨ ÛØ³Ù¾ØªØ§Ù",
+                systemTitle: "Ø¯Ù Ú©Û Ø±Ù¾ÙØ±Ù¹ Ú©Ø§ ÙØ¸Ø§Ù",
+                reportDetailsTitle: "Ø±Ù¾ÙØ±Ù¹ Ú©Û ØªÙØµÛÙØ§Øª",
+                dateLabel: "ØªØ§Ø±ÛØ®",
+                teamNameLabel: "Ù¹ÛÙ Ú©Ø§ ÙØ§Ù",
+                zeeshanOption: "Ø²ÛØ´Ø§Ù",
+                abdurRaheemOption: "Ø¹Ø¨Ø¯Ø§ÙØ±Ø­ÛÙ",
+                akbarAliOption: "Ø§Ú©Ø¨Ø± Ø¹ÙÛ",
+                riyazulOption: "Ø±ÛØ§Ø¶ Ø§ÙØ¹ÙÛ",
+                otherTeamOption: "Ø¯ÙØ³Ø±Ø§ ÙØ§Ù",
+                locationDetailsTitle: "ÙÙØ§Ù Ú©Û ØªÙØµÛÙØ§Øª",
+                selectFloorsLabel: "ÙÙØ²ÙÛÚº ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº",
+                level00Label: "Ø³Ø·Ø­ 00",
+                level01Label: "Ø³Ø·Ø­ 01",
+                level02Label: "Ø³Ø·Ø­ 02",
+                level03Label: "Ø³Ø·Ø­ 03",
+                selectZonesLabel: "Ø¹ÙØ§ÙÛ ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº",
+                zone01Label: "Ø¹ÙØ§ÙÛ 01",
+                zone02Label: "Ø¹ÙØ§ÙÛ 02",
+                zone03Label: "Ø¹ÙØ§ÙÛ 03",
+                zone04Label: "Ø¹ÙØ§ÙÛ 04",
+                zone05Label: "Ø¹ÙØ§ÙÛ 05",
+                zone06Label: "Ø¹ÙØ§ÙÛ 06",
+                zone07Label: "Ø¹ÙØ§ÙÛ 07",
+                zone08Label: "Ø¹ÙØ§ÙÛ 08",
+                selectedLocationsLabel: "ÙÙØªØ®Ø¨ Ø´Ø¯Û ÙÙØ§ÙØ§Øª",
+                noLocationsSelected: "Ø§Ø¨Ú¾Û ØªÚ© Ú©ÙØ¦Û ÙÙØ§Ù ÙÙØªØ®Ø¨ ÙÛÛÚº Ú©ÛØ§ Ú¯ÛØ§",
+                workCompletedTitle: "Ø¢Ø¬ ÙÚ©ÙÙ Ú©ÛØ§ Ú¯ÛØ§ Ú©Ø§Ù",
+                quantityTitle: "ÙÚ©ÙÙ Ú©Û Ú¯Ø¦Û ÙÙØ¯Ø§Ø± / Ú©Ù ÙÙØ¯Ø§Ø±",
+                accessControlTitle: "Ø§ÛÚ©Ø³Ø³ Ú©ÙÙ¹Ø±ÙÙ Ú©ÛØ¨Ù Ú©Ø´Û",
+                groundFloorLabel: "1. Ú¯Ø±Ø§Ø¤ÙÚ ÙÙÙØ±",
+                firstFloorLabel: "2. Ù¾ÛÙØ§ ÙÙØ²Ù",
+                secondFloorLabel: "3. Ø¯ÙØ³Ø±Ø§ ÙÙØ²Ù",
+                acpPanelTitle: "Ú©Ù Ø§Û Ø³Û Ù¾Û Ù¾ÛÙÙ Ú©Û ØªÙØµÛØ¨",
+                acpGroundFloorLabel: "1. Ú¯Ø±Ø§Ø¤ÙÚ ÙÙÙØ±",
+                acpFirstFloorLabel: "2. Ù¾ÛÙØ§ ÙÙØ²Ù",
+                acpSecondFloorLabel: "3. Ø¯ÙØ³Ø±Ø§ ÙÙØ²Ù",
+                liftLabel: "4. ÙÙÙØª",
+                remarksTitle: "ØªØ¨ØµØ±Û Ø§ÙØ± ÙØ³Ø§Ø¦Ù",
+                remarkTypeLabel: "ØªØ¨ØµØ±Û Ú©Û ÙØ³Ù",
+                selectRemarkOption: "ØªØ¨ØµØ±Û ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº",
+                conduitIssueLabel: "Ú©Ø§ÙÚÙØ¦Ù¹ Ú©Ø§ ÙØ³Ø¦ÙÛ",
+                clearanceIssueLabel: "Ø®Ø§ÙÛ Ø¬Ú¯Û Ú©Ø§ ÙØ³Ø¦ÙÛ",
+                ladderNotAvailableLabel: "Ø³ÛÚÚ¾Û Ø¯Ø³ØªÛØ§Ø¨ ÙÛÛÚº",
+                otherLabel: "Ø¯ÛÚ¯Ø±",
+                floorLabel: "ÙÙØ²Ù",
+                selectFloorOption: "ÙÙØ²Ù ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº",
+                remarkLevel00Label: "Ø³Ø·Ø­ 00",
+                remarkLevel01Label: "Ø³Ø·Ø­ 01",
+                remarkLevel02Label: "Ø³Ø·Ø­ 02",
+                remarkLevel03Label: "Ø³Ø·Ø­ 03",
+                remarkLevel04Label: "Ø³Ø·Ø­ 04",
+                zoneLabel: "Ø¹ÙØ§ÙÛ",
+                selectZoneOption: "Ø¹ÙØ§ÙÛ ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº",
+                remarkZone01Label: "Ø¹ÙØ§ÙÛ 01",
+                remarkZone02Label: "Ø¹ÙØ§ÙÛ 02",
+                remarkZone03Label: "Ø¹ÙØ§ÙÛ 03",
+                remarkZone04Label: "Ø¹ÙØ§ÙÛ 04",
+                remarkZone05Label: "Ø¹ÙØ§ÙÛ 05",
+                remarkZone06Label: "Ø¹ÙØ§ÙÛ 06",
+                remarkZone07Label: "Ø¹ÙØ§ÙÛ 07",
+                remarkZone08Label: "Ø¹ÙØ§ÙÛ 08",
+                otherRemarkDetailsLabel: "Ø¯ÛÚ¯Ø± ØªØ¨ØµØ±Û Ú©Û ØªÙØµÛÙØ§Øª",
+                addRemarkButton: "ØªØ¨ØµØ±Û Ø´Ø§ÙÙ Ú©Ø±ÛÚº",
+                generateReportButton: "Ø±Ù¾ÙØ±Ù¹ ØªÛØ§Ø± Ú©Ø±ÛÚº",
+                reportPreviewTitle: "Ø±Ù¾ÙØ±Ù¹ Ú©Ø§ Ù¾ÛØ´ ÙØ¸Ø§Ø±Û",
+                copyMessageButton: "Ù¾ÛØºØ§Ù Ú©Ø§Ù¾Û Ú©Ø±ÛÚº",
+                messageCopiedText: "Ù¾ÛØºØ§Ù Ú©Ø§ÙÛØ§Ø¨Û Ø³Û Ú©Ø§Ù¾Û ÛÙ Ú¯ÛØ§!",
+                hospitalFooter: "Ø§ÛÙ Ø§Ù Ø§ÛÚ Ø®ØµØ¨ ÛØ³Ù¾ØªØ§Ù Ø±Ù¾ÙØ±Ù¹ Ú©Ø§ ÙØ¸Ø§Ù",
+                developerFooter: "MSTE Ú©Û Ø²Ø±ÛØ¹Û ØªÛØ§Ø± Ú©Ø±Ø¯Û"
             },
             bn: {
-                hospitalTitle: "এমওএইচ খসাব হাসপাতাল",
-                systemTitle: "দৈনিক কাজের রিপোর্ট সিস্টেম",
-                reportDetailsTitle: "রিপোর্ট বিবরণ",
-                dateLabel: "তারিখ",
-                teamNameLabel: "দলের সদস্য",
-                zeeshanOption: "জিশান",
-                abdurRaheemOption: "আবদুর রহিম",
-                akbarAliOption: "আকবর আলী",
-                riyazulOption: "রিয়াজুল",
-                 // Added Bengali translation for ANAS
-                anasOption: "আনাস",
-                otherTeamOption: "অন্য নাম",
-                locationDetailsTitle: "অবস্থান বিবরণ",
-                selectFloorsLabel: "তলা নির্বাচন করুন",
-                level00Label: "স্তর 00",
-                level01Label: "স্তর 01",
-                level02Label: "স্তর 02",
-                level03Label: "স্তর 03",
-                selectZonesLabel: "অঞ্চল নির্বাচন করুন",
-                zone01Label: "অঞ্চল 01",
-                zone02Label: "অঞ্চল 02",
-                zone03Label: "অঞ্চল 03",
-                zone04Label: "অঞ্চল 04",
-                zone05Label: "অঞ্চল 05",
-                zone06Label: "অঞ্চল 06",
-                zone07Label: "অঞ্চল 07",
-                zone08Label: "অঞ্চল 08",
-                selectedLocationsLabel: "নির্বাচিত অবস্থান",
-                noLocationsSelected: "এখনও কোন অবস্থান নির্বাচন করা হয়নি",
-                workCompletedTitle: "আজ সম্পন্ন কাজ",
-                quantityTitle: "সম্পন্ন পরিমাণ / মোট পরিমাণ",
-                accessControlTitle: "অ্যাকসেস কন্ট্রোল ক্যাবল টানা",
-                groundFloorLabel: "1. গ্রাউন্ড ফ্লোর",
-                firstFloorLabel: "2. প্রথম তলা",
-                secondFloorLabel: "3. দ্বিতীয় তলা",
-                acpPanelTitle: "মোট এসিপি প্যানেল ইনস্টলেশন",
-                acpGroundFloorLabel: "1. গ্রাউন্ড ফ্লোর",
-                acpFirstFloorLabel: "2. প্রথম তলা",
-                acpSecondFloorLabel: "3. দ্বিতীয় তলা",
-                liftLabel: "4. লিফট",
-                remarksTitle: "মন্তব্য এবং সমস্যা",
-                remarkTypeLabel: "মন্তব্যের ধরন",
-                selectRemarkOption: "মন্তব্য নির্বাচন করুন",
-                conduitIssueLabel: "কনডুইট সমস্যা",
-                clearanceIssueLabel: "পরিষ্কার জায়গা সমস্যা",
-                ladderNotAvailableLabel: "মেরুদণ্ড উপলব্ধ নয়",
-                otherLabel: "অন্যান্য",
-                floorLabel: "তলা",
-                selectFloorOption: "তলা নির্বাচন করুন",
-                remarkLevel00Label: "স্তর 00",
-                remarkLevel01Label: "স্তর 01",
-                remarkLevel02Label: "স্তর 02",
-                remarkLevel03Label: "স্তর 03",
-                remarkLevel04Label: "স্তর 04",
-                zoneLabel: "অঞ্চল",
-                selectZoneOption: "অঞ্চল নির্বাচন করুন",
-                remarkZone01Label: "অঞ্চল 01",
-                remarkZone02Label: "অঞ্চল 02",
-                remarkZone03Label: "অঞ্চল 03",
-                remarkZone04Label: "অঞ্চল 04",
-                remarkZone05Label: "অঞ্চল 05",
-                remarkZone06Label: "অঞ্চল 06",
-                remarkZone07Label: "অঞ্চল 07",
-                remarkZone08Label: "অঞ্চল 08",
-                otherRemarkDetailsLabel: "অন্যান্য মন্তব্য বিবরণ",
-                addRemarkButton: "মন্তব্য যোগ করুন",
-                generateReportButton: "রিপোর্ট তৈরি করুন",
-                reportPreviewTitle: "রিপোর্ট প্রিভিউ",
-                copyMessageButton: "পীগাম কপি করুন",
-                messageCopiedText: "পীগাম সফলভাবে কপি হয়েছে!",
-                hospitalFooter: "এমওএইচ খসাব হাসপাতাল রিপোর্ট সিস্টেম",
-                developerFooter: "MSTE দ্বারা ডেভেলপ করা হয়েছে"
+                hospitalTitle: "à¦à¦®à¦à¦à¦à¦ à¦à¦¸à¦¾à¦¬ à¦¹à¦¾à¦¸à¦ªà¦¾à¦¤à¦¾à¦²",
+                systemTitle: "à¦¦à§à¦¨à¦¿à¦ à¦à¦¾à¦à§à¦° à¦°à¦¿à¦ªà§à¦°à§à¦ à¦¸à¦¿à¦¸à§à¦à§à¦®",
+                reportDetailsTitle: "à¦°à¦¿à¦ªà§à¦°à§à¦ à¦¬à¦¿à¦¬à¦°à¦£",
+                dateLabel: "à¦¤à¦¾à¦°à¦¿à¦",
+                teamNameLabel: "à¦¦à¦²à§à¦° à¦¸à¦¦à¦¸à§à¦¯",
+                zeeshanOption: "à¦à¦¿à¦¶à¦¾à¦¨",
+                abdurRaheemOption: "à¦à¦¬à¦¦à§à¦° à¦°à¦¹à¦¿à¦®",
+                akbarAliOption: "à¦à¦à¦¬à¦° à¦à¦²à§",
+                riyazulOption: "à¦°à¦¿à¦¯à¦¼à¦¾à¦à§à¦²",
+                otherTeamOption: "à¦à¦¨à§à¦¯ à¦¨à¦¾à¦®",
+                locationDetailsTitle: "à¦à¦¬à¦¸à§à¦¥à¦¾à¦¨ à¦¬à¦¿à¦¬à¦°à¦£",
+                selectFloorsLabel: "à¦¤à¦²à¦¾ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨",
+                level00Label: "à¦¸à§à¦¤à¦° 00",
+                level01Label: "à¦¸à§à¦¤à¦° 01",
+                level02Label: "à¦¸à§à¦¤à¦° 02",
+                level03Label: "à¦¸à§à¦¤à¦° 03",
+                selectZonesLabel: "à¦à¦à§à¦à¦² à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨",
+                zone01Label: "à¦à¦à§à¦à¦² 01",
+                zone02Label: "à¦à¦à§à¦à¦² 02",
+                zone03Label: "à¦à¦à§à¦à¦² 03",
+                zone04Label: "à¦à¦à§à¦à¦² 04",
+                zone05Label: "à¦à¦à§à¦à¦² 05",
+                zone06Label: "à¦à¦à§à¦à¦² 06",
+                zone07Label: "à¦à¦à§à¦à¦² 07",
+                zone08Label: "à¦à¦à§à¦à¦² 08",
+                selectedLocationsLabel: "à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¿à¦¤ à¦à¦¬à¦¸à§à¦¥à¦¾à¦¨",
+                noLocationsSelected: "à¦à¦à¦¨à¦ à¦à§à¦¨ à¦à¦¬à¦¸à§à¦¥à¦¾à¦¨ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à¦¾ à¦¹à¦¯à¦¼à¦¨à¦¿",
+                workCompletedTitle: "à¦à¦ à¦¸à¦®à§à¦ªà¦¨à§à¦¨ à¦à¦¾à¦",
+                quantityTitle: "à¦¸à¦®à§à¦ªà¦¨à§à¦¨ à¦ªà¦°à¦¿à¦®à¦¾à¦£ / à¦®à§à¦ à¦ªà¦°à¦¿à¦®à¦¾à¦£",
+                accessControlTitle: "à¦à§à¦¯à¦¾à¦à¦¸à§à¦¸ à¦à¦¨à§à¦à§à¦°à§à¦² à¦à§à¦¯à¦¾à¦¬à¦² à¦à¦¾à¦¨à¦¾",
+                groundFloorLabel: "1. à¦à§à¦°à¦¾à¦à¦¨à§à¦¡ à¦«à§à¦²à§à¦°",
+                firstFloorLabel: "2. à¦ªà§à¦°à¦¥à¦® à¦¤à¦²à¦¾",
+                secondFloorLabel: "3. à¦¦à§à¦¬à¦¿à¦¤à§à¦¯à¦¼ à¦¤à¦²à¦¾",
+                acpPanelTitle: "à¦®à§à¦ à¦à¦¸à¦¿à¦ªà¦¿ à¦ªà§à¦¯à¦¾à¦¨à§à¦² à¦à¦¨à¦¸à§à¦à¦²à§à¦¶à¦¨",
+                acpGroundFloorLabel: "1. à¦à§à¦°à¦¾à¦à¦¨à§à¦¡ à¦«à§à¦²à§à¦°",
+                acpFirstFloorLabel: "2. à¦ªà§à¦°à¦¥à¦® à¦¤à¦²à¦¾",
+                acpSecondFloorLabel: "3. à¦¦à§à¦¬à¦¿à¦¤à§à¦¯à¦¼ à¦¤à¦²à¦¾",
+                liftLabel: "4. à¦²à¦¿à¦«à¦",
+                remarksTitle: "à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦à¦¬à¦ à¦¸à¦®à¦¸à§à¦¯à¦¾",
+                remarkTypeLabel: "à¦®à¦¨à§à¦¤à¦¬à§à¦¯à§à¦° à¦§à¦°à¦¨",
+                selectRemarkOption: "à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨",
+                conduitIssueLabel: "à¦à¦¨à¦¡à§à¦à¦ à¦¸à¦®à¦¸à§à¦¯à¦¾",
+                clearanceIssueLabel: "à¦ªà¦°à¦¿à¦·à§à¦à¦¾à¦° à¦à¦¾à¦¯à¦¼à¦à¦¾ à¦¸à¦®à¦¸à§à¦¯à¦¾",
+                ladderNotAvailableLabel: "à¦®à§à¦°à§à¦¦à¦£à§à¦¡ à¦à¦ªà¦²à¦¬à§à¦§ à¦¨à¦¯à¦¼",
+                otherLabel: "à¦à¦¨à§à¦¯à¦¾à¦¨à§à¦¯",
+                floorLabel: "à¦¤à¦²à¦¾",
+                selectFloorOption: "à¦¤à¦²à¦¾ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨",
+                remarkLevel00Label: "à¦¸à§à¦¤à¦° 00",
+                remarkLevel01Label: "à¦¸à§à¦¤à¦° 01",
+                remarkLevel02Label: "à¦¸à§à¦¤à¦° 02",
+                remarkLevel03Label: "à¦¸à§à¦¤à¦° 03",
+                remarkLevel04Label: "à¦¸à§à¦¤à¦° 04",
+                zoneLabel: "à¦à¦à§à¦à¦²",
+                selectZoneOption: "à¦à¦à§à¦à¦² à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨",
+                remarkZone01Label: "à¦à¦à§à¦à¦² 01",
+                remarkZone02Label: "à¦à¦à§à¦à¦² 02",
+                remarkZone03Label: "à¦à¦à§à¦à¦² 03",
+                remarkZone04Label: "à¦à¦à§à¦à¦² 04",
+                remarkZone05Label: "à¦à¦à§à¦à¦² 05",
+                remarkZone06Label: "à¦à¦à§à¦à¦² 06",
+                remarkZone07Label: "à¦à¦à§à¦à¦² 07",
+                remarkZone08Label: "à¦à¦à§à¦à¦² 08",
+                otherRemarkDetailsLabel: "à¦à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¬à¦¿à¦¬à¦°à¦£",
+                addRemarkButton: "à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¯à§à¦ à¦à¦°à§à¦¨",
+                generateReportButton: "à¦°à¦¿à¦ªà§à¦°à§à¦ à¦¤à§à¦°à¦¿ à¦à¦°à§à¦¨",
+                reportPreviewTitle: "à¦°à¦¿à¦ªà§à¦°à§à¦ à¦ªà§à¦°à¦¿à¦­à¦¿à¦",
+                copyMessageButton: "à¦ªà§à¦à¦¾à¦® à¦à¦ªà¦¿ à¦à¦°à§à¦¨",
+                messageCopiedText: "à¦ªà§à¦à¦¾à¦® à¦¸à¦«à¦²à¦­à¦¾à¦¬à§ à¦à¦ªà¦¿ à¦¹à¦¯à¦¼à§à¦à§!",
+                hospitalFooter: "à¦à¦®à¦à¦à¦à¦ à¦à¦¸à¦¾à¦¬ à¦¹à¦¾à¦¸à¦ªà¦¾à¦¤à¦¾à¦² à¦°à¦¿à¦ªà§à¦°à§à¦ à¦¸à¦¿à¦¸à§à¦à§à¦®",
+                developerFooter: "MSTE à¦¦à§à¦¬à¦¾à¦°à¦¾ à¦¡à§à¦­à§à¦²à¦ª à¦à¦°à¦¾ à¦¹à¦¯à¦¼à§à¦à§"
             }
         };
+
         // Work type translations
         const workTypeTranslations = {
             en: {
@@ -823,40 +817,41 @@
                 otherWork: "Other Work"
             },
             ur: {
-                cablePulling: "کیبل کشی",
-                acpPanelInstallation: "ای سی پی پینل کی تنصیب",
-                acpPanelTermination: "ای سی پی پینل کا اختتام",
-                speakerInstallation: "اسپیکر کی تنصیب",
-                inductionLoopInstallation: "انڈکشن لوپ کی تنصیب",
-                panicButton: "پینک بٹن",
-                tvInstallation: "ٹی وی کی تنصیب",
-                cctv: "سی سی ٹی وی",
-                singleDoor: "سنگل دروازہ",
-                doubleDoor: "ڈبل دروازہ",
-                corridorDoor: "گلیچر دروازہ",
-                ceiling: "چھت",
-                box: "باکس",
-                horn: "ہارن",
-                otherWork: "دیگر کام"
+                cablePulling: "Ú©ÛØ¨Ù Ú©Ø´Û",
+                acpPanelInstallation: "Ø§Û Ø³Û Ù¾Û Ù¾ÛÙÙ Ú©Û ØªÙØµÛØ¨",
+                acpPanelTermination: "Ø§Û Ø³Û Ù¾Û Ù¾ÛÙÙ Ú©Ø§ Ø§Ø®ØªØªØ§Ù",
+                speakerInstallation: "Ø§Ø³Ù¾ÛÚ©Ø± Ú©Û ØªÙØµÛØ¨",
+                inductionLoopInstallation: "Ø§ÙÚÚ©Ø´Ù ÙÙÙ¾ Ú©Û ØªÙØµÛØ¨",
+                panicButton: "Ù¾ÛÙÚ© Ø¨Ù¹Ù",
+                tvInstallation: "Ù¹Û ÙÛ Ú©Û ØªÙØµÛØ¨",
+                cctv: "Ø³Û Ø³Û Ù¹Û ÙÛ",
+                singleDoor: "Ø³ÙÚ¯Ù Ø¯Ø±ÙØ§Ø²Û",
+                doubleDoor: "ÚØ¨Ù Ø¯Ø±ÙØ§Ø²Û",
+                corridorDoor: "Ú¯ÙÛÚØ± Ø¯Ø±ÙØ§Ø²Û",
+                ceiling: "ÚÚ¾Øª",
+                box: "Ø¨Ø§Ú©Ø³",
+                horn: "ÛØ§Ø±Ù",
+                otherWork: "Ø¯ÛÚ¯Ø± Ú©Ø§Ù"
             },
             bn: {
-                cablePulling: "কেবল টানা",
-                acpPanelInstallation: "এসিপি প্যানেল ইনস্টলেশন",
-                acpPanelTermination: "এসিপি প্যানেল সমাপ্তি",
-                speakerInstallation: "স্পিকার ইনস্টলেশন",
-                inductionLoopInstallation: "ইনডাকশন লুপ ইনস্টলেশন",
-                panicButton: "প্যানিক বাটন",
-                tvInstallation: "টিভি ইনস্টলেশন",
-                cctv: "সিসিটিভি",
-                singleDoor: "একক দরজা",
-                doubleDoor: "ডাবল দরজা",
-                corridorDoor: "করিডোর দরজা",
-                ceiling: "ছাদ",
-                box: "বাক্স",
-                horn: "হর্ন",
-                otherWork: "অন্যান্য কাজ"
+                cablePulling: "à¦à§à¦¬à¦² à¦à¦¾à¦¨à¦¾",
+                acpPanelInstallation: "à¦à¦¸à¦¿à¦ªà¦¿ à¦ªà§à¦¯à¦¾à¦¨à§à¦² à¦à¦¨à¦¸à§à¦à¦²à§à¦¶à¦¨",
+                acpPanelTermination: "à¦à¦¸à¦¿à¦ªà¦¿ à¦ªà§à¦¯à¦¾à¦¨à§à¦² à¦¸à¦®à¦¾à¦ªà§à¦¤à¦¿",
+                speakerInstallation: "à¦¸à§à¦ªà¦¿à¦à¦¾à¦° à¦à¦¨à¦¸à§à¦à¦²à§à¦¶à¦¨",
+                inductionLoopInstallation: "à¦à¦¨à¦¡à¦¾à¦à¦¶à¦¨ à¦²à§à¦ª à¦à¦¨à¦¸à§à¦à¦²à§à¦¶à¦¨",
+                panicButton: "à¦ªà§à¦¯à¦¾à¦¨à¦¿à¦ à¦¬à¦¾à¦à¦¨",
+                tvInstallation: "à¦à¦¿à¦­à¦¿ à¦à¦¨à¦¸à§à¦à¦²à§à¦¶à¦¨",
+                cctv: "à¦¸à¦¿à¦¸à¦¿à¦à¦¿à¦­à¦¿",
+                singleDoor: "à¦à¦à¦ à¦¦à¦°à¦à¦¾",
+                doubleDoor: "à¦¡à¦¾à¦¬à¦² à¦¦à¦°à¦à¦¾",
+                corridorDoor: "à¦à¦°à¦¿à¦¡à§à¦° à¦¦à¦°à¦à¦¾",
+                ceiling: "à¦à¦¾à¦¦",
+                box: "à¦¬à¦¾à¦à§à¦¸",
+                horn: "à¦¹à¦°à§à¦¨",
+                otherWork: "à¦à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦à¦¾à¦"
             }
         };
+
         // Translate function
         function translatePage(language) {
             // Translate all elements with IDs
@@ -873,6 +868,7 @@
                     }
                 }
             });
+            
             // Translate work type checkboxes in all work items
             document.querySelectorAll('.workTypeCheckbox').forEach(checkbox => {
                 const value = checkbox.value;
@@ -909,6 +905,7 @@
                     }
                 }
             });
+            
             // Translate cable pulling options
             document.querySelectorAll('.cableOption + label').forEach(label => {
                 const value = label.previousElementSibling.value;
@@ -927,6 +924,7 @@
                         break;
                 }
             });
+            
             // Translate speaker options
             document.querySelectorAll('.speakerOption + label').forEach(label => {
                 const value = label.previousElementSibling.value;
@@ -942,14 +940,17 @@
                         break;
                 }
             });
+            
             // Translate quantity field placeholders
             document.querySelectorAll('.qtyField').forEach(field => {
-                field.placeholder = language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty');
+                field.placeholder = language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty');
             });
+            
             // Translate other work input placeholders
             document.querySelectorAll('.otherWorkInput').forEach(input => {
-                input.placeholder = language === 'ur' ? 'کام کی قسم درج کریں' : (language === 'bn' ? 'কাজের ধরন লিখুন' : 'Enter work type');
+                input.placeholder = language === 'ur' ? 'Ú©Ø§Ù Ú©Û ÙØ³Ù Ø¯Ø±Ø¬ Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦à¦¾à¦à§à¦° à¦§à¦°à¦¨ à¦²à¦¿à¦à§à¦¨' : 'Enter work type');
             });
+            
             // Translate detail section headers
             document.querySelectorAll('#workDetailsContainer div h6').forEach(header => {
                 const text = header.textContent;
@@ -959,45 +960,50 @@
                     }
                 });
             });
+            
             // Translate work item headers
             document.querySelectorAll('.work-item h5').forEach(header => {
                 if (language === 'ur') {
                     if (header.textContent.startsWith('Work ')) {
-                        header.textContent = header.textContent.replace('Work ', 'کام ');
+                        header.textContent = header.textContent.replace('Work ', 'Ú©Ø§Ù ');
                     }
                 } else if (language === 'bn') {
                     if (header.textContent.startsWith('Work ')) {
-                        header.textContent = header.textContent.replace('Work ', 'কাজ ');
+                        header.textContent = header.textContent.replace('Work ', 'à¦à¦¾à¦ ');
                     }
                 } else {
-                    if (header.textContent.startsWith('کام ')) {
-                        header.textContent = header.textContent.replace('کام ', 'Work ');
-                    } else if (header.textContent.startsWith('কাজ ')) {
-                        header.textContent = header.textContent.replace('কাজ ', 'Work ');
+                    if (header.textContent.startsWith('Ú©Ø§Ù ')) {
+                        header.textContent = header.textContent.replace('Ú©Ø§Ù ', 'Work ');
+                    } else if (header.textContent.startsWith('à¦à¦¾à¦ ')) {
+                        header.textContent = header.textContent.replace('à¦à¦¾à¦ ', 'Work ');
                     }
                 }
             });
+            
             // Translate work type selection labels
             document.querySelectorAll('[id^="workItem"] .col-12 .form-label').forEach(label => {
                 if (language === 'ur') {
-                    label.textContent = 'کام کی اقسام منتخب کریں (ایک سے زیادہ انتخاب کی اجازت ہے)';
+                    label.textContent = 'Ú©Ø§Ù Ú©Û Ø§ÙØ³Ø§Ù ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº (Ø§ÛÚ© Ø³Û Ø²ÛØ§Ø¯Û Ø§ÙØªØ®Ø§Ø¨ Ú©Û Ø§Ø¬Ø§Ø²Øª ÛÛ)';
                 } else if (language === 'bn') {
-                    label.textContent = 'কাজের ধরন নির্বাচন করুন (একাধিক নির্বাচনের অনুমতি আছে)';
+                    label.textContent = 'à¦à¦¾à¦à§à¦° à¦§à¦°à¦¨ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨ (à¦à¦à¦¾à¦§à¦¿à¦ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨à§à¦° à¦à¦¨à§à¦®à¦¤à¦¿ à¦à¦à§)';
                 } else {
                     label.textContent = 'Select Work Types (Multiple Selection Allowed)';
                 }
             });
         }
+
         // Language switch event
         document.getElementById('languageSelect').addEventListener('change', function() {
             const selectedLanguage = this.value;
             translatePage(selectedLanguage);
         });
+
         // Toggle other team member input
         document.getElementById('teamName').addEventListener('change', function() {
             const selectedOptions = Array.from(this.selectedOptions);
             const otherSelected = selectedOptions.some(option => option.value === 'other');
             const container = document.getElementById('otherTeamMemberContainer');
+            
             if (otherSelected) {
                 container.style.display = 'block';
             } else {
@@ -1005,95 +1011,47 @@
                 document.getElementById('otherTeamMember').value = '';
             }
         });
-        // Update selected locations display and generate floor-zone rows
+
+        // Update selected locations display
         function updateSelectedLocations() {
             const selectedLocations = document.getElementById('selectedLocations');
-            const floorZoneContainer = document.getElementById('floorZoneContainer');
             const language = document.getElementById('languageSelect').value;
-
+            
             // Get selected floors
             const selectedFloors = Array.from(document.querySelectorAll('.floor-checkbox:checked')).map(cb => cb.value);
-
-            // Clear current display and floor-zone rows
+            
+            // Get selected zones
+            const selectedZones = Array.from(document.getElementById('zoneSelect').selectedOptions).map(option => option.value);
+            
+            // Clear current display
             selectedLocations.innerHTML = '';
-            floorZoneContainer.innerHTML = '';
-
-            // Display selected floors and create floor-zone rows
-            if (selectedFloors.length === 0) {
-                selectedLocations.innerHTML = '<span class="text-muted">' +
-                    (language === 'ur' ? 'ابھی تک کوئی مقام منتخب نہیں کیا گیا' :
-                     language === 'bn' ? 'এখনও কোন অবস্থান নির্বাচন করা হয়নি' :
+            
+            // Display selected locations
+            if (selectedFloors.length === 0 && selectedZones.length === 0) {
+                selectedLocations.innerHTML = '<span class="text-muted">' + 
+                    (language === 'ur' ? 'Ø§Ø¨Ú¾Û ØªÚ© Ú©ÙØ¦Û ÙÙØ§Ù ÙÙØªØ®Ø¨ ÙÛÛÚº Ú©ÛØ§ Ú¯ÛØ§' : 
+                     language === 'bn' ? 'à¦à¦à¦¨à¦ à¦à§à¦¨ à¦à¦¬à¦¸à§à¦¥à¦¾à¦¨ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à¦¾ à¦¹à¦¯à¦¼à¦¨à¦¿' : 
                      'No locations selected yet') + '</span>';
-                // Clear work items if no floors selected
-                generateWorkItemsPerFloorZone([]);
                 return;
             }
-
-            // Create location tags for floors
+            
+            // Create location tags
             selectedFloors.forEach(floor => {
                 const floorTag = document.createElement('span');
                 floorTag.className = 'location-tag';
                 floorTag.textContent = floor;
                 selectedLocations.appendChild(floorTag);
-
-                // Create floor-zone row for each selected floor
-                const floorZoneRow = document.createElement('div');
-                floorZoneRow.className = 'floor-zone-row';
-                floorZoneRow.dataset.floor = floor; // Store floor value for identification
-
-                const floorHeader = document.createElement('div');
-                floorHeader.className = 'floor-header';
-                floorHeader.textContent = `${floor} - ${language === 'ur' ? 'علاقے منتخب کریں' : (language === 'bn' ? 'অঞ্চল নির্বাচন করুন' : 'Select Zones')}`;
-
-                const zoneSelect = document.createElement('select');
-                zoneSelect.className = 'form-select floor-zone-select';
-                zoneSelect.multiple = true;
-                zoneSelect.size = 4;
-                zoneSelect.dataset.floor = floor; // Associate select with floor
-
-                // Populate zone options
-                for (let i = 1; i <= 8; i++) {
-                    const option = document.createElement('option');
-                    option.value = `Zone ${String(i).padStart(2, '0')}`;
-                    const zoneLabelKey = `zone${String(i).padStart(2, '0')}Label`;
-                    option.textContent = translations[language][zoneLabelKey] || option.value;
-                    zoneSelect.appendChild(option);
-                }
-
-                // Add event listener to update work items when zones change
-                zoneSelect.addEventListener('change', updateWorkItemsOnZoneChange);
-
-                floorZoneRow.appendChild(floorHeader);
-                floorZoneRow.appendChild(zoneSelect);
-                floorZoneContainer.appendChild(floorZoneRow);
             });
-
-            // Trigger initial work item generation based on currently selected floors and zones
-            updateWorkItemsOnZoneChange();
-        }
-
-        // Function to update work items when zone selections change
-        function updateWorkItemsOnZoneChange() {
-            const selectedFloors = Array.from(document.querySelectorAll('.floor-checkbox:checked')).map(cb => cb.value);
-            const floorZoneContainer = document.getElementById('floorZoneContainer');
-
-            const selectedFloorZones = [];
-
-            // Iterate through floor-zone rows to get selected zones for each floor
-            floorZoneContainer.querySelectorAll('.floor-zone-row').forEach(row => {
-                const floor = row.dataset.floor;
-                const zoneSelect = row.querySelector('.floor-zone-select');
-                const selectedZones = Array.from(zoneSelect.selectedOptions).map(opt => opt.value);
-                if (selectedZones.length > 0) {
-                    selectedFloorZones.push({ floor: floor, zones: selectedZones });
-                } else if (selectedFloors.includes(floor)) {
-                     // Include floor even if no zones are selected for it yet
-                     selectedFloorZones.push({ floor: floor, zones: [] });
-                }
+            
+            selectedZones.forEach(zone => {
+                const zoneTag = document.createElement('span');
+                zoneTag.className = 'location-tag';
+                zoneTag.textContent = zone;
+                selectedLocations.appendChild(zoneTag);
             });
-
-            // Generate work items based on the new structure
-            generateWorkItemsPerFloorZone(selectedFloorZones);
+            
+            // Generate work items based on locations
+            generateWorkItems(selectedFloors, selectedZones);
         }
 
         // Toggle other remark text field
@@ -1106,64 +1064,68 @@
                 otherContainer.style.display = 'none';
             }
         }
+
         // Add remark item
         document.getElementById('addRemarkBtn').addEventListener('click', function() {
             const remarkContainer = document.getElementById('remarkContainer');
             const language = document.getElementById('languageSelect').value;
+            
             const remarkItem = document.createElement('div');
             remarkItem.className = 'remark-item';
             remarkItem.id = `remarkItem${remarkCount}`;
             remarkItem.innerHTML = `
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'تبصرے کی قسم' : (language === 'bn' ? 'মন্তব্যের ধরন' : 'Remark Type')}</label>
+                        <label class="form-label fw-bold">${language === 'ur' ? 'ØªØ¨ØµØ±Û Ú©Û ÙØ³Ù' : (language === 'bn' ? 'à¦®à¦¨à§à¦¤à¦¬à§à¦¯à§à¦° à¦§à¦°à¦¨' : 'Remark Type')}</label>
                         <select class="form-select remarkType" id="remarkType${remarkCount}" onchange="toggleOtherRemark(${remarkCount})">
-                            <option value="">${language === 'ur' ? 'تبصرہ منتخب کریں' : (language === 'bn' ? 'মন্তব্য নির্বাচন করুন' : 'Select Remark')}</option>
-                            <option value="Conduit issue">${language === 'ur' ? 'کانڈوئٹ کا مسئلہ' : (language === 'bn' ? 'কনডুইট সমস্যা' : 'Conduit issue')}</option>
-                            <option value="Clearance issue">${language === 'ur' ? 'خالی جگہ کا مسئلہ' : (language === 'bn' ? 'পরিষ্কার জায়গা সমস্যা' : 'Clearance issue')}</option>
-                            <option value="Ladder not available">${language === 'ur' ? 'سیڑھی دستیاب نہیں' : (language === 'bn' ? 'মেরুদণ্ড উপলব্ধ নয়' : 'Ladder not available')}</option>
-                            <option value="Other">${language === 'ur' ? 'دیگر' : (language === 'bn' ? 'অন্যান্য' : 'Other')}</option>
+                            <option value="">${language === 'ur' ? 'ØªØ¨ØµØ±Û ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨' : 'Select Remark')}</option>
+                            <option value="Conduit issue">${language === 'ur' ? 'Ú©Ø§ÙÚÙØ¦Ù¹ Ú©Ø§ ÙØ³Ø¦ÙÛ' : (language === 'bn' ? 'à¦à¦¨à¦¡à§à¦à¦ à¦¸à¦®à¦¸à§à¦¯à¦¾' : 'Conduit issue')}</option>
+                            <option value="Clearance issue">${language === 'ur' ? 'Ø®Ø§ÙÛ Ø¬Ú¯Û Ú©Ø§ ÙØ³Ø¦ÙÛ' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦·à§à¦à¦¾à¦° à¦à¦¾à¦¯à¦¼à¦à¦¾ à¦¸à¦®à¦¸à§à¦¯à¦¾' : 'Clearance issue')}</option>
+                            <option value="Ladder not available">${language === 'ur' ? 'Ø³ÛÚÚ¾Û Ø¯Ø³ØªÛØ§Ø¨ ÙÛÛÚº' : (language === 'bn' ? 'à¦®à§à¦°à§à¦¦à¦£à§à¦¡ à¦à¦ªà¦²à¦¬à§à¦§ à¦¨à¦¯à¦¼' : 'Ladder not available')}</option>
+                            <option value="Other">${language === 'ur' ? 'Ø¯ÛÚ¯Ø±' : (language === 'bn' ? 'à¦à¦¨à§à¦¯à¦¾à¦¨à§à¦¯' : 'Other')}</option>
                         </select>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'منزل' : (language === 'bn' ? 'তলা' : 'Floor')}</label>
+                        <label class="form-label fw-bold">${language === 'ur' ? 'ÙÙØ²Ù' : (language === 'bn' ? 'à¦¤à¦²à¦¾' : 'Floor')}</label>
                         <select class="form-select remarkFloorSelect" id="remarkFloorSelect${remarkCount}">
-                            <option value="">${language === 'ur' ? 'منزل منتخب کریں' : (language === 'bn' ? 'তলা নির্বাচন করুন' : 'Select Floor')}</option>
-                            <option value="Level 00">${language === 'ur' ? 'سطح 00' : (language === 'bn' ? 'স্তর 00' : 'Level 00')}</option>
-                            <option value="Level 01">${language === 'ur' ? 'سطح 01' : (language === 'bn' ? 'স্তর 01' : 'Level 01')}</option>
-                            <option value="Level 02">${language === 'ur' ? 'سطح 02' : (language === 'bn' ? 'স্তর 02' : 'Level 02')}</option>
-                            <option value="Level 03">${language === 'ur' ? 'سطح 03' : (language === 'bn' ? 'স্তর 03' : 'Level 03')}</option>
-                            <option value="Level 04">${language === 'ur' ? 'سطح 04' : (language === 'bn' ? 'স্তর 04' : 'Level 04')}</option>
+                            <option value="">${language === 'ur' ? 'ÙÙØ²Ù ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦¤à¦²à¦¾ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨' : 'Select Floor')}</option>
+                            <option value="Level 00">${language === 'ur' ? 'Ø³Ø·Ø­ 00' : (language === 'bn' ? 'à¦¸à§à¦¤à¦° 00' : 'Level 00')}</option>
+                            <option value="Level 01">${language === 'ur' ? 'Ø³Ø·Ø­ 01' : (language === 'bn' ? 'à¦¸à§à¦¤à¦° 01' : 'Level 01')}</option>
+                            <option value="Level 02">${language === 'ur' ? 'Ø³Ø·Ø­ 02' : (language === 'bn' ? 'à¦¸à§à¦¤à¦° 02' : 'Level 02')}</option>
+                            <option value="Level 03">${language === 'ur' ? 'Ø³Ø·Ø­ 03' : (language === 'bn' ? 'à¦¸à§à¦¤à¦° 03' : 'Level 03')}</option>
+                            <option value="Level 04">${language === 'ur' ? 'Ø³Ø·Ø­ 04' : (language === 'bn' ? 'à¦¸à§à¦¤à¦° 04' : 'Level 04')}</option>
                         </select>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'علاقہ' : (language === 'bn' ? 'অঞ্চল' : 'Zone')}</label>
+                        <label class="form-label fw-bold">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ' : (language === 'bn' ? 'à¦à¦à§à¦à¦²' : 'Zone')}</label>
                         <select class="form-select remarkZoneSelect" id="remarkZoneSelect${remarkCount}">
-                            <option value="">${language === 'ur' ? 'علاقہ منتخب کریں' : (language === 'bn' ? 'অঞ্চল নির্বাচন করুন' : 'Select Zone')}</option>
-                            <option value="Zone 01">${language === 'ur' ? 'علاقہ 01' : (language === 'bn' ? 'অঞ্চল 01' : 'Zone 01')}</option>
-                            <option value="Zone 02">${language === 'ur' ? 'علاقہ 02' : (language === 'bn' ? 'অঞ্চল 02' : 'Zone 02')}</option>
-                            <option value="Zone 03">${language === 'ur' ? 'علاقہ 03' : (language === 'bn' ? 'অঞ্চল 03' : 'Zone 03')}</option>
-                            <option value="Zone 04">${language === 'ur' ? 'علاقہ 04' : (language === 'bn' ? 'অঞ্চল 04' : 'Zone 04')}</option>
-                            <option value="Zone 05">${language === 'ur' ? 'علاقہ 05' : (language === 'bn' ? 'অঞ্চল 05' : 'Zone 05')}</option>
-                            <option value="Zone 06">${language === 'ur' ? 'علاقہ 06' : (language === 'bn' ? 'অঞ্চল 06' : 'Zone 06')}</option>
-                            <option value="Zone 07">${language === 'ur' ? 'علاقہ 07' : (language === 'bn' ? 'অঞ্চল 07' : 'Zone 07')}</option>
-                            <option value="Zone 08">${language === 'ur' ? 'علاقہ 08' : (language === 'bn' ? 'অঞ্চল 08' : 'Zone 08')}</option>
+                            <option value="">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦à¦à§à¦à¦² à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨' : 'Select Zone')}</option>
+                            <option value="Zone 01">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 01' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 01' : 'Zone 01')}</option>
+                            <option value="Zone 02">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 02' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 02' : 'Zone 02')}</option>
+                            <option value="Zone 03">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 03' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 03' : 'Zone 03')}</option>
+                            <option value="Zone 04">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 04' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 04' : 'Zone 04')}</option>
+                            <option value="Zone 05">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 05' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 05' : 'Zone 05')}</option>
+                            <option value="Zone 06">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 06' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 06' : 'Zone 06')}</option>
+                            <option value="Zone 07">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 07' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 07' : 'Zone 07')}</option>
+                            <option value="Zone 08">${language === 'ur' ? 'Ø¹ÙØ§ÙÛ 08' : (language === 'bn' ? 'à¦à¦à§à¦à¦² 08' : 'Zone 08')}</option>
                         </select>
                     </div>
                     <div class="col-12 mb-3" id="otherRemarkContainer${remarkCount}" style="display: none;">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'دیگر تبصرے کی تفصیلات' : (language === 'bn' ? 'অন্যান্য মন্তব্য বিবরণ' : 'Other Remark Details')}</label>
-                        <input type="text" class="form-control" id="otherRemarkText${remarkCount}" placeholder="${language === 'ur' ? 'دیگر تبصرے کی تفصیلات درج کریں' : (language === 'bn' ? 'অন্যান্য মন্তব্য বিবরণ লিখুন' : 'Enter other remark details')}">
+                        <label class="form-label fw-bold">${language === 'ur' ? 'Ø¯ÛÚ¯Ø± ØªØ¨ØµØ±Û Ú©Û ØªÙØµÛÙØ§Øª' : (language === 'bn' ? 'à¦à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¬à¦¿à¦¬à¦°à¦£' : 'Other Remark Details')}</label>
+                        <input type="text" class="form-control" id="otherRemarkText${remarkCount}" placeholder="${language === 'ur' ? 'Ø¯ÛÚ¯Ø± ØªØ¨ØµØ±Û Ú©Û ØªÙØµÛÙØ§Øª Ø¯Ø±Ø¬ Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦®à¦¨à§à¦¤à¦¬à§à¦¯ à¦¬à¦¿à¦¬à¦°à¦£ à¦²à¦¿à¦à§à¦¨' : 'Enter other remark details')}">
                     </div>
                 </div>
                 <div class="text-end">
                     <button class="btn btn-danger btn-sm" onclick="removeRemarkItem(${remarkCount})">
-                        <i class="fas fa-trash"></i> ${language === 'ur' ? 'حذف کریں' : (language === 'bn' ? 'মুছে ফেলুন' : 'Remove')}
+                        <i class="fas fa-trash"></i> ${language === 'ur' ? 'Ø­Ø°Ù Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦®à§à¦à§ à¦«à§à¦²à§à¦¨' : 'Remove')}
                     </button>
                 </div>
             `;
+            
             remarkContainer.appendChild(remarkItem);
             remarkCount++;
         });
+
         // Remove remark item
         function removeRemarkItem(id) {
             if (remarkCount > 1) {
@@ -1173,44 +1135,47 @@
                 }
             }
         }
-        // Generate work items based on selected floor-zone combinations
-        function generateWorkItemsPerFloorZone(floorZones) {
-             const workContainer = document.getElementById('workContainer');
-             workContainer.innerHTML = '';
-             workItems = [];
 
-             // Create work items for each floor-zone combination
-             if (floorZones.length > 0) {
-                 floorZones.forEach(({ floor, zones }) => {
-                     if (zones.length > 0) {
-                         // Create work item for each selected zone on the floor
-                         zones.forEach(zone => {
-                             createWorkItem(`${floor} - ${zone}`);
-                         });
-                     } else {
-                         // If no zones selected for this floor, create item for the floor only
-                         createWorkItem(floor);
-                     }
-                 });
-             }
-             // If floorZones is empty (no floors selected), workContainer is cleared and workItems is empty, so no work items will be shown.
-         }
+        // Generate work items based on selected locations
+        function generateWorkItems(floors, zones) {
+            const workContainer = document.getElementById('workContainer');
+            workContainer.innerHTML = '';
+            workItems = [];
+            
+            // Create work items for each floor-zone combination
+            if (floors.length > 0 && zones.length > 0) {
+                floors.forEach(floor => {
+                    zones.forEach(zone => {
+                        createWorkItem(`${floor} - ${zone}`);
+                    });
+                });
+            } else if (floors.length > 0) {
+                floors.forEach(floor => {
+                    createWorkItem(floor);
+                });
+            } else if (zones.length > 0) {
+                zones.forEach(zone => {
+                    createWorkItem(zone);
+                });
+            }
+        }
 
         // Create a work item
         function createWorkItem(location) {
             const workContainer = document.getElementById('workContainer');
             const workId = workItems.length;
             const language = document.getElementById('languageSelect').value;
+            
             const workItem = document.createElement('div');
             workItem.className = 'work-item mb-3';
             workItem.id = `workItem${workId}`;
             workItem.innerHTML = `
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5>${language === 'ur' ? 'کام' : (language === 'bn' ? 'কাজ' : 'Work')} ${location}</h5>
+                    <h5>${language === 'ur' ? 'Ú©Ø§Ù' : (language === 'bn' ? 'à¦à¦¾à¦' : 'Work')} ${location}</h5>
                 </div>
                 <div class="row mb-3">
                     <div class="col-12">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'کام کی اقسام منتخب کریں (ایک سے زیادہ انتخاب کی اجازت ہے)' : (language === 'bn' ? 'কাজের ধরন নির্বাচন করুন (একাধিক নির্বাচনের অনুমতি আছে)' : 'Select Work Types (Multiple Selection Allowed)')}</label>
+                        <label class="form-label fw-bold">${language === 'ur' ? 'Ú©Ø§Ù Ú©Û Ø§ÙØ³Ø§Ù ÙÙØªØ®Ø¨ Ú©Ø±ÛÚº (Ø§ÛÚ© Ø³Û Ø²ÛØ§Ø¯Û Ø§ÙØªØ®Ø§Ø¨ Ú©Û Ø§Ø¬Ø§Ø²Øª ÛÛ)' : (language === 'bn' ? 'à¦à¦¾à¦à§à¦° à¦§à¦°à¦¨ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨ à¦à¦°à§à¦¨ (à¦à¦à¦¾à¦§à¦¿à¦ à¦¨à¦¿à¦°à§à¦¬à¦¾à¦à¦¨à§à¦° à¦à¦¨à§à¦®à¦¤à¦¿ à¦à¦à§)' : 'Select Work Types (Multiple Selection Allowed)')}</label>
                         <div class="d-flex flex-wrap">
                             <div class="form-check work-type-checkbox">
                                 <input class="form-check-input workTypeCheckbox" type="checkbox" value="Cable pulling" id="workTypeCable${workId}">
@@ -1255,8 +1220,10 @@
                     <!-- Work details will be added here -->
                 </div>
             `;
+            
             workContainer.appendChild(workItem);
             workItems.push({ id: workId, location: location });
+            
             // Add event listeners for work type checkboxes
             const checkboxes = workItem.querySelectorAll('.workTypeCheckbox');
             checkboxes.forEach(checkbox => {
@@ -1265,21 +1232,25 @@
                 });
             });
         }
+
         // Update work details based on selected work types
         function updateWorkDetails(id) {
             const workDetailsContainer = document.getElementById(`workDetailsContainer${id}`);
             workDetailsContainer.innerHTML = '';
             const language = document.getElementById('languageSelect').value;
+            
             // Get selected work types
             const selectedWorkTypes = [];
             document.querySelectorAll(`#workItem${id} .workTypeCheckbox:checked`).forEach(checkbox => {
                 selectedWorkTypes.push(checkbox.value);
             });
+            
             // Create detail sections for each selected work type
             selectedWorkTypes.forEach((workType, index) => {
                 const detailId = `${id}_${index}`;
                 const detailSection = document.createElement('div');
                 detailSection.className = 'mb-3 p-3 border rounded';
+                
                 // Get translated work type name
                 let workTypeName = workType;
                 switch(workType) {
@@ -1311,29 +1282,31 @@
                         workTypeName = workTypeTranslations[language].otherWork;
                         break;
                 }
+                
                 detailSection.innerHTML = `<h6>${workTypeName}</h6>`;
+                
                 if (workType === 'Cable pulling') {
                     detailSection.innerHTML += `
                         <div class="detail-options mt-2">
                             <div class="form-check mb-2">
                                 <input class="form-check-input cableOption" type="checkbox" value="Single door" id="singleDoor${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="singleDoor${detailId}">${workTypeTranslations[language].singleDoor}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtySingleDoor${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtySingleDoor${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input cableOption" type="checkbox" value="Double door" id="doubleDoor${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="doubleDoor${detailId}">${workTypeTranslations[language].doubleDoor}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyDoubleDoor${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtyDoubleDoor${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input cableOption" type="checkbox" value="Panic button" id="panicButton${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="panicButton${detailId}">${workTypeTranslations[language].panicButton}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyPanicButton${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtyPanicButton${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input cableOption" type="checkbox" value="Corridor door" id="corridorDoor${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="corridorDoor${detailId}">${workTypeTranslations[language].corridorDoor}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyCorridorDoor${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtyCorridorDoor${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                         </div>
                     `;
@@ -1343,37 +1316,39 @@
                             <div class="form-check mb-2">
                                 <input class="form-check-input speakerOption" type="checkbox" value="Ceiling" id="ceiling${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="ceiling${detailId}">${workTypeTranslations[language].ceiling}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyCeiling${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtyCeiling${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input speakerOption" type="checkbox" value="Box" id="box${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="box${detailId}">${workTypeTranslations[language].box}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyBox${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtyBox${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input speakerOption" type="checkbox" value="Horn" id="horn${detailId}" onchange="toggleQtyField('${detailId}')">
                                 <label class="form-check-label" for="horn${detailId}">${workTypeTranslations[language].horn}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyHorn${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
+                                <input type="number" class="form-control mt-1 qtyField" id="qtyHorn${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Qty')}" style="display:none; width: 100px;">
                             </div>
                         </div>
                     `;
                 } else if (workType === 'Other Work') {
                     detailSection.innerHTML += `
                         <div class="mt-2">
-                            <input type="text" class="form-control mb-2 otherWorkInput" id="otherWorkType${detailId}" placeholder="${language === 'ur' ? 'کام کی قسم درج کریں' : (language === 'bn' ? 'কাজের ধরন লিখুন' : 'Enter work type')}">
-                            <input type="number" class="form-control qtyField" id="otherWorkQty${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Quantity')}">
+                            <input type="text" class="form-control mb-2 otherWorkInput" id="otherWorkType${detailId}" placeholder="${language === 'ur' ? 'Ú©Ø§Ù Ú©Û ÙØ³Ù Ø¯Ø±Ø¬ Ú©Ø±ÛÚº' : (language === 'bn' ? 'à¦à¦¾à¦à§à¦° à¦§à¦°à¦¨ à¦²à¦¿à¦à§à¦¨' : 'Enter work type')}">
+                            <input type="number" class="form-control qtyField" id="otherWorkQty${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Quantity')}">
                         </div>
                     `;
                 } else {
                     detailSection.innerHTML += `
                         <div class="mt-2">
-                            <input type="number" class="form-control qtyField" id="detailQty${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Quantity')}">
+                            <input type="number" class="form-control qtyField" id="detailQty${detailId}" placeholder="${language === 'ur' ? 'ÙÙØ¯Ø§Ø±' : (language === 'bn' ? 'à¦ªà¦°à¦¿à¦®à¦¾à¦£' : 'Quantity')}">
                         </div>
                     `;
                 }
+                
                 workDetailsContainer.appendChild(detailSection);
             });
         }
+
         // Toggle quantity field visibility
         function toggleQtyField(id) {
             // For cable pulling options
@@ -1384,6 +1359,7 @@
                     qtyField.style.display = checkbox.checked ? 'block' : 'none';
                 }
             });
+            
             // For speaker options
             ['ceiling', 'box', 'horn'].forEach(option => {
                 const checkbox = document.getElementById(`${option}${id}`);
@@ -1393,29 +1369,35 @@
                 }
             });
         }
-        // Event listeners for location changes (floors)
+
+        // Event listeners for location changes
         document.querySelectorAll('.floor-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', updateSelectedLocations);
         });
+
+        document.getElementById('zoneSelect').addEventListener('change', updateSelectedLocations);
+
         // Generate report preview
         document.getElementById('generateBtn').addEventListener('click', function() {
             generateReport();
             document.getElementById('previewSection').style.display = 'block';
             document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
         });
+
         // Show copy notification
         function showCopyNotification() {
             const notification = document.getElementById('copyNotification');
             const language = document.getElementById('languageSelect').value;
             const textElement = notification.querySelector('span');
-            textElement.textContent = language === 'ur' ? 'پیغام کامیابی سے کاپی ہو گیا!' :
-                                      (language === 'bn' ? 'পীগাম সফলভাবে কপি হয়েছে!' :
+            textElement.textContent = language === 'ur' ? 'Ù¾ÛØºØ§Ù Ú©Ø§ÙÛØ§Ø¨Û Ø³Û Ú©Ø§Ù¾Û ÛÙ Ú¯ÛØ§!' : 
+                                      (language === 'bn' ? 'à¦ªà§à¦à¦¾à¦® à¦¸à¦«à¦²à¦­à¦¾à¦¬à§ à¦à¦ªà¦¿ à¦¹à¦¯à¦¼à§à¦à§!' : 
                                       'Message copied successfully!');
             notification.style.display = 'block';
             setTimeout(() => {
                 notification.style.display = 'none';
             }, 3000);
         }
+
         // Copy message to clipboard
         document.getElementById('copyBtn').addEventListener('click', function() {
             const message = document.getElementById('messagePreview').textContent;
@@ -1425,45 +1407,54 @@
                 console.error('Could not copy text: ', err);
             });
         });
+
         // Generate report message (always in English)
         function generateReport() {
             const date = document.getElementById('reportDate').value;
+            
             // Get selected team members
             const selectedTeams = Array.from(document.getElementById('teamName').selectedOptions).map(option => option.value);
             const otherTeamMember = document.getElementById('otherTeamMember').value;
+            
             // Process team names
             let teamNames = selectedTeams.filter(name => name !== 'other');
             if (selectedTeams.includes('other') && otherTeamMember.trim()) {
                 teamNames.push(otherTeamMember.trim());
             }
+            
             const teamName = teamNames.length > 0 ? teamNames.join(', ') : 'Team Name';
+            
             // Format date
             const dateObj = new Date(date);
-            const formattedDate = dateObj.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
             });
+            
             // Build message (always in English)
-            let message = `*Project report-MOH Khasab Hospital*
-`;
-            message += `*Date: ${formattedDate}*
-`;
-            message += `*Work Completed Today*
-`;
+            let message = `*Project report-MOH Khasab Hospital*\n`;
+            message += `*Date: ${formattedDate}*\n\n`;
+            message += `*Work Completed Today*\n\n`;
+            
             // Group work items by location
             const locationWork = {};
+            
             workItems.forEach(item => {
                 const location = item.location;
                 if (!locationWork[location]) {
                     locationWork[location] = [];
                 }
+                
                 // Get selected work types for this location
                 const workTypeCheckboxes = document.querySelectorAll(`#workItem${item.id} .workTypeCheckbox:checked`);
+                
                 workTypeCheckboxes.forEach((checkbox, index) => {
                     const workType = checkbox.value;
                     const detailId = `${item.id}_${index}`;
-                    let workDetail = `•\t${workType}: `;
+                    
+                    let workDetail = `â¢\t${workType}: `;
+                    
                     // Get details based on work type
                     if (workType === 'Cable pulling') {
                         const details = [];
@@ -1520,108 +1511,109 @@
                             workDetail += 'completed';
                         }
                     }
+                    
                     workDetail += '.';
                     locationWork[location].push(workDetail);
                 });
             });
+            
             // Add work details to message
             Object.keys(locationWork).forEach(location => {
-                message += `\t*${location}*
-`;
+                message += `\t*${location}*\n`;
                 locationWork[location].forEach(work => {
-                    message += `\t${work}
-`;
+                    message += `\t${work}\n`;
                 });
-                message += '
-';
+                message += '\n';
             });
+            
             // Add quantity section
-            message += `*Completed Qty / Total Qty*
-`;
+            message += `*Completed Qty / Total Qty*\n\n`;
+            
             // Access control cable pulling quantities
-            message += `*Access control cable pulling*
-`;
+            message += `*Access control cable pulling*\n\n`;
             const groundFloorComplete = document.getElementById('groundFloorComplete').value || '';
             if (groundFloorComplete) {
-                message += `1.Ground floor = ${groundFloorComplete}/ 160
-`;
+                message += `1.Ground floor = ${groundFloorComplete}/ 160\n`;
             }
+            
             const firstFloorComplete = document.getElementById('firstFloorComplete').value || '';
             if (firstFloorComplete) {
-                message += `2.First floor= ${firstFloorComplete}/  136
-`;
+                message += `2.First floor= ${firstFloorComplete}/  136\n`;
             }
+            
             const secondFloorComplete = document.getElementById('secondFloorComplete').value || '';
             if (secondFloorComplete) {
-                message += `3.Second floor =  ${secondFloorComplete}/ 102
-`;
+                message += `3.Second floor =  ${secondFloorComplete}/ 102\n`;
             }
-            message += '
-';
+            
+            message += '\n';
+            
             // ACP panel installation quantities
-            message += `*Total ACP panel installation*
-`;
+            message += `*Total ACP panel installation*\n\n`;
             const acpGroundFloorComplete = document.getElementById('acpGroundFloorComplete').value || '';
             if (acpGroundFloorComplete) {
-                message += `1.Ground floor= ${acpGroundFloorComplete}/ 57
-`;
+                message += `1.Ground floor= ${acpGroundFloorComplete}/ 57\n`;
             }
+            
             const acpFirstFloorComplete = document.getElementById('acpFirstFloorComplete').value || '';
             if (acpFirstFloorComplete) {
-                message += `2.First floor = ${acpFirstFloorComplete}/ 43
-`;
+                message += `2.First floor = ${acpFirstFloorComplete}/ 43\n`;
             }
+            
             const acpSecondFloorComplete = document.getElementById('acpSecondFloorComplete').value || '';
             if (acpSecondFloorComplete) {
-                message += `3.Second floor= ${acpSecondFloorComplete}/ 37
-`;
+                message += `3.Second floor= ${acpSecondFloorComplete}/ 37\n`;
             }
+            
             const liftComplete = document.getElementById('liftComplete').value || '';
             if (liftComplete) {
-                message += `4.Lift = complete ${liftComplete}/ 10
-`;
+                message += `4.Lift = complete ${liftComplete}/ 10\n`;
             }
-            message += '
-';
+            
+            message += '\n';
+            
             // Add remarks
             let hasRemarks = false;
-            let remarksSection = '*Remarks:*
-';
+            let remarksSection = '*Remarks:*\n';
+            
             for (let i = 0; i < remarkCount; i++) {
                 const remarkType = document.getElementById(`remarkType${i}`)?.value || '';
                 const remarkFloor = document.getElementById(`remarkFloorSelect${i}`)?.value || '';
                 const remarkZone = document.getElementById(`remarkZoneSelect${i}`)?.value || '';
                 const otherRemarkText = document.getElementById(`otherRemarkText${i}`)?.value || '';
+                
                 if (remarkType) {
                     hasRemarks = true;
-                    let remarkText = `•\t${remarkType === 'Other' ? otherRemarkText : remarkType}`;
+                    let remarkText = `â¢\t${remarkType === 'Other' ? otherRemarkText : remarkType}`;
                     if (remarkFloor) remarkText += ` at ${remarkFloor}`;
                     if (remarkZone) remarkText += `, ${remarkZone}`;
-                    remarksSection += `\t${remarkText}.
-`;
+                    remarksSection += `\t${remarkText}.\n`;
                 }
             }
+            
             if (hasRemarks) {
-                message += remarksSection + '
-';
+                message += remarksSection + '\n';
             }
-            message += `
-Team name- *${teamName}*`;
+            
+            message += `\nTeam name- *${teamName}*`;
+            
             // Display message preview
             document.getElementById('messagePreview').textContent = message;
         }
+
         // Initialize
         updateSelectedLocations();
+        
         // Initialize first remark item
         document.getElementById('remarkType0').addEventListener('change', function() {
             toggleOtherRemark(0);
         });
+        
         // Initial translation based on default language
         translatePage('en');
+        
         // Add touch-friendly interactions
         document.querySelectorAll('button, input, select, textarea').forEach(element => {
             element.classList.add('touch-friendly');
         });
     </script>
-</body>
-</html>
