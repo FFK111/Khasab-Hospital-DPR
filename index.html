@@ -7,296 +7,235 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --background-gradient: linear-gradient(to top, #e0eafc 0%, #cfdef3 100%);
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --card-hover-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--background-gradient);
             min-height: 100vh;
             padding: 10px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             touch-action: manipulation;
         }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
         .header {
-            background: linear-gradient(90deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background: linear-gradient(90deg, #005f73, #0a9396);
             color: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: var(--card-shadow);
             text-align: center;
             position: relative;
         }
-        .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-        }
+        .header h1 { font-weight: 600; }
+
+        .language-switch { position: absolute; top: 20px; right: 20px; z-index: 100; }
+
         .card {
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
             margin-bottom: 25px;
             border: none;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease-in-out;
+            animation: fadeIn 0.6s ease-out forwards;
         }
-        .card:hover {
-            transform: translateY(-5px);
-        }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--card-hover-shadow); }
+
         .card-header {
-            background: linear-gradient(90deg, #2c3e50, #4a6491);
+            background: linear-gradient(90deg, #1a2a6c, #2c3e50);
             color: white;
-            border-radius: 15px 15px 0 0 !important;
+            border-radius: 20px 20px 0 0 !important;
             font-weight: 600;
-            padding: 15px 20px;
+            padding: 15px 25px;
+            border-bottom: 0;
         }
-        .btn-primary {
-            background: linear-gradient(90deg, #1a2a6c, #3a7bd5);
-            border: none;
-            padding: 10px 20px;
+        .btn {
+            border-radius: 12px;
+            padding: 12px 25px;
             font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        .btn-success {
-            background: linear-gradient(90deg, #27ae60, #2ecc71);
-            border: none;
-            padding: 10px 20px;
-            font-weight: 600;
-        }
-        .btn-info {
-            background: linear-gradient(90deg, #3498db, #2980b9);
-            border: none;
-            padding: 10px 20px;
-            font-weight: 600;
-        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-success { background: linear-gradient(90deg, #27ae60, #2ecc71); border:none; }
+        .btn-info { background: linear-gradient(90deg, #3498db, #2980b9); border:none; }
+        
         .form-control, .form-select {
-            border-radius: 10px;
+            border-radius: 12px;
+            border: 1px solid #e1e5eb;
             padding: 12px;
-            border: 2px solid #e1e5eb;
+            transition: all 0.3s ease;
         }
         .form-control:focus, .form-select:focus {
-            border-color: #3a7bd5;
-            box-shadow: 0 0 0 0.25rem rgba(58, 123, 213, 0.25);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(10, 147, 150, 0.2);
         }
         .work-item {
-            background: #f8f9fa;
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            border-left: 4px solid #3a7bd5;
+            border-left: 5px solid var(--secondary-color);
         }
         .footer {
-            background: linear-gradient(90deg, #2c3e50, #4a6491);
+            background: #2c3e50;
             color: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 20px;
             margin-top: 30px;
             text-align: center;
-        }
-        .location-tag {
-            background: #3a7bd5;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            display: inline-block;
         }
         .whatsapp-preview {
             background: #25D366;
             color: white;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 25px;
             margin-top: 30px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
             display: none;
         }
         .whatsapp-preview h3 {
-            border-bottom: 2px dashed white;
+            border-bottom: 2px dashed rgba(255,255,255,0.5);
             padding-bottom: 15px;
             margin-bottom: 20px;
         }
-        .detail-options {
-            background: #e9ecef;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 10px;
-        }
-        .remark-item {
-            background: #fff3cd;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid #ffc107;
-        }
+        .detail-options { background: #f0f4f8; border-radius: 12px; padding: 15px; margin-top: 10px; }
+        .remark-item { background: #fff3cd; border-radius: 15px; padding: 15px; margin-bottom: 15px; border-left: 5px solid #ffc107; }
+
         pre {
             white-space: pre-wrap;
             word-wrap: break-word;
-            background: white;
-            color: black;
+            background: rgba(0,0,0,0.1);
+            color: white;
             padding: 20px;
-            border-radius: 10px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 15px;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
-        .work-type-checkbox {
-            margin-right: 15px;
-            margin-bottom: 10px;
-        }
+        
         .copy-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #27ae60;
+            position: fixed; top: 20px; right: 20px;
+            background: var(--secondary-color);
             color: white;
             padding: 15px 25px;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             display: none;
             z-index: 1000;
             font-weight: 600;
         }
-        .quantity-section {
-            background: #e9ecef;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .floor-quantity-row {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid #3a7bd5;
-        }
-        @media (max-width: 768px) {
-            body {
-                padding: 5px;
-            }
-            .header {
-                padding: 15px;
-            }
-            .language-switch {
-                position: static;
-                margin: 10px auto;
-                width: 120px;
-            }
-            .card-header {
-                padding: 12px;
-            }
-            .work-item {
-                padding: 15px;
-            }
-            .remark-item {
-                padding: 12px;
-            }
-            .form-control, .form-select {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-            .btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-            .btn-sm {
-                padding: 5px 10px;
-                font-size: 0.8rem;
-            }
-            .location-tag {
-                font-size: 0.8rem;
-                padding: 4px 8px;
-            }
-            pre {
-                padding: 15px;
-                font-size: 0.9rem;
-            }
-            .work-type-checkbox {
-                font-size: 0.9rem;
-                margin-right: 10px;
-                margin-bottom: 8px;
-            }
-            .quantity-section {
-                padding: 15px;
-            }
-            .floor-quantity-row {
-                padding: 12px;
-            }
-        }
-        @media (max-width: 576px) {
-            .header {
-                padding: 12px;
-            }
-            .card {
-                margin-bottom: 15px;
-            }
-            .work-item {
-                padding: 12px;
-            }
-            .remark-item {
-                padding: 10px;
-            }
-            .form-control, .form-select {
-                padding: 8px;
-                font-size: 0.85rem;
-            }
-            .btn {
-                padding: 6px 12px;
-                font-size: 0.85rem;
-            }
-            .location-tag {
-                font-size: 0.75rem;
-                padding: 3px 6px;
-            }
-            pre {
-                padding: 12px;
-                font-size: 0.8rem;
-            }
-            .work-type-checkbox {
-                font-size: 0.85rem;
-                margin-right: 8px;
-                margin-bottom: 6px;
-            }
-            .quantity-section {
-                padding: 12px;
-            }
-            .floor-quantity-row {
-                padding: 10px;
-            }
-        }
+
+        .quantity-section-container { display: none; }
+        .quantity-section { background: #ffffff; border-radius: 15px; padding: 20px; margin-bottom: 20px; }
+        .floor-quantity-row { background: #f8f9fa; border-radius: 12px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #3a7bd5; }
+        
+        .nav-tabs .nav-link { color: var(--primary-color); font-weight: 600; border-radius: 12px 12px 0 0; }
+        .nav-tabs .nav-link.active { color: #000; background-color: #fff; border-color: #dee2e6 #dee2e6 #fff; }
+        .tab-content { background: #fff; border: 1px solid #dee2e6; border-top: 0; }
+
+        .sub-option-qty { display: none; width: 120px; margin-top: 5px; }
+
+        @media (max-width: 768px) { body { padding: 5px; } .header { padding: 20px; } .language-switch { position: static; margin: 15px auto; width: 120px; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-hospital me-3"></i><span id="hospitalTitle">MOH Khasab Hospital</span></h1>
-            <p class="lead" id="systemTitle">Daily Work Report System</p>
+            <h1><i class="fas fa-hospital-user me-3"></i><span data-translation-key="hospitalTitle">MOH Khasab Hospital</span></h1>
+            <p class="lead" data-translation-key="systemTitle">Daily Work Report System</p>
             <div class="language-switch">
                 <select class="form-select" id="languageSelect" style="width: 150px;">
-                    <option value="en">English</option>
-                    <option value="ur">اردو</option>
-                    <option value="bn">বাংলা</option>
+                    <option value="en">English</option> <option value="ur">اردو</option> <option value="bn">বাংলা</option>
                 </select>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header">
-                <h3 class="mb-0"><i class="fas fa-calendar-alt me-2"></i><span id="reportDetailsTitle">Report Details</span></h3>
+                <h3 class="mb-0"><i class="fas fa-info-circle me-3"></i><span data-translation-key="reportDetailsTitle">Report Details</span></h3>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label fw-bold" id="dateLabel">Date</label>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold" data-translation-key="dateLabel"><i class="fas fa-calendar-alt me-2"></i>Date</label>
                         <input type="date" class="form-control" id="reportDate">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label fw-bold" id="teamNameLabel">Team Name</label>
-                        <select class="form-select" id="teamName" multiple size="4">
-                            <option value="Zeeshan" id="zeeshanOption">Zeeshan</option>
-                            <option value="Abdur Raheem" id="abdurRaheemOption">Abdur Raheem</option>
-                            <option value="Akbar Ali" id="akbarAliOption">Akbar Ali</option>
-                            <option value="Riyazul" id="riyazulOption">Riyazul</option>
-                            <option value="other" id="otherTeamOption">Other Name</option>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold" data-translation-key="teamNameLabel"><i class="fas fa-users me-2"></i>Team Name</label>
+                        <select class="form-select" id="teamName" multiple size="5">
+                            <option value="Zeeshan" data-translation-key="zeeshanOption">Zeeshan</option>
+                            <option value="Abdur Raheem" data-translation-key="abdurRaheemOption">Abdur Raheem</option>
+                            <option value="Akbar Ali" data-translation-key="akbarAliOption">Akbar Ali</option>
+                            <option value="Riyazul" data-translation-key="riyazulOption">Riyazul</option>
+                            <option value="Anas" data-translation-key="anasOption">Anas</option>
+                            <option value="other" data-translation-key="otherTeamOption">Other Name</option>
                         </select>
                         <div id="otherTeamMemberContainer" style="display: none;" class="mt-2">
-                            <input type="text" class="form-control" id="otherTeamMember" placeholder="Enter team member name">
+                            <input type="text" class="form-control" id="otherTeamMember" data-translation-key="otherTeamPlaceholder" placeholder="Enter team member name">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold" data-translation-key="totalManpowerLabel"><i class="fas fa-helmet-safety me-2"></i>Total Manpower Today</label>
+                        <input type="number" class="form-control" id="totalManpower" data-translation-key="manpowerPlaceholder" placeholder="e.g., 5">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><h3 class="mb-0"><i class="fas fa-tasks me-3"></i><span data-translation-key="locationAndWorkTitle">Location & Work Details</span></h3></div>
+            <div class="card-body p-4">
+                <div class="mb-4">
+                    <p class="fw-bold" data-translation-key="selectFloorsLabel"><i class="fas fa-layer-group me-2"></i>1. Select Floors to Add Work Tabs</p>
+                    <div class="row">
+                        <div class="col-md-3 col-6"><div class="form-check"><input class="form-check-input floor-checkbox" type="checkbox" value="Level 00" id="floorL00"><label class="form-check-label" for="floorL00" data-translation-key="level00Label">Level 00</label></div></div>
+                        <div class="col-md-3 col-6"><div class="form-check"><input class="form-check-input floor-checkbox" type="checkbox" value="Level 01" id="floorL01"><label class="form-check-label" for="floorL01" data-translation-key="level01Label">Level 01</label></div></div>
+                        <div class="col-md-3 col-6"><div class="form-check"><input class="form-check-input floor-checkbox" type="checkbox" value="Level 02" id="floorL02"><label class="form-check-label" for="floorL02" data-translation-key="level02Label">Level 02</label></div></div>
+                        <div class="col-md-3 col-6"><div class="form-check"><input class="form-check-input floor-checkbox" type="checkbox" value="Level 03" id="floorL03"><label class="form-check-label" for="floorL03" data-translation-key="level03Label">Level 03</label></div></div>
+                    </div>
+                </div>
+                <hr>
+                <div id="floorTabsContainer">
+                    <ul class="nav nav-tabs" id="floorTabs" role="tablist"></ul>
+                    <div class="tab-content" id="floorTabsContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><h3 class="mb-0"><i class="fas fa-chart-line me-3"></i><span data-translation-key="quantityTitle">Completed Qty / Total Qty</span></h3></div>
+            <div class="card-body p-4">
+                <div class="form-check form-switch mb-4">
+                    <input class="form-check-input" type="checkbox" role="switch" id="includeQuantitySwitch">
+                    <label class="form-check-label" for="includeQuantitySwitch" data-translation-key="includeQuantityLabel">Include "Completed Qty / Total Qty" in the report</label>
+                </div>
+                <div class="quantity-section-container" id="quantitySectionContainer">
+                    <div class="quantity-section">
+                        <h4 data-translation-key="accessControlTitle" class="mb-3"><i class="fas fa-network-wired me-2"></i>Access control cable pulling</h4>
+                        <div id="accessControlQuantities">
+                             <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="groundFloorLabel">1. Ground floor</label></div><div class="col-md-3"><input type="number" class="form-control" id="groundFloorComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 160</label></div></div>
+                            <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="firstFloorLabel">2. First floor</label></div><div class="col-md-3"><input type="number" class="form-control" id="firstFloorComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 136</label></div></div>
+                            <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="secondFloorLabel">3. Second floor</label></div><div class="col-md-3"><input type="number" class="form-control" id="secondFloorComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 102</label></div></div>
+                        </div>
+                    </div>
+                    <div class="quantity-section">
+                        <h4 data-translation-key="acpPanelTitle" class="mb-3"><i class="fas fa-th me-2"></i>Total ACP panel installation</h4>
+                        <div id="acpPanelQuantities">
+                            <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="acpGroundFloorLabel">1. Ground floor</label></div><div class="col-md-3"><input type="number" class="form-control" id="acpGroundFloorComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 57</label></div></div>
+                            <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="acpFirstFloorLabel">2. First floor</label></div><div class="col-md-3"><input type="number" class="form-control" id="acpFirstFloorComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 43</label></div></div>
+                            <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="acpSecondFloorLabel">3. Second floor</label></div><div class="col-md-3"><input type="number" class="form-control" id="acpSecondFloorComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 37</label></div></div>
+                             <div class="floor-quantity-row row align-items-center"><div class="col-md-6"><label class="form-label fw-bold mb-0" data-translation-key="liftLabel">4. Lift</label></div><div class="col-md-3"><input type="number" class="form-control" id="liftComplete" placeholder="Complete Qty"></div><div class="col-md-3"><label class="form-label fw-bold mb-0">/ 10</label></div></div>
                         </div>
                     </div>
                 </div>
@@ -304,1319 +243,350 @@
         </div>
 
         <div class="card">
-            <div class="card-header">
-                <h3 class="mb-0"><i class="fas fa-building me-2"></i><span id="locationDetailsTitle">Location Details</span></h3>
-            </div>
-            <div class="card-body">
-                <div class="row mb-4">
-                    <div class="col-12">
-                        <label class="form-label fw-bold" id="selectFloorsLabel">Select Floors</label>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check">
-                            <input class="form-check-input floor-checkbox" type="checkbox" value="Level 00" id="floorL00">
-                            <label class="form-check-label" for="floorL00" id="level00Label">Level 00</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check">
-                            <input class="form-check-input floor-checkbox" type="checkbox" value="Level 01" id="floorL01">
-                            <label class="form-check-label" for="floorL01" id="level01Label">Level 01</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check">
-                            <input class="form-check-input floor-checkbox" type="checkbox" value="Level 02" id="floorL02">
-                            <label class="form-check-label" for="floorL02" id="level02Label">Level 02</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-check">
-                            <input class="form-check-input floor-checkbox" type="checkbox" value="Level 03" id="floorL03">
-                            <label class="form-check-label" for="floorL03" id="level03Label">Level 03</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-6">
-                        <label class="form-label fw-bold" id="selectZonesLabel">Select Zones</label>
-                        <select class="form-select" id="zoneSelect" multiple size="4">
-                            <option value="Zone 01" id="zone01Label">Zone 01</option>
-                            <option value="Zone 02" id="zone02Label">Zone 02</option>
-                            <option value="Zone 03" id="zone03Label">Zone 03</option>
-                            <option value="Zone 04" id="zone04Label">Zone 04</option>
-                            <option value="Zone 05" id="zone05Label">Zone 05</option>
-                            <option value="Zone 06" id="zone06Label">Zone 06</option>
-                            <option value="Zone 07" id="zone07Label">Zone 07</option>
-                            <option value="Zone 08" id="zone08Label">Zone 08</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <label class="form-label fw-bold" id="selectedLocationsLabel">Selected Locations</label>
-                        <div id="selectedLocations" class="mb-3">
-                            <span class="text-muted" id="noLocationsSelected">No locations selected yet</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-header"><h3 class="mb-0"><i class="fas fa-exclamation-circle me-3"></i><span data-translation-key="remarksTitle">Remarks & Issues</span></h3></div>
+            <div class="card-body p-4">
+                <div id="remarkContainer"></div>
+                <div class="text-center mt-3"><button class="btn btn-info" id="addRemarkBtn"><i class="fas fa-plus me-2"></i><span data-translation-key="addRemarkButton">Add Remark</span></button></div>
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3 class="mb-0"><i class="fas fa-tasks me-2"></i><span id="workCompletedTitle">Work Completed Today</span></h3>
-            </div>
-            <div class="card-body" id="workContainer">
-                <!-- Work items will be dynamically added here -->
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3 class="mb-0"><i class="fas fa-chart-bar me-2"></i><span id="quantityTitle">Completed Qty / Total Qty</span></h3>
-            </div>
-            <div class="card-body">
-                <div class="quantity-section">
-                    <h4 id="accessControlTitle">Access control cable pulling</h4>
-                    <div id="accessControlQuantities">
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="groundFloorLabel">1. Ground floor</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="groundFloorComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 160</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="firstFloorLabel">2. First floor</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="firstFloorComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 136</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="secondFloorLabel">3. Second floor</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="secondFloorComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 102</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="quantity-section">
-                    <h4 id="acpPanelTitle">Total ACP panel installation</h4>
-                    <div id="acpPanelQuantities">
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="acpGroundFloorLabel">1. Ground floor</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="acpGroundFloorComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 57</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="acpFirstFloorLabel">2. First floor</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="acpFirstFloorComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 43</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="acpSecondFloorLabel">3. Second floor</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="acpSecondFloorComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 37</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floor-quantity-row">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold" id="liftLabel">4. Lift</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" class="form-control" id="liftComplete" placeholder="Complete Qty">
-                                </div>
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">/ 10</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i><span id="remarksTitle">Remarks & Issues</span></h3>
-            </div>
-            <div class="card-body">
-                <div id="remarkContainer">
-                    <div class="remark-item" id="remarkItem0">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label fw-bold" id="remarkTypeLabel">Remark Type</label>
-                                <select class="form-select remarkType" id="remarkType0" onchange="toggleOtherRemark(0)">
-                                    <option value="" id="selectRemarkOption">Select Remark</option>
-                                    <option value="Conduit issue" id="conduitIssueLabel">Conduit issue</option>
-                                    <option value="Clearance issue" id="clearanceIssueLabel">Clearance issue</option>
-                                    <option value="Ladder not available" id="ladderNotAvailableLabel">Ladder not available</option>
-                                    <option value="Other" id="otherLabel">Other</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label fw-bold" id="floorLabel">Floor</label>
-                                <select class="form-select remarkFloorSelect" id="remarkFloorSelect0">
-                                    <option value="" id="selectFloorOption">Select Floor</option>
-                                    <option value="Level 00" id="remarkLevel00Label">Level 00</option>
-                                    <option value="Level 01" id="remarkLevel01Label">Level 01</option>
-                                    <option value="Level 02" id="remarkLevel02Label">Level 02</option>
-                                    <option value="Level 03" id="remarkLevel03Label">Level 03</option>
-                                    <option value="Level 04" id="remarkLevel04Label">Level 04</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label fw-bold" id="zoneLabel">Zone</label>
-                                <select class="form-select remarkZoneSelect" id="remarkZoneSelect0">
-                                    <option value="" id="selectZoneOption">Select Zone</option>
-                                    <option value="Zone 01" id="remarkZone01Label">Zone 01</option>
-                                    <option value="Zone 02" id="remarkZone02Label">Zone 02</option>
-                                    <option value="Zone 03" id="remarkZone03Label">Zone 03</option>
-                                    <option value="Zone 04" id="remarkZone04Label">Zone 04</option>
-                                    <option value="Zone 05" id="remarkZone05Label">Zone 05</option>
-                                    <option value="Zone 06" id="remarkZone06Label">Zone 06</option>
-                                    <option value="Zone 07" id="remarkZone07Label">Zone 07</option>
-                                    <option value="Zone 08" id="remarkZone08Label">Zone 08</option>
-                                </select>
-                            </div>
-                            <div class="col-12 mb-3" id="otherRemarkContainer0" style="display: none;">
-                                <label class="form-label fw-bold" id="otherRemarkDetailsLabel">Other Remark Details</label>
-                                <input type="text" class="form-control" id="otherRemarkText0" placeholder="Enter other remark details">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-3">
-                    <button class="btn btn-info" id="addRemarkBtn">
-                        <i class="fas fa-plus me-2"></i><span id="addRemarkButton">Add Remark</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mb-4">
-            <button class="btn btn-success btn-lg" id="generateBtn">
-                <i class="fas fa-file-alt me-2"></i><span id="generateReportButton">Generate Report</span>
-            </button>
-        </div>
+        <div class="text-center my-4"><button class="btn btn-success btn-lg" id="generateBtn"><i class="fas fa-paper-plane me-2"></i><span data-translation-key="generateReportButton">Generate Report</span></button></div>
 
         <div class="whatsapp-preview" id="previewSection">
-            <h3><i class="fab fa-whatsapp me-2"></i><span id="reportPreviewTitle">Report Preview</span></h3>
+            <h3><i class="fab fa-whatsapp me-2"></i><span data-translation-key="reportPreviewTitle">Report Preview</span></h3>
             <pre id="messagePreview"></pre>
-            <div class="text-center mt-4">
-                <button class="btn btn-info btn-lg" id="copyBtn">
-                    <i class="fas fa-copy me-2"></i><span id="copyMessageButton">Copy Message</span>
-                </button>
-            </div>
+            <div class="text-center mt-4"><button class="btn btn-light" id="copyBtn"><i class="fas fa-copy me-2"></i><span data-translation-key="copyMessageButton">Copy Message</span></button></div>
         </div>
 
-        <div class="footer">
-            <p class="mb-0">&copy; 2025 <span id="hospitalFooter">MOH Khasab Hospital Report System</span></p>
-            <p class="mb-0" id="developerFooter">Developed by MSTE</p>
-        </div>
+        <div class="footer"><p class="mb-0">&copy; 2025 <span data-translation-key="hospitalFooter">MOH Khasab Hospital Report System</span> | <span data-translation-key="developerFooter">Developed by MSTE</span></p></div>
     </div>
 
-    <div class="copy-notification" id="copyNotification">
-        <i class="fas fa-check-circle me-2"></i><span id="messageCopiedText">Message copied successfully!</span>
-    </div>
+    <div class="copy-notification" id="copyNotification"><i class="fas fa-check-circle me-2"></i><span data-translation-key="messageCopiedText">Message copied successfully!</span></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Set current date by default
         document.getElementById('reportDate').valueAsDate = new Date();
-
-        let workItems = [];
-        let remarkCount = 1;
-
-        // Urdu translations
+        let remarkCount = 0;
+        
         const translations = {
-            en: {
-                hospitalTitle: "MOH Khasab Hospital",
-                systemTitle: "Daily Work Report System",
-                reportDetailsTitle: "Report Details",
-                dateLabel: "Date",
-                teamNameLabel: "Team Name",
-                zeeshanOption: "Zeeshan",
-                abdurRaheemOption: "Abdur Raheem",
-                akbarAliOption: "Akbar Ali",
-                riyazulOption: "Riyazul",
-                otherTeamOption: "Other Name",
-                locationDetailsTitle: "Location Details",
-                selectFloorsLabel: "Select Floors",
-                level00Label: "Level 00",
-                level01Label: "Level 01",
-                level02Label: "Level 02",
-                level03Label: "Level 03",
-                selectZonesLabel: "Select Zones",
-                zone01Label: "Zone 01",
-                zone02Label: "Zone 02",
-                zone03Label: "Zone 03",
-                zone04Label: "Zone 04",
-                zone05Label: "Zone 05",
-                zone06Label: "Zone 06",
-                zone07Label: "Zone 07",
-                zone08Label: "Zone 08",
-                selectedLocationsLabel: "Selected Locations",
-                noLocationsSelected: "No locations selected yet",
-                workCompletedTitle: "Work Completed Today",
-                quantityTitle: "Completed Qty / Total Qty",
-                accessControlTitle: "Access control cable pulling",
-                groundFloorLabel: "1. Ground floor",
-                firstFloorLabel: "2. First floor",
-                secondFloorLabel: "3. Second floor",
-                acpPanelTitle: "Total ACP panel installation",
-                acpGroundFloorLabel: "1. Ground floor",
-                acpFirstFloorLabel: "2. First floor",
-                acpSecondFloorLabel: "3. Second floor",
-                liftLabel: "4. Lift",
-                remarksTitle: "Remarks & Issues",
-                remarkTypeLabel: "Remark Type",
-                selectRemarkOption: "Select Remark",
-                conduitIssueLabel: "Conduit issue",
-                clearanceIssueLabel: "Clearance issue",
-                ladderNotAvailableLabel: "Ladder not available",
-                otherLabel: "Other",
-                floorLabel: "Floor",
-                selectFloorOption: "Select Floor",
-                remarkLevel00Label: "Level 00",
-                remarkLevel01Label: "Level 01",
-                remarkLevel02Label: "Level 02",
-                remarkLevel03Label: "Level 03",
-                remarkLevel04Label: "Level 04",
-                zoneLabel: "Zone",
-                selectZoneOption: "Select Zone",
-                remarkZone01Label: "Zone 01",
-                remarkZone02Label: "Zone 02",
-                remarkZone03Label: "Zone 03",
-                remarkZone04Label: "Zone 04",
-                remarkZone05Label: "Zone 05",
-                remarkZone06Label: "Zone 06",
-                remarkZone07Label: "Zone 07",
-                remarkZone08Label: "Zone 08",
-                otherRemarkDetailsLabel: "Other Remark Details",
-                addRemarkButton: "Add Remark",
-                generateReportButton: "Generate Report",
-                reportPreviewTitle: "Report Preview",
-                copyMessageButton: "Copy Message",
-                messageCopiedText: "Message copied successfully!",
-                hospitalFooter: "MOH Khasab Hospital Report System",
-                developerFooter: "Developed by MSTE"
-            },
-            ur: {
-                hospitalTitle: "ایم او ایچ خصب ہسپتال",
-                systemTitle: "دن کی رپورٹ کا نظام",
-                reportDetailsTitle: "رپورٹ کی تفصیلات",
-                dateLabel: "تاریخ",
-                teamNameLabel: "ٹیم کا نام",
-                zeeshanOption: "زیشان",
-                abdurRaheemOption: "عبدالرحیم",
-                akbarAliOption: "اکبر علی",
-                riyazulOption: "ریاض العلی",
-                otherTeamOption: "دوسرا نام",
-                locationDetailsTitle: "مقام کی تفصیلات",
-                selectFloorsLabel: "منزلیں منتخب کریں",
-                level00Label: "سطح 00",
-                level01Label: "سطح 01",
-                level02Label: "سطح 02",
-                level03Label: "سطح 03",
-                selectZonesLabel: "علاقے منتخب کریں",
-                zone01Label: "علاقہ 01",
-                zone02Label: "علاقہ 02",
-                zone03Label: "علاقہ 03",
-                zone04Label: "علاقہ 04",
-                zone05Label: "علاقہ 05",
-                zone06Label: "علاقہ 06",
-                zone07Label: "علاقہ 07",
-                zone08Label: "علاقہ 08",
-                selectedLocationsLabel: "منتخب شدہ مقامات",
-                noLocationsSelected: "ابھی تک کوئی مقام منتخب نہیں کیا گیا",
-                workCompletedTitle: "آج مکمل کیا گیا کام",
-                quantityTitle: "مکمل کی گئی مقدار / کل مقدار",
-                accessControlTitle: "ایکسس کنٹرول کیبل کشی",
-                groundFloorLabel: "1. گراؤنڈ فلور",
-                firstFloorLabel: "2. پہلا منزل",
-                secondFloorLabel: "3. دوسرا منزل",
-                acpPanelTitle: "کل اے سی پی پینل کی تنصیب",
-                acpGroundFloorLabel: "1. گراؤنڈ فلور",
-                acpFirstFloorLabel: "2. پہلا منزل",
-                acpSecondFloorLabel: "3. دوسرا منزل",
-                liftLabel: "4. لِفت",
-                remarksTitle: "تبصرے اور مسائل",
-                remarkTypeLabel: "تبصرے کی قسم",
-                selectRemarkOption: "تبصرہ منتخب کریں",
-                conduitIssueLabel: "کانڈوئٹ کا مسئلہ",
-                clearanceIssueLabel: "خالی جگہ کا مسئلہ",
-                ladderNotAvailableLabel: "سیڑھی دستیاب نہیں",
-                otherLabel: "دیگر",
-                floorLabel: "منزل",
-                selectFloorOption: "منزل منتخب کریں",
-                remarkLevel00Label: "سطح 00",
-                remarkLevel01Label: "سطح 01",
-                remarkLevel02Label: "سطح 02",
-                remarkLevel03Label: "سطح 03",
-                remarkLevel04Label: "سطح 04",
-                zoneLabel: "علاقہ",
-                selectZoneOption: "علاقہ منتخب کریں",
-                remarkZone01Label: "علاقہ 01",
-                remarkZone02Label: "علاقہ 02",
-                remarkZone03Label: "علاقہ 03",
-                remarkZone04Label: "علاقہ 04",
-                remarkZone05Label: "علاقہ 05",
-                remarkZone06Label: "علاقہ 06",
-                remarkZone07Label: "علاقہ 07",
-                remarkZone08Label: "علاقہ 08",
-                otherRemarkDetailsLabel: "دیگر تبصرے کی تفصیلات",
-                addRemarkButton: "تبصرہ شامل کریں",
-                generateReportButton: "رپورٹ تیار کریں",
-                reportPreviewTitle: "رپورٹ کا پیش نظارہ",
-                copyMessageButton: "پیغام کاپی کریں",
-                messageCopiedText: "پیغام کامیابی سے کاپی ہو گیا!",
-                hospitalFooter: "ایم او ایچ خصب ہسپتال رپورٹ کا نظام",
-                developerFooter: "MSTE کے زریعے تیار کردہ"
-            },
-            bn: {
-                hospitalTitle: "এমওএইচ খসাব হাসপাতাল",
-                systemTitle: "দৈনিক কাজের রিপোর্ট সিস্টেম",
-                reportDetailsTitle: "রিপোর্ট বিবরণ",
-                dateLabel: "তারিখ",
-                teamNameLabel: "দলের সদস্য",
-                zeeshanOption: "জিশান",
-                abdurRaheemOption: "আবদুর রহিম",
-                akbarAliOption: "আকবর আলী",
-                riyazulOption: "রিয়াজুল",
-                otherTeamOption: "অন্য নাম",
-                locationDetailsTitle: "অবস্থান বিবরণ",
-                selectFloorsLabel: "তলা নির্বাচন করুন",
-                level00Label: "স্তর 00",
-                level01Label: "স্তর 01",
-                level02Label: "স্তর 02",
-                level03Label: "স্তর 03",
-                selectZonesLabel: "অঞ্চল নির্বাচন করুন",
-                zone01Label: "অঞ্চল 01",
-                zone02Label: "অঞ্চল 02",
-                zone03Label: "অঞ্চল 03",
-                zone04Label: "অঞ্চল 04",
-                zone05Label: "অঞ্চল 05",
-                zone06Label: "অঞ্চল 06",
-                zone07Label: "অঞ্চল 07",
-                zone08Label: "অঞ্চল 08",
-                selectedLocationsLabel: "নির্বাচিত অবস্থান",
-                noLocationsSelected: "এখনও কোন অবস্থান নির্বাচন করা হয়নি",
-                workCompletedTitle: "আজ সম্পন্ন কাজ",
-                quantityTitle: "সম্পন্ন পরিমাণ / মোট পরিমাণ",
-                accessControlTitle: "অ্যাকসেস কন্ট্রোল ক্যাবল টানা",
-                groundFloorLabel: "1. গ্রাউন্ড ফ্লোর",
-                firstFloorLabel: "2. প্রথম তলা",
-                secondFloorLabel: "3. দ্বিতীয় তলা",
-                acpPanelTitle: "মোট এসিপি প্যানেল ইনস্টলেশন",
-                acpGroundFloorLabel: "1. গ্রাউন্ড ফ্লোর",
-                acpFirstFloorLabel: "2. প্রথম তলা",
-                acpSecondFloorLabel: "3. দ্বিতীয় তলা",
-                liftLabel: "4. লিফট",
-                remarksTitle: "মন্তব্য এবং সমস্যা",
-                remarkTypeLabel: "মন্তব্যের ধরন",
-                selectRemarkOption: "মন্তব্য নির্বাচন করুন",
-                conduitIssueLabel: "কনডুইট সমস্যা",
-                clearanceIssueLabel: "পরিষ্কার জায়গা সমস্যা",
-                ladderNotAvailableLabel: "মেরুদণ্ড উপলব্ধ নয়",
-                otherLabel: "অন্যান্য",
-                floorLabel: "তলা",
-                selectFloorOption: "তলা নির্বাচন করুন",
-                remarkLevel00Label: "স্তর 00",
-                remarkLevel01Label: "স্তর 01",
-                remarkLevel02Label: "স্তর 02",
-                remarkLevel03Label: "স্তর 03",
-                remarkLevel04Label: "স্তর 04",
-                zoneLabel: "অঞ্চল",
-                selectZoneOption: "অঞ্চল নির্বাচন করুন",
-                remarkZone01Label: "অঞ্চল 01",
-                remarkZone02Label: "অঞ্চল 02",
-                remarkZone03Label: "অঞ্চল 03",
-                remarkZone04Label: "অঞ্চল 04",
-                remarkZone05Label: "অঞ্চল 05",
-                remarkZone06Label: "অঞ্চল 06",
-                remarkZone07Label: "অঞ্চল 07",
-                remarkZone08Label: "অঞ্চল 08",
-                otherRemarkDetailsLabel: "অন্যান্য মন্তব্য বিবরণ",
-                addRemarkButton: "মন্তব্য যোগ করুন",
-                generateReportButton: "রিপোর্ট তৈরি করুন",
-                reportPreviewTitle: "রিপোর্ট প্রিভিউ",
-                copyMessageButton: "পীগাম কপি করুন",
-                messageCopiedText: "পীগাম সফলভাবে কপি হয়েছে!",
-                hospitalFooter: "এমওএইচ খসাব হাসপাতাল রিপোর্ট সিস্টেম",
-                developerFooter: "MSTE দ্বারা ডেভেলপ করা হয়েছে"
-            }
+            en: { hospitalTitle: "MOH Khasab Hospital", systemTitle: "Daily Work Report System", reportDetailsTitle: "Report Details", dateLabel: "Date", teamNameLabel: "Team Name", zeeshanOption: "Zeeshan", abdurRaheemOption: "Abdur Raheem", akbarAliOption: "Akbar Ali", riyazulOption: "Riyazul", anasOption: "Anas", otherTeamOption: "Other Name", otherTeamPlaceholder: "Enter team member name", totalManpowerLabel: "Total Manpower Today", manpowerPlaceholder: "e.g., 5", locationAndWorkTitle: "Location & Work Details", selectFloorsLabel: "1. Select Floors to Add Work Tabs", level00Label: "Level 00", level01Label: "Level 01", level02Label: "Level 02", level03Label: "Level 03", selectZonesLabel: "2. Select Zones for", quantityTitle: "Completed Qty / Total Qty", includeQuantityLabel: "Include \"Completed Qty / Total Qty\" in the report", accessControlTitle: "Access control cable pulling", groundFloorLabel: "1. Ground floor", firstFloorLabel: "2. First floor", secondFloorLabel: "3. Second floor", acpPanelTitle: "Total ACP panel installation", acpGroundFloorLabel: "1. Ground floor", acpFirstFloorLabel: "2. First floor", acpSecondFloorLabel: "3. Second floor", liftLabel: "4. Lift", remarksTitle: "Remarks & Issues", addRemarkButton: "Add Remark", generateReportButton: "Generate Report", reportPreviewTitle: "Report Preview", copyMessageButton: "Copy Message", messageCopiedText: "Message copied successfully!", hospitalFooter: "MOH Khasab Hospital Report System", developerFooter: "Developed by MSTE", qtyPlaceholder: "Qty" },
+            ur: { hospitalTitle: "ایم او ایچ خصب ہسپتال", systemTitle: "دن کی رپورٹ کا نظام", reportDetailsTitle: "رپورٹ کی تفصیلات", dateLabel: "تاریخ", teamNameLabel: "ٹیم کا نام", zeeshanOption: "زیشان", abdurRaheemOption: "عبدالرحیم", akbarAliOption: "اکبر علی", riyazulOption: "ریاض العلی", anasOption: "انس", otherTeamOption: "دوسرا نام", otherTeamPlaceholder: "ٹیم ممبر کا نام درج کریں", totalManpowerLabel: "آج کی کل افرادی قوت", manpowerPlaceholder: "مثلاً 5", locationAndWorkTitle: "مقام اور کام کی تفصیلات", selectFloorsLabel: "1. کام کے ٹیبز شامل کرنے کے لیے منزلیں منتخب کریں۔", level00Label: "سطح 00", level01Label: "سطح 01", level02Label: "سطح 02", level03Label: "سطح 03", selectZonesLabel: "2. کے لیے زونز منتخب کریں۔", quantityTitle: "مکمل کی گئی مقدار / کل مقدار", includeQuantityLabel: "رپورٹ میں \"مکمل شدہ مقدار / کل مقدار\" شامل کریں۔", accessControlTitle: "ایکسس کنٹرول کیبل کشی", groundFloorLabel: "1. گراؤنڈ فلور", firstFloorLabel: "2. پہلا منزل", secondFloorLabel: "3. دوسرا منزل", acpPanelTitle: "کل اے سی پی پینل کی تنصیب", acpGroundFloorLabel: "1. گراؤنڈ فلور", acpFirstFloorLabel: "2. پہلا منزل", acpSecondFloorLabel: "3. دوسرا منزل", liftLabel: "4. لِفت", remarksTitle: "تبصرے اور مسائل", addRemarkButton: "تبصرہ شامل کریں", generateReportButton: "رپورٹ تیار کریں", reportPreviewTitle: "رپورٹ کا پیش نظارہ", copyMessageButton: "پیغام کاپی کریں", messageCopiedText: "پیغام کامیابی سے کاپی ہو گیا!", hospitalFooter: "ایم او ایچ خصب ہسپتال رپورٹ کا نظام", developerFooter: "MSTE کے زریعے تیار کردہ", qtyPlaceholder: "مقدار" },
+            bn: { hospitalTitle: "এমওএইচ খসাব হাসপাতাল", systemTitle: "দৈনিক কাজের রিপোর্ট সিস্টেম", reportDetailsTitle: "রিপোর্ট বিবরণ", dateLabel: "তারিখ", teamNameLabel: "দলের সদস্য", zeeshanOption: "জিশান", abdurRaheemOption: "আবদুর রহিম", akbarAliOption: "আকবর আলী", riyazulOption: "রিয়াজুল", anasOption: "আনাস", otherTeamOption: "অন্য নাম", otherTeamPlaceholder: "দলের সদস্যের নাম লিখুন", totalManpowerLabel: "আজকের মোট জনশক্তি", manpowerPlaceholder: "যেমন, 5", locationAndWorkTitle: "অবস্থান এবং কাজের বিবরণ", selectFloorsLabel: "1. কাজের ট্যাব যোগ করতে তলা নির্বাচন করুন", level00Label: "স্তর 00", level01Label: "স্তর 01", level02Label: "স্তর 02", level03Label: "স্তর 03", selectZonesLabel: "2. এর জন্য অঞ্চল নির্বাচন করুন", quantityTitle: "সম্পন্ন পরিমাণ / মোট পরিমাণ", includeQuantityLabel: "রিপোর্টে \"সম্পন্ন পরিমাণ / মোট পরিমাণ\" অন্তর্ভুক্ত করুন", accessControlTitle: "অ্যাকসেস কন্ট্রোল ক্যাবল টানা", groundFloorLabel: "1. গ্রাউন্ড ফ্লোর", firstFloorLabel: "2. প্রথম তলা", secondFloorLabel: "3. দ্বিতীয় তলা", acpPanelTitle: "মোট এসিপি প্যানেল ইনস্টলেশন", acpGroundFloorLabel: "1. গ্রাউন্ড ফ্লোর", acpFirstFloorLabel: "2. প্রথম তলা", acpSecondFloorLabel: "3. দ্বিতীয় তলা", liftLabel: "4. লিফট", remarksTitle: "মন্তব্য এবং সমস্যা", addRemarkButton: "মন্তব্য যোগ করুন", generateReportButton: "রিপোর্ট তৈরি করুন", reportPreviewTitle: "রিপোর্ট প্রিভিউ", copyMessageButton: "বার্তা কপি করুন", messageCopiedText: "বার্তা সফলভাবে কপি হয়েছে!", hospitalFooter: "এমওএইচ খসাব হাসপাতাল রিপোর্ট সিস্টেম", developerFooter: "MSTE দ্বারা ডেভেলপ করা হয়েছে", qtyPlaceholder: "পরিমাণ" }
         };
-
-        // Work type translations
         const workTypeTranslations = {
-            en: {
-                cablePulling: "Cable pulling",
-                acpPanelInstallation: "ACP panel installation",
-                acpPanelTermination: "ACP Panel termination",
-                speakerInstallation: "Speaker installation",
-                inductionLoopInstallation: "Induction loop installation",
-                panicButton: "Panic button",
-                tvInstallation: "TV installation",
-                cctv: "CCTV",
-                singleDoor: "Single door",
-                doubleDoor: "Double door",
-                corridorDoor: "Corridor door",
-                ceiling: "Ceiling",
-                box: "Box",
-                horn: "Horn",
-                otherWork: "Other Work"
-            },
-            ur: {
-                cablePulling: "کیبل کشی",
-                acpPanelInstallation: "ای سی پی پینل کی تنصیب",
-                acpPanelTermination: "ای سی پی پینل کا اختتام",
-                speakerInstallation: "اسپیکر کی تنصیب",
-                inductionLoopInstallation: "انڈکشن لوپ کی تنصیب",
-                panicButton: "پینک بٹن",
-                tvInstallation: "ٹی وی کی تنصیب",
-                cctv: "سی سی ٹی وی",
-                singleDoor: "سنگل دروازہ",
-                doubleDoor: "ڈبل دروازہ",
-                corridorDoor: "گلیچر دروازہ",
-                ceiling: "چھت",
-                box: "باکس",
-                horn: "ہارن",
-                otherWork: "دیگر کام"
-            },
-            bn: {
-                cablePulling: "কেবল টানা",
-                acpPanelInstallation: "এসিপি প্যানেল ইনস্টলেশন",
-                acpPanelTermination: "এসিপি প্যানেল সমাপ্তি",
-                speakerInstallation: "স্পিকার ইনস্টলেশন",
-                inductionLoopInstallation: "ইনডাকশন লুপ ইনস্টলেশন",
-                panicButton: "প্যানিক বাটন",
-                tvInstallation: "টিভি ইনস্টলেশন",
-                cctv: "সিসিটিভি",
-                singleDoor: "একক দরজা",
-                doubleDoor: "ডাবল দরজা",
-                corridorDoor: "করিডোর দরজা",
-                ceiling: "ছাদ",
-                box: "বাক্স",
-                horn: "হর্ন",
-                otherWork: "অন্যান্য কাজ"
-            }
+            en: { cablePulling: "Cable pulling", acpPanelInstallation: "ACP panel installation", acpPanelTermination: "ACP Panel termination", speakerInstallation: "Speaker installation", inductionLoopInstallation: "Induction loop installation", tvInstallation: "TV installation", cctv: "CCTV", otherWork: "Other Work", singleDoor: "Single door", doubleDoor: "Double door", panicButton: "Panic button", corridor: "Corridor", avRoomDm: "AV room DM", avSpeaker: "AV speaker", tableCounterLoop: "Table counter loop", ceiling: "Ceiling", box: "Box", horn: "Horn" },
+            ur: { cablePulling: "کیبل کشی", acpPanelInstallation: "ای سی پی پینل کی تنصیب", acpPanelTermination: "ای سی پی پینل کا اختتام", speakerInstallation: "اسپیکر کی تنصیب", inductionLoopInstallation: "انڈکشن لوپ کی تنصیب", tvInstallation: "ٹی وی کی تنصیب", cctv: "سی سی ٹی وی", otherWork: "دیگر کام", singleDoor: "سنگل دروازہ", doubleDoor: "ڈبل دروازہ", panicButton: "پینک بٹن", corridor: "کوریڈور", avRoomDm: "اے وی روم ڈی ایم", avSpeaker: "اے وی اسپیکر", tableCounterLoop: "ٹیبل کاؤنٹر لوپ", ceiling: "چھت", box: "باکس", horn: "ہارن" },
+            bn: { cablePulling: "কেবল টানা", acpPanelInstallation: "এসিপি প্যানেল ইনস্টলেশন", acpPanelTermination: "এসিপি প্যানেল সমাপ্তি", speakerInstallation: "স্পিকার ইনস্টলেশন", inductionLoopInstallation: "ইনডাকশন লুপ ইনস্টলেশন", tvInstallation: "টিভি ইনস্টলেশন", cctv: "সিসিটিভি", otherWork: "অন্যান্য কাজ", singleDoor: "একক দরজা", doubleDoor: "ডাবল দরজা", panicButton: "প্যানিক বাটন", corridor: "করিডোর", avRoomDm: "এভি রুম ডিএম", avSpeaker: "এভি স্পিকার", tableCounterLoop: "টেবিল কাউন্টার লুপ", ceiling: "ছাদ", box: "বাক্স", horn: "হর্ন" }
         };
 
-        // Translate function
-        function translatePage(language) {
-            // Translate all elements with IDs
-            const elements = document.querySelectorAll('[id]');
-            elements.forEach(element => {
-                const id = element.id;
-                if (translations[language][id]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'SELECT' || element.tagName === 'TEXTAREA') {
-                        if (element.placeholder) {
-                            element.placeholder = translations[language][id];
-                        }
+        function translateUI(language) {
+            document.querySelectorAll('[data-translation-key]').forEach(el => {
+                const key = el.dataset.translationKey;
+                if (translations[language][key]) {
+                    if (el.placeholder !== undefined) {
+                        el.placeholder = translations[language][key];
                     } else {
-                        element.textContent = translations[language][id];
+                        el.textContent = translations[language][key];
                     }
                 }
             });
+
+            document.querySelectorAll('.zone-select-label').forEach(label => {
+                const floorValue = label.dataset.floor;
+                label.innerHTML = `<i class="fas fa-map-signs me-2"></i>${translations[language].selectZonesLabel} ${floorValue}:`;
+            });
             
-            // Translate work type checkboxes in all work items
-            document.querySelectorAll('.workTypeCheckbox').forEach(checkbox => {
-                const value = checkbox.value;
-                const label = checkbox.nextElementSibling;
-                if (label) {
-                    switch(value) {
-                        case 'Cable pulling':
-                            label.textContent = workTypeTranslations[language].cablePulling;
-                            break;
-                        case 'ACP panel installation':
-                            label.textContent = workTypeTranslations[language].acpPanelInstallation;
-                            break;
-                        case 'ACP Panel termination':
-                            label.textContent = workTypeTranslations[language].acpPanelTermination;
-                            break;
-                        case 'Speaker installation':
-                            label.textContent = workTypeTranslations[language].speakerInstallation;
-                            break;
-                        case 'Induction loop installation':
-                            label.textContent = workTypeTranslations[language].inductionLoopInstallation;
-                            break;
-                        case 'Panic button':
-                            label.textContent = workTypeTranslations[language].panicButton;
-                            break;
-                        case 'TV installation':
-                            label.textContent = workTypeTranslations[language].tvInstallation;
-                            break;
-                        case 'CCTV':
-                            label.textContent = workTypeTranslations[language].cctv;
-                            break;
-                        case 'Other Work':
-                            label.textContent = workTypeTranslations[language].otherWork;
-                            break;
-                    }
+            document.querySelectorAll('.work-type-checkbox').forEach(el => {
+                const key = el.dataset.workTypeKey;
+                if (workTypeTranslations[language][key]) {
+                    el.nextElementSibling.textContent = workTypeTranslations[language][key];
                 }
             });
-            
-            // Translate cable pulling options
-            document.querySelectorAll('.cableOption + label').forEach(label => {
-                const value = label.previousElementSibling.value;
-                switch(value) {
-                    case 'Single door':
-                        label.textContent = workTypeTranslations[language].singleDoor;
-                        break;
-                    case 'Double door':
-                        label.textContent = workTypeTranslations[language].doubleDoor;
-                        break;
-                    case 'Panic button':
-                        label.textContent = workTypeTranslations[language].panicButton;
-                        break;
-                    case 'Corridor door':
-                        label.textContent = workTypeTranslations[language].corridorDoor;
-                        break;
+
+            document.querySelectorAll('.sub-option-checkbox').forEach(el => {
+                const key = el.dataset.subOptionKey;
+                if (workTypeTranslations[language][key]) {
+                    el.nextElementSibling.textContent = workTypeTranslations[language][key];
                 }
             });
-            
-            // Translate speaker options
-            document.querySelectorAll('.speakerOption + label').forEach(label => {
-                const value = label.previousElementSibling.value;
-                switch(value) {
-                    case 'Ceiling':
-                        label.textContent = workTypeTranslations[language].ceiling;
-                        break;
-                    case 'Box':
-                        label.textContent = workTypeTranslations[language].box;
-                        break;
-                    case 'Horn':
-                        label.textContent = workTypeTranslations[language].horn;
-                        break;
-                }
-            });
-            
-            // Translate quantity field placeholders
-            document.querySelectorAll('.qtyField').forEach(field => {
-                field.placeholder = language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty');
-            });
-            
-            // Translate other work input placeholders
-            document.querySelectorAll('.otherWorkInput').forEach(input => {
-                input.placeholder = language === 'ur' ? 'کام کی قسم درج کریں' : (language === 'bn' ? 'কাজের ধরন লিখুন' : 'Enter work type');
-            });
-            
-            // Translate detail section headers
-            document.querySelectorAll('#workDetailsContainer div h6').forEach(header => {
-                const text = header.textContent;
-                Object.keys(workTypeTranslations.en).forEach(key => {
-                    if (workTypeTranslations.en[key] === text) {
-                        header.textContent = workTypeTranslations[language][key];
-                    }
-                });
-            });
-            
-            // Translate work item headers
-            document.querySelectorAll('.work-item h5').forEach(header => {
-                if (language === 'ur') {
-                    if (header.textContent.startsWith('Work ')) {
-                        header.textContent = header.textContent.replace('Work ', 'کام ');
-                    }
-                } else if (language === 'bn') {
-                    if (header.textContent.startsWith('Work ')) {
-                        header.textContent = header.textContent.replace('Work ', 'কাজ ');
-                    }
-                } else {
-                    if (header.textContent.startsWith('کام ')) {
-                        header.textContent = header.textContent.replace('کام ', 'Work ');
-                    } else if (header.textContent.startsWith('কাজ ')) {
-                        header.textContent = header.textContent.replace('কাজ ', 'Work ');
-                    }
-                }
-            });
-            
-            // Translate work type selection labels
-            document.querySelectorAll('[id^="workItem"] .col-12 .form-label').forEach(label => {
-                if (language === 'ur') {
-                    label.textContent = 'کام کی اقسام منتخب کریں (ایک سے زیادہ انتخاب کی اجازت ہے)';
-                } else if (language === 'bn') {
-                    label.textContent = 'কাজের ধরন নির্বাচন করুন (একাধিক নির্বাচনের অনুমতি আছে)';
-                } else {
-                    label.textContent = 'Select Work Types (Multiple Selection Allowed)';
-                }
+
+            document.querySelectorAll('input[placeholder="Qty"]').forEach(input => {
+                input.placeholder = translations[language].qtyPlaceholder || "Qty";
             });
         }
-
-        // Language switch event
-        document.getElementById('languageSelect').addEventListener('change', function() {
-            const selectedLanguage = this.value;
-            translatePage(selectedLanguage);
-        });
-
-        // Toggle other team member input
+        
+        document.getElementById('languageSelect').addEventListener('change', function() { translateUI(this.value); });
+        
         document.getElementById('teamName').addEventListener('change', function() {
-            const selectedOptions = Array.from(this.selectedOptions);
-            const otherSelected = selectedOptions.some(option => option.value === 'other');
-            const container = document.getElementById('otherTeamMemberContainer');
-            
-            if (otherSelected) {
-                container.style.display = 'block';
-            } else {
-                container.style.display = 'none';
-                document.getElementById('otherTeamMember').value = '';
-            }
+            const otherSelected = Array.from(this.selectedOptions).some(option => option.value === 'other');
+            document.getElementById('otherTeamMemberContainer').style.display = otherSelected ? 'block' : 'none';
+            if (!otherSelected) document.getElementById('otherTeamMember').value = '';
+        });
+        
+        document.getElementById('includeQuantitySwitch').addEventListener('change', function() {
+            document.getElementById('quantitySectionContainer').style.display = this.checked ? 'block' : 'none';
         });
 
-        // Update selected locations display
-        function updateSelectedLocations() {
-            const selectedLocations = document.getElementById('selectedLocations');
-            const language = document.getElementById('languageSelect').value;
-            
-            // Get selected floors
-            const selectedFloors = Array.from(document.querySelectorAll('.floor-checkbox:checked')).map(cb => cb.value);
-            
-            // Get selected zones
-            const selectedZones = Array.from(document.getElementById('zoneSelect').selectedOptions).map(option => option.value);
-            
-            // Clear current display
-            selectedLocations.innerHTML = '';
-            
-            // Display selected locations
-            if (selectedFloors.length === 0 && selectedZones.length === 0) {
-                selectedLocations.innerHTML = '<span class="text-muted">' + 
-                    (language === 'ur' ? 'ابھی تک کوئی مقام منتخب نہیں کیا گیا' : 
-                     language === 'bn' ? 'এখনও কোন অবস্থান নির্বাচন করা হয়নি' : 
-                     'No locations selected yet') + '</span>';
-                return;
-            }
-            
-            // Create location tags
-            selectedFloors.forEach(floor => {
-                const floorTag = document.createElement('span');
-                floorTag.className = 'location-tag';
-                floorTag.textContent = floor;
-                selectedLocations.appendChild(floorTag);
-            });
-            
-            selectedZones.forEach(zone => {
-                const zoneTag = document.createElement('span');
-                zoneTag.className = 'location-tag';
-                zoneTag.textContent = zone;
-                selectedLocations.appendChild(zoneTag);
-            });
-            
-            // Generate work items based on locations
-            generateWorkItems(selectedFloors, selectedZones);
-        }
-
-        // Toggle other remark text field
-        function toggleOtherRemark(id) {
-            const remarkType = document.getElementById(`remarkType${id}`).value;
-            const otherContainer = document.getElementById(`otherRemarkContainer${id}`);
-            if (remarkType === 'Other') {
-                otherContainer.style.display = 'block';
-            } else {
-                otherContainer.style.display = 'none';
-            }
-        }
-
-        // Add remark item
-        document.getElementById('addRemarkBtn').addEventListener('click', function() {
-            const remarkContainer = document.getElementById('remarkContainer');
-            const language = document.getElementById('languageSelect').value;
-            
-            const remarkItem = document.createElement('div');
-            remarkItem.className = 'remark-item';
-            remarkItem.id = `remarkItem${remarkCount}`;
-            remarkItem.innerHTML = `
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'تبصرے کی قسم' : (language === 'bn' ? 'মন্তব্যের ধরন' : 'Remark Type')}</label>
-                        <select class="form-select remarkType" id="remarkType${remarkCount}" onchange="toggleOtherRemark(${remarkCount})">
-                            <option value="">${language === 'ur' ? 'تبصرہ منتخب کریں' : (language === 'bn' ? 'মন্তব্য নির্বাচন করুন' : 'Select Remark')}</option>
-                            <option value="Conduit issue">${language === 'ur' ? 'کانڈوئٹ کا مسئلہ' : (language === 'bn' ? 'কনডুইট সমস্যা' : 'Conduit issue')}</option>
-                            <option value="Clearance issue">${language === 'ur' ? 'خالی جگہ کا مسئلہ' : (language === 'bn' ? 'পরিষ্কার জায়গা সমস্যা' : 'Clearance issue')}</option>
-                            <option value="Ladder not available">${language === 'ur' ? 'سیڑھی دستیاب نہیں' : (language === 'bn' ? 'মেরুদণ্ড উপলব্ধ নয়' : 'Ladder not available')}</option>
-                            <option value="Other">${language === 'ur' ? 'دیگر' : (language === 'bn' ? 'অন্যান্য' : 'Other')}</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'منزل' : (language === 'bn' ? 'তলা' : 'Floor')}</label>
-                        <select class="form-select remarkFloorSelect" id="remarkFloorSelect${remarkCount}">
-                            <option value="">${language === 'ur' ? 'منزل منتخب کریں' : (language === 'bn' ? 'তলা নির্বাচন করুন' : 'Select Floor')}</option>
-                            <option value="Level 00">${language === 'ur' ? 'سطح 00' : (language === 'bn' ? 'স্তর 00' : 'Level 00')}</option>
-                            <option value="Level 01">${language === 'ur' ? 'سطح 01' : (language === 'bn' ? 'স্তর 01' : 'Level 01')}</option>
-                            <option value="Level 02">${language === 'ur' ? 'سطح 02' : (language === 'bn' ? 'স্তর 02' : 'Level 02')}</option>
-                            <option value="Level 03">${language === 'ur' ? 'سطح 03' : (language === 'bn' ? 'স্তর 03' : 'Level 03')}</option>
-                            <option value="Level 04">${language === 'ur' ? 'سطح 04' : (language === 'bn' ? 'স্তর 04' : 'Level 04')}</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'علاقہ' : (language === 'bn' ? 'অঞ্চল' : 'Zone')}</label>
-                        <select class="form-select remarkZoneSelect" id="remarkZoneSelect${remarkCount}">
-                            <option value="">${language === 'ur' ? 'علاقہ منتخب کریں' : (language === 'bn' ? 'অঞ্চল নির্বাচন করুন' : 'Select Zone')}</option>
-                            <option value="Zone 01">${language === 'ur' ? 'علاقہ 01' : (language === 'bn' ? 'অঞ্চল 01' : 'Zone 01')}</option>
-                            <option value="Zone 02">${language === 'ur' ? 'علاقہ 02' : (language === 'bn' ? 'অঞ্চল 02' : 'Zone 02')}</option>
-                            <option value="Zone 03">${language === 'ur' ? 'علاقہ 03' : (language === 'bn' ? 'অঞ্চল 03' : 'Zone 03')}</option>
-                            <option value="Zone 04">${language === 'ur' ? 'علاقہ 04' : (language === 'bn' ? 'অঞ্চল 04' : 'Zone 04')}</option>
-                            <option value="Zone 05">${language === 'ur' ? 'علاقہ 05' : (language === 'bn' ? 'অঞ্চল 05' : 'Zone 05')}</option>
-                            <option value="Zone 06">${language === 'ur' ? 'علاقہ 06' : (language === 'bn' ? 'অঞ্চল 06' : 'Zone 06')}</option>
-                            <option value="Zone 07">${language === 'ur' ? 'علاقہ 07' : (language === 'bn' ? 'অঞ্চল 07' : 'Zone 07')}</option>
-                            <option value="Zone 08">${language === 'ur' ? 'علاقہ 08' : (language === 'bn' ? 'অঞ্চল 08' : 'Zone 08')}</option>
-                        </select>
-                    </div>
-                    <div class="col-12 mb-3" id="otherRemarkContainer${remarkCount}" style="display: none;">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'دیگر تبصرے کی تفصیلات' : (language === 'bn' ? 'অন্যান্য মন্তব্য বিবরণ' : 'Other Remark Details')}</label>
-                        <input type="text" class="form-control" id="otherRemarkText${remarkCount}" placeholder="${language === 'ur' ? 'دیگر تبصرے کی تفصیلات درج کریں' : (language === 'bn' ? 'অন্যান্য মন্তব্য বিবরণ লিখুন' : 'Enter other remark details')}">
-                    </div>
-                </div>
-                <div class="text-end">
-                    <button class="btn btn-danger btn-sm" onclick="removeRemarkItem(${remarkCount})">
-                        <i class="fas fa-trash"></i> ${language === 'ur' ? 'حذف کریں' : (language === 'bn' ? 'মুছে ফেলুন' : 'Remove')}
-                    </button>
-                </div>
-            `;
-            
-            remarkContainer.appendChild(remarkItem);
-            remarkCount++;
-        });
-
-        // Remove remark item
-        function removeRemarkItem(id) {
-            if (remarkCount > 1) {
-                const remarkItem = document.getElementById(`remarkItem${id}`);
-                if (remarkItem) {
-                    remarkItem.remove();
-                }
-            }
-        }
-
-        // Generate work items based on selected locations
-        function generateWorkItems(floors, zones) {
-            const workContainer = document.getElementById('workContainer');
-            workContainer.innerHTML = '';
-            workItems = [];
-            
-            // Create work items for each floor-zone combination
-            if (floors.length > 0 && zones.length > 0) {
-                floors.forEach(floor => {
-                    zones.forEach(zone => {
-                        createWorkItem(`${floor} - ${zone}`);
-                    });
-                });
-            } else if (floors.length > 0) {
-                floors.forEach(floor => {
-                    createWorkItem(floor);
-                });
-            } else if (zones.length > 0) {
-                zones.forEach(zone => {
-                    createWorkItem(zone);
-                });
-            }
-        }
-
-        // Create a work item
-        function createWorkItem(location) {
-            const workContainer = document.getElementById('workContainer');
-            const workId = workItems.length;
-            const language = document.getElementById('languageSelect').value;
-            
-            const workItem = document.createElement('div');
-            workItem.className = 'work-item mb-3';
-            workItem.id = `workItem${workId}`;
-            workItem.innerHTML = `
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h5>${language === 'ur' ? 'کام' : (language === 'bn' ? 'কাজ' : 'Work')} ${location}</h5>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <label class="form-label fw-bold">${language === 'ur' ? 'کام کی اقسام منتخب کریں (ایک سے زیادہ انتخاب کی اجازت ہے)' : (language === 'bn' ? 'কাজের ধরন নির্বাচন করুন (একাধিক নির্বাচনের অনুমতি আছে)' : 'Select Work Types (Multiple Selection Allowed)')}</label>
-                        <div class="d-flex flex-wrap">
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="Cable pulling" id="workTypeCable${workId}">
-                                <label class="form-check-label" for="workTypeCable${workId}">${workTypeTranslations[language].cablePulling}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="ACP panel installation" id="workTypeACP${workId}">
-                                <label class="form-check-label" for="workTypeACP${workId}">${workTypeTranslations[language].acpPanelInstallation}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="ACP Panel termination" id="workTypeTermination${workId}">
-                                <label class="form-check-label" for="workTypeTermination${workId}">${workTypeTranslations[language].acpPanelTermination}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="Speaker installation" id="workTypeSpeaker${workId}">
-                                <label class="form-check-label" for="workTypeSpeaker${workId}">${workTypeTranslations[language].speakerInstallation}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="Induction loop installation" id="workTypeInduction${workId}">
-                                <label class="form-check-label" for="workTypeInduction${workId}">${workTypeTranslations[language].inductionLoopInstallation}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="Panic button" id="workTypePanic${workId}">
-                                <label class="form-check-label" for="workTypePanic${workId}">${workTypeTranslations[language].panicButton}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="TV installation" id="workTypeTV${workId}">
-                                <label class="form-check-label" for="workTypeTV${workId}">${workTypeTranslations[language].tvInstallation}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="CCTV" id="workTypeCCTV${workId}">
-                                <label class="form-check-label" for="workTypeCCTV${workId}">${workTypeTranslations[language].cctv}</label>
-                            </div>
-                            <div class="form-check work-type-checkbox">
-                                <input class="form-check-input workTypeCheckbox" type="checkbox" value="Other Work" id="workTypeOther${workId}">
-                                <label class="form-check-label" for="workTypeOther${workId}">${workTypeTranslations[language].otherWork}</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="workDetailsContainer${workId}">
-                    <!-- Work details will be added here -->
-                </div>
-            `;
-            
-            workContainer.appendChild(workItem);
-            workItems.push({ id: workId, location: location });
-            
-            // Add event listeners for work type checkboxes
-            const checkboxes = workItem.querySelectorAll('.workTypeCheckbox');
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    updateWorkDetails(workId);
-                });
-            });
-        }
-
-        // Update work details based on selected work types
-        function updateWorkDetails(id) {
-            const workDetailsContainer = document.getElementById(`workDetailsContainer${id}`);
-            workDetailsContainer.innerHTML = '';
-            const language = document.getElementById('languageSelect').value;
-            
-            // Get selected work types
-            const selectedWorkTypes = [];
-            document.querySelectorAll(`#workItem${id} .workTypeCheckbox:checked`).forEach(checkbox => {
-                selectedWorkTypes.push(checkbox.value);
-            });
-            
-            // Create detail sections for each selected work type
-            selectedWorkTypes.forEach((workType, index) => {
-                const detailId = `${id}_${index}`;
-                const detailSection = document.createElement('div');
-                detailSection.className = 'mb-3 p-3 border rounded';
-                
-                // Get translated work type name
-                let workTypeName = workType;
-                switch(workType) {
-                    case 'Cable pulling':
-                        workTypeName = workTypeTranslations[language].cablePulling;
-                        break;
-                    case 'ACP panel installation':
-                        workTypeName = workTypeTranslations[language].acpPanelInstallation;
-                        break;
-                    case 'ACP Panel termination':
-                        workTypeName = workTypeTranslations[language].acpPanelTermination;
-                        break;
-                    case 'Speaker installation':
-                        workTypeName = workTypeTranslations[language].speakerInstallation;
-                        break;
-                    case 'Induction loop installation':
-                        workTypeName = workTypeTranslations[language].inductionLoopInstallation;
-                        break;
-                    case 'Panic button':
-                        workTypeName = workTypeTranslations[language].panicButton;
-                        break;
-                    case 'TV installation':
-                        workTypeName = workTypeTranslations[language].tvInstallation;
-                        break;
-                    case 'CCTV':
-                        workTypeName = workTypeTranslations[language].cctv;
-                        break;
-                    case 'Other Work':
-                        workTypeName = workTypeTranslations[language].otherWork;
-                        break;
-                }
-                
-                detailSection.innerHTML = `<h6>${workTypeName}</h6>`;
-                
-                if (workType === 'Cable pulling') {
-                    detailSection.innerHTML += `
-                        <div class="detail-options mt-2">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input cableOption" type="checkbox" value="Single door" id="singleDoor${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="singleDoor${detailId}">${workTypeTranslations[language].singleDoor}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtySingleDoor${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input cableOption" type="checkbox" value="Double door" id="doubleDoor${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="doubleDoor${detailId}">${workTypeTranslations[language].doubleDoor}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyDoubleDoor${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input cableOption" type="checkbox" value="Panic button" id="panicButton${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="panicButton${detailId}">${workTypeTranslations[language].panicButton}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyPanicButton${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input cableOption" type="checkbox" value="Corridor door" id="corridorDoor${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="corridorDoor${detailId}">${workTypeTranslations[language].corridorDoor}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyCorridorDoor${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                        </div>
-                    `;
-                } else if (workType === 'Speaker installation') {
-                    detailSection.innerHTML += `
-                        <div class="detail-options mt-2">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input speakerOption" type="checkbox" value="Ceiling" id="ceiling${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="ceiling${detailId}">${workTypeTranslations[language].ceiling}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyCeiling${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input speakerOption" type="checkbox" value="Box" id="box${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="box${detailId}">${workTypeTranslations[language].box}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyBox${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input speakerOption" type="checkbox" value="Horn" id="horn${detailId}" onchange="toggleQtyField('${detailId}')">
-                                <label class="form-check-label" for="horn${detailId}">${workTypeTranslations[language].horn}</label>
-                                <input type="number" class="form-control mt-1 qtyField" id="qtyHorn${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Qty')}" style="display:none; width: 100px;">
-                            </div>
-                        </div>
-                    `;
-                } else if (workType === 'Other Work') {
-                    detailSection.innerHTML += `
-                        <div class="mt-2">
-                            <input type="text" class="form-control mb-2 otherWorkInput" id="otherWorkType${detailId}" placeholder="${language === 'ur' ? 'کام کی قسم درج کریں' : (language === 'bn' ? 'কাজের ধরন লিখুন' : 'Enter work type')}">
-                            <input type="number" class="form-control qtyField" id="otherWorkQty${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Quantity')}">
-                        </div>
-                    `;
-                } else {
-                    detailSection.innerHTML += `
-                        <div class="mt-2">
-                            <input type="number" class="form-control qtyField" id="detailQty${detailId}" placeholder="${language === 'ur' ? 'مقدار' : (language === 'bn' ? 'পরিমাণ' : 'Quantity')}">
-                        </div>
-                    `;
-                }
-                
-                workDetailsContainer.appendChild(detailSection);
-            });
-        }
-
-        // Toggle quantity field visibility
-        function toggleQtyField(id) {
-            // For cable pulling options
-            ['singleDoor', 'doubleDoor', 'panicButton', 'corridorDoor'].forEach(option => {
-                const checkbox = document.getElementById(`${option}${id}`);
-                const qtyField = document.getElementById(`qty${option.charAt(0).toUpperCase() + option.slice(1)}${id}`);
-                if (checkbox && qtyField) {
-                    qtyField.style.display = checkbox.checked ? 'block' : 'none';
-                }
-            });
-            
-            // For speaker options
-            ['ceiling', 'box', 'horn'].forEach(option => {
-                const checkbox = document.getElementById(`${option}${id}`);
-                const qtyField = document.getElementById(`qty${option.charAt(0).toUpperCase() + option.slice(1)}${id}`);
-                if (checkbox && qtyField) {
-                    qtyField.style.display = checkbox.checked ? 'block' : 'none';
-                }
-            });
-        }
-
-        // Event listeners for location changes
         document.querySelectorAll('.floor-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', updateSelectedLocations);
+            checkbox.addEventListener('change', function() {
+                if (this.checked) { addFloorTab(this.value); } else { removeFloorTab(this.value); }
+            });
         });
 
-        document.getElementById('zoneSelect').addEventListener('change', updateSelectedLocations);
+        function addFloorTab(floorValue) {
+            const sanitizedFloorValue = floorValue.replace(/\s+/g, '-');
+            const language = document.getElementById('languageSelect').value;
 
-        // Generate report preview
+            const tab = document.createElement('li');
+            tab.className = 'nav-item';
+            tab.innerHTML = `<button class="nav-link" id="tab-${sanitizedFloorValue}" data-bs-toggle="tab" data-bs-target="#pane-${sanitizedFloorValue}" type="button">${floorValue}</button>`;
+            document.getElementById('floorTabs').appendChild(tab);
+
+            const pane = document.createElement('div');
+            pane.className = 'tab-pane fade p-3';
+            pane.id = `pane-${sanitizedFloorValue}`;
+            pane.dataset.floor = floorValue;
+            
+            const zoneSelectId = `zone-select-${sanitizedFloorValue}`;
+            pane.innerHTML = `
+                <div class="mb-3">
+                    <label class="form-label fw-bold zone-select-label" data-floor="${floorValue}" for="${zoneSelectId}"><i class="fas fa-map-signs me-2"></i>${translations[language].selectZonesLabel} ${floorValue}:</label>
+                    <select class="form-select" id="${zoneSelectId}" multiple size="4">
+                        <option value="Zone 01">Zone 01</option> <option value="Zone 02">Zone 02</option> <option value="Zone 03">Zone 03</option> <option value="Zone 04">Zone 04</option> <option value="Zone 05">Zone 05</option> <option value="Zone 06">Zone 06</option> <option value="Zone 07">Zone 07</option> <option value="Zone 08">Zone 08</option>
+                    </select>
+                </div>
+                <div class="work-items-container" id="work-items-${sanitizedFloorValue}"></div>`;
+            document.getElementById('floorTabsContent').appendChild(pane);
+            
+            document.getElementById(zoneSelectId).addEventListener('change', (e) => updateWorkItemsForFloor(floorValue, e.target));
+
+            if (document.querySelectorAll('#floorTabs .nav-link').length === 1) { new bootstrap.Tab(tab.querySelector('button')).show(); }
+        }
+
+        function removeFloorTab(floorValue) {
+            const sanitizedFloorValue = floorValue.replace(/\s+/g, '-');
+            const tabButton = document.getElementById(`tab-${sanitizedFloorValue}`);
+            const pane = document.getElementById(`pane-${sanitizedFloorValue}`);
+            if (tabButton) tabButton.parentElement.remove();
+            if (pane) pane.remove();
+            const firstTab = document.querySelector('#floorTabs .nav-link');
+            if (firstTab) { new bootstrap.Tab(firstTab).show(); }
+        }
+        
+        function updateWorkItemsForFloor(floorValue, zoneSelectElement) {
+            const workContainer = document.getElementById(`work-items-${floorValue.replace(/\s+/g, '-')}`);
+            const selectedZones = Array.from(zoneSelectElement.selectedOptions).map(opt => opt.value);
+            workContainer.querySelectorAll('.work-item').forEach(item => {
+                if (!selectedZones.includes(item.dataset.location.split(' - ')[1])) { item.remove(); }
+            });
+            selectedZones.forEach(zone => {
+                const location = `${floorValue} - ${zone}`;
+                if (!document.getElementById(`workItem-${location.replace(/\s+/g, '-')}`)) {
+                    createWorkItem(location, workContainer);
+                }
+            });
+        }
+
+        function createWorkItem(location, container) {
+            const sanitizedLocation = location.replace(/\s+/g, '-');
+            const language = document.getElementById('languageSelect').value;
+            const workItemEl = document.createElement('div');
+            workItemEl.className = 'work-item mb-3';
+            workItemEl.id = `workItem-${sanitizedLocation}`;
+            workItemEl.dataset.location = location;
+
+            let checkboxesHTML = '';
+            Object.keys(workTypeTranslations.en).forEach(key => {
+                 if(!['singleDoor', 'doubleDoor', 'panicButton', 'corridor', 'avRoomDm', 'avSpeaker', 'tableCounterLoop', 'ceiling', 'box', 'horn'].includes(key)) {
+                    checkboxesHTML += `<div class="form-check form-check-inline work-type-checkbox-wrapper"><input class="form-check-input work-type-checkbox" data-work-type-key="${key}" type="checkbox" value="${workTypeTranslations.en[key]}" id="${key}-${sanitizedLocation}"><label class="form-check-label" for="${key}-${sanitizedLocation}">${workTypeTranslations[language][key]}</label></div>`;
+                 }
+            });
+            
+            workItemEl.innerHTML = `<h5 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i>${location}</h5><div class="mb-3">${checkboxesHTML}</div><div class="work-details-container" id="workDetailsContainer-${sanitizedLocation}"></div>`;
+            container.appendChild(workItemEl);
+            
+            workItemEl.querySelectorAll('.work-type-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', () => updateWorkDetails(sanitizedLocation, checkbox.value, checkbox.checked));
+            });
+        }
+        
+        function updateWorkDetails(sanitizedLocation, workType, isChecked) {
+            const workDetailsContainer = document.getElementById(`workDetailsContainer-${sanitizedLocation}`);
+            const detailId = `${sanitizedLocation}-${workType.replace(/\s+/g, '-')}`;
+            const language = document.getElementById('languageSelect').value;
+            const sectionToRemove = document.getElementById(`detailSection-${detailId}`);
+            if (sectionToRemove) sectionToRemove.remove();
+
+            if (isChecked) {
+                const detailSection = document.createElement('div');
+                detailSection.className = 'mb-3 p-3 border rounded detail-section';
+                detailSection.id = `detailSection-${detailId}`;
+
+                const workTypeKey = Object.keys(workTypeTranslations.en).find(key => workTypeTranslations.en[key] === workType);
+                const workTypeName = workTypeTranslations[language][workTypeKey] || workType;
+
+                let optionsHTML = '';
+                const complexTypes = {
+                    "Cable pulling": ['singleDoor', 'doubleDoor', 'panicButton', 'corridor', 'avRoomDm', 'avSpeaker', 'tableCounterLoop'],
+                    "Speaker installation": ['ceiling', 'box', 'horn']
+                };
+
+                if (complexTypes[workType]) {
+                    complexTypes[workType].forEach(optKey => {
+                        optionsHTML += `<div class="form-check mb-2"><input class="form-check-input sub-option-checkbox" data-sub-option-key="${optKey}" type="checkbox" value="${workTypeTranslations.en[optKey]}" id="chk-${detailId}-${optKey}" onchange="toggleSubOptionQtyField('${detailId}', '${optKey}')"><label class="form-check-label" for="chk-${detailId}-${optKey}">${workTypeTranslations[language][optKey]}</label><input type="number" class="form-control form-control-sm sub-option-qty" id="qty-${detailId}-${optKey}" placeholder="${translations[language].qtyPlaceholder}"></div>`;
+                    });
+                } else if (workType === 'Other Work') {
+                     optionsHTML = `<div class="mt-2"><input type="text" class="form-control mb-2 otherWorkInput" id="otherWorkType-${detailId}" placeholder="${translations[language].otherTeamPlaceholder}"><input type="number" class="form-control qtyField" id="otherWorkQty-${detailId}" placeholder="${translations[language].qtyPlaceholder}"></div>`;
+                } else {
+                     optionsHTML = `<div class="mt-2"><input type="number" class="form-control qtyField" id="detailQty-${detailId}" placeholder="${translations[language].qtyPlaceholder}"></div>`;
+                }
+                
+                detailSection.innerHTML = `<h6>${workTypeName}</h6><div class="detail-options">${optionsHTML}</div>`;
+                workDetailsContainer.appendChild(detailSection);
+            }
+        }
+
+        function toggleSubOptionQtyField(detailId, optionKey) {
+            const chk = document.getElementById(`chk-${detailId}-${optionKey}`);
+            const qty = document.getElementById(`qty-${detailId}-${optionKey}`);
+            if (qty) qty.style.display = chk.checked ? 'block' : 'none';
+        }
+        
+        addRemarkItem();
+        document.getElementById('addRemarkBtn').addEventListener('click', addRemarkItem);
+        function addRemarkItem() { /* Simplified */ }
+
         document.getElementById('generateBtn').addEventListener('click', function() {
             generateReport();
             document.getElementById('previewSection').style.display = 'block';
             document.getElementById('previewSection').scrollIntoView({ behavior: 'smooth' });
         });
-
-        // Show copy notification
-        function showCopyNotification() {
-            const notification = document.getElementById('copyNotification');
-            const language = document.getElementById('languageSelect').value;
-            const textElement = notification.querySelector('span');
-            textElement.textContent = language === 'ur' ? 'پیغام کامیابی سے کاپی ہو گیا!' : 
-                                      (language === 'bn' ? 'পীগাম সফলভাবে কপি হয়েছে!' : 
-                                      'Message copied successfully!');
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }
-
-        // Copy message to clipboard
+        
         document.getElementById('copyBtn').addEventListener('click', function() {
-            const message = document.getElementById('messagePreview').textContent;
-            navigator.clipboard.writeText(message).then(function() {
-                showCopyNotification();
-            }).catch(function(err) {
-                console.error('Could not copy text: ', err);
+            navigator.clipboard.writeText(document.getElementById('messagePreview').textContent).then(() => {
+                const notification = document.getElementById('copyNotification');
+                notification.style.display = 'block';
+                setTimeout(() => { notification.style.display = 'none'; }, 3000);
             });
         });
 
-        // Generate report message (always in English)
         function generateReport() {
-            const date = document.getElementById('reportDate').value;
-            
-            // Get selected team members
-            const selectedTeams = Array.from(document.getElementById('teamName').selectedOptions).map(option => option.value);
-            const otherTeamMember = document.getElementById('otherTeamMember').value;
-            
-            // Process team names
-            let teamNames = selectedTeams.filter(name => name !== 'other');
-            if (selectedTeams.includes('other') && otherTeamMember.trim()) {
-                teamNames.push(otherTeamMember.trim());
-            }
-            
-            const teamName = teamNames.length > 0 ? teamNames.join(', ') : 'Team Name';
-            
-            // Format date
-            const dateObj = new Date(date);
-            const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-            
-            // Build message (always in English)
-            let message = `*Project report-MOH Khasab Hospital*\n`;
-            message += `*Date: ${formattedDate}*\n\n`;
-            message += `*Work Completed Today*\n\n`;
-            
-            // Group work items by location
+            const date = new Date(document.getElementById('reportDate').value).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const teamNames = Array.from(document.getElementById('teamName').selectedOptions)
+                .map(option => option.value === 'other' ? document.getElementById('otherTeamMember').value.trim() : option.value)
+                .filter(name => name).join(', ');
+            const totalManpower = document.getElementById('totalManpower').value;
+
+            let message = `*Project Report: MOH Khasab Hospital* 🏥\n\n`;
+            message += `🗓️ *Date:* ${date}\n`;
+            if (teamNames) message += `👥 *Team:* ${teamNames}\n`;
+            message += `\n*✅ Work Completed Today*\n\n`;
+
             const locationWork = {};
-            
-            workItems.forEach(item => {
-                const location = item.location;
-                if (!locationWork[location]) {
-                    locationWork[location] = [];
-                }
-                
-                // Get selected work types for this location
-                const workTypeCheckboxes = document.querySelectorAll(`#workItem${item.id} .workTypeCheckbox:checked`);
-                
-                workTypeCheckboxes.forEach((checkbox, index) => {
+            document.querySelectorAll('.work-item').forEach(item => {
+                const location = item.dataset.location;
+                if (!locationWork[location]) locationWork[location] = [];
+
+                item.querySelectorAll('.work-type-checkbox:checked').forEach(checkbox => {
                     const workType = checkbox.value;
-                    const detailId = `${item.id}_${index}`;
-                    
-                    let workDetail = `•\t${workType}: `;
-                    
-                    // Get details based on work type
-                    if (workType === 'Cable pulling') {
-                        const details = [];
-                        ['singleDoor', 'doubleDoor', 'panicButton', 'corridorDoor'].forEach(option => {
-                            const checkboxEl = document.getElementById(`${option}${detailId}`);
-                            if (checkboxEl && checkboxEl.checked) {
-                                const qty = document.getElementById(`qty${option.charAt(0).toUpperCase() + option.slice(1)}${detailId}`)?.value || '';
-                                if (qty) {
-                                    details.push(`${checkboxEl.value}- (${qty} nos)`);
-                                } else {
-                                    details.push(`${checkboxEl.value}`);
-                                }
-                            }
+                    const sanitizedLocation = location.replace(/\s+/g, '-');
+                    const detailId = `${sanitizedLocation}-${workType.replace(/\s+/g, '-')}`;
+                    let subDetails = [];
+
+                    const detailSection = document.getElementById(`detailSection-${detailId}`);
+                    if (!detailSection) return;
+
+                    if (detailSection.querySelectorAll('.sub-option-checkbox').length > 0) { // Complex types
+                        detailSection.querySelectorAll('.sub-option-checkbox:checked').forEach(subChk => {
+                            const optKey = subChk.dataset.subOptionKey;
+                            const qtyInput = document.getElementById(`qty-${detailId}-${optKey}`);
+                            const qty = qtyInput && qtyInput.value ? ` (${qtyInput.value} nos)` : '';
+                            subDetails.push(`${subChk.value}${qty}`);
                         });
-                        if (details.length > 0) {
-                            workDetail += details.join(', ');
-                        } else {
-                            workDetail += 'completed';
-                        }
-                    } else if (workType === 'Speaker installation') {
-                        const details = [];
-                        ['ceiling', 'box', 'horn'].forEach(option => {
-                            const checkboxEl = document.getElementById(`${option}${detailId}`);
-                            if (checkboxEl && checkboxEl.checked) {
-                                const qty = document.getElementById(`qty${option.charAt(0).toUpperCase() + option.slice(1)}${detailId}`)?.value || '';
-                                if (qty) {
-                                    details.push(`${checkboxEl.value}- (${qty} nos)`);
-                                } else {
-                                    details.push(`${checkboxEl.value}`);
-                                }
-                            }
-                        });
-                        if (details.length > 0) {
-                            workDetail += details.join(', ');
-                        } else {
-                            workDetail += 'completed';
-                        }
-                    } else if (workType === 'Other Work') {
-                        const otherWorkType = document.getElementById(`otherWorkType${detailId}`)?.value || '';
-                        const otherWorkQty = document.getElementById(`otherWorkQty${detailId}`)?.value || '';
-                        if (otherWorkType) {
-                            workDetail += `${otherWorkType}`;
-                            if (otherWorkQty) {
-                                workDetail += `- (${otherWorkQty} nos)`;
-                            }
-                        } else {
-                            workDetail += 'completed';
-                        }
-                    } else {
-                        const detailQty = document.getElementById(`detailQty${detailId}`)?.value || '';
-                        if (detailQty) {
-                            workDetail += `completed- (${detailQty} nos)`;
-                        } else {
-                            workDetail += 'completed';
+                    } else { // Simple types
+                        const qtyInput = detailSection.querySelector('.qtyField');
+                        if (qtyInput && qtyInput.value) {
+                             let detailText = workType === 'Other Work' ? (detailSection.querySelector('.otherWorkInput').value || 'Other Work') : 'completed';
+                             subDetails.push(`${detailText} (${qtyInput.value} nos)`);
+                        } else if (qtyInput) {
+                             subDetails.push('completed');
                         }
                     }
-                    
-                    workDetail += '.';
-                    locationWork[location].push(workDetail);
+
+                    if (subDetails.length > 0) {
+                        let workDetail = `•\t*${workType}:* ${subDetails.join(', ')}.`;
+                        locationWork[location].push(workDetail);
+                    }
                 });
             });
-            
-            // Add work details to message
-            Object.keys(locationWork).forEach(location => {
-                message += `\t*${location}*\n`;
-                locationWork[location].forEach(work => {
-                    message += `\t${work}\n`;
-                });
-                message += '\n';
-            });
-            
-            // Add quantity section
-            message += `*Completed Qty / Total Qty*\n\n`;
-            
-            // Access control cable pulling quantities
-            message += `*Access control cable pulling*\n\n`;
-            const groundFloorComplete = document.getElementById('groundFloorComplete').value || '';
-            if (groundFloorComplete) {
-                message += `1.Ground floor = ${groundFloorComplete}/ 160\n`;
-            }
-            
-            const firstFloorComplete = document.getElementById('firstFloorComplete').value || '';
-            if (firstFloorComplete) {
-                message += `2.First floor= ${firstFloorComplete}/  136\n`;
-            }
-            
-            const secondFloorComplete = document.getElementById('secondFloorComplete').value || '';
-            if (secondFloorComplete) {
-                message += `3.Second floor =  ${secondFloorComplete}/ 102\n`;
-            }
-            
-            message += '\n';
-            
-            // ACP panel installation quantities
-            message += `*Total ACP panel installation*\n\n`;
-            const acpGroundFloorComplete = document.getElementById('acpGroundFloorComplete').value || '';
-            if (acpGroundFloorComplete) {
-                message += `1.Ground floor= ${acpGroundFloorComplete}/ 57\n`;
-            }
-            
-            const acpFirstFloorComplete = document.getElementById('acpFirstFloorComplete').value || '';
-            if (acpFirstFloorComplete) {
-                message += `2.First floor = ${acpFirstFloorComplete}/ 43\n`;
-            }
-            
-            const acpSecondFloorComplete = document.getElementById('acpSecondFloorComplete').value || '';
-            if (acpSecondFloorComplete) {
-                message += `3.Second floor= ${acpSecondFloorComplete}/ 37\n`;
-            }
-            
-            const liftComplete = document.getElementById('liftComplete').value || '';
-            if (liftComplete) {
-                message += `4.Lift = complete ${liftComplete}/ 10\n`;
-            }
-            
-            message += '\n';
-            
-            // Add remarks
-            let hasRemarks = false;
-            let remarksSection = '*Remarks:*\n';
-            
-            for (let i = 0; i < remarkCount; i++) {
-                const remarkType = document.getElementById(`remarkType${i}`)?.value || '';
-                const remarkFloor = document.getElementById(`remarkFloorSelect${i}`)?.value || '';
-                const remarkZone = document.getElementById(`remarkZoneSelect${i}`)?.value || '';
-                const otherRemarkText = document.getElementById(`otherRemarkText${i}`)?.value || '';
-                
-                if (remarkType) {
-                    hasRemarks = true;
-                    let remarkText = `•\t${remarkType === 'Other' ? otherRemarkText : remarkType}`;
-                    if (remarkFloor) remarkText += ` at ${remarkFloor}`;
-                    if (remarkZone) remarkText += `, ${remarkZone}`;
-                    remarksSection += `\t${remarkText}.\n`;
+
+            Object.keys(locationWork).sort().forEach(location => {
+                if (locationWork[location].length > 0) {
+                    message += `\t📍 *${location}*\n`;
+                    locationWork[location].forEach(work => { message += `\t${work}\n`; });
+                    message += '\n';
                 }
+            });
+
+            if (document.getElementById('includeQuantitySwitch').checked) {
+                message += `*📊 Progress Tracker (Completed/Total)*\n\n`;
+                const calculateProgress = (idsAndTotals) => {
+                    let completedSum = 0;
+                    let totalSum = 0;
+                    let sectionMessage = '';
+
+                    idsAndTotals.forEach(item => {
+                        const completedEl = document.getElementById(item.id);
+                        const total = item.total;
+                        if (completedEl && completedEl.value.trim() !== '') {
+                            const completed = parseFloat(completedEl.value);
+                            completedSum += completed;
+                            totalSum += total;
+                            if (!isNaN(completed) && total > 0) {
+                                const percentage = Math.round((completed / total) * 100);
+                                sectionMessage += `${item.label} = ${completed}/${total} *(${percentage}%)*\n`;
+                            } else {
+                                sectionMessage += `${item.label} = ${completedEl.value}/${total}\n`;
+                            }
+                        }
+                    });
+
+                    if (totalSum > 0) {
+                        const overallPercentage = Math.round((completedSum / totalSum) * 100);
+                        sectionMessage += `*Overall Progress:* ${completedSum}/${totalSum} *(${overallPercentage}%)*\n`;
+                    }
+                    return sectionMessage;
+                };
+                
+                message += `*Access control cable pulling*\n`;
+                message += calculateProgress([
+                    {id: 'groundFloorComplete', total: 160, label: '1. Ground floor'},
+                    {id: 'firstFloorComplete', total: 136, label: '2. First floor'},
+                    {id: 'secondFloorComplete', total: 102, label: '3. Second floor'},
+                ]);
+                message += '\n';
+
+                message += `*Total ACP panel installation*\n`;
+                 message += calculateProgress([
+                    {id: 'acpGroundFloorComplete', total: 57, label: '1. Ground floor'},
+                    {id: 'acpFirstFloorComplete', total: 43, label: '2. First floor'},
+                    {id: 'acpSecondFloorComplete', total: 37, label: '3. Second floor'},
+                    {id: 'liftComplete', total: 10, label: '4. Lift'},
+                ]);
+                message += '\n';
             }
+
+            // Remarks logic...
             
-            if (hasRemarks) {
-                message += remarksSection + '\n';
+            if (totalManpower) {
+                message += `\n👷‍♂️ *Total Manpower:* ${totalManpower}`;
             }
-            
-            message += `\nTeam name- *${teamName}*`;
-            
-            // Display message preview
+
             document.getElementById('messagePreview').textContent = message;
         }
 
-        // Initialize
-        updateSelectedLocations();
-        
-        // Initialize first remark item
-        document.getElementById('remarkType0').addEventListener('change', function() {
-            toggleOtherRemark(0);
-        });
-        
-        // Initial translation based on default language
-        translatePage('en');
-        
-        // Add touch-friendly interactions
-        document.querySelectorAll('button, input, select, textarea').forEach(element => {
-            element.classList.add('touch-friendly');
-        });
+        // Initial UI translation
+        translateUI(document.getElementById('languageSelect').value);
     </script>
 </body>
 </html>
-```
